@@ -136,7 +136,7 @@ imap <C-j> <esc>
 set number
 
 "自動バックアップファイルのパス
-set backupdir=C:/Users/IVP/backup/vimbkup
+set backupdir=~/dotfiles/vimbkup
 let &directory = &backupdir
 
 "C言語スタイルのインデント
@@ -282,6 +282,7 @@ endfunction
 nmap <leader>ra :<C-u>Ref alc<Space>
 
 let g:ref_alc_start_linenumber = 39 " 表示する行数
-let g:ref_alc_encoding = 'Shift-JIS' " 文字化け対策
-
+if has("win32") || has("win64")
+	let g:ref_alc_encoding = 'Shift-JIS' " Windows文字化け対策
+endif
 
