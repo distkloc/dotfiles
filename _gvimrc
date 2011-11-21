@@ -1,0 +1,125 @@
+
+"IMEの状態をカラー表示
+if has('multi_byte_ime')
+  highlight Cursor guifg=NONE guibg=Green
+  highlight CursorIM guifg=NONE guibg=Purple
+endif
+
+
+
+
+"ウィンドウの位置、サイズ設定
+let g:save_window_file = expand('~/.vimwinpos')
+augroup SaveWindow
+  autocmd!
+  autocmd VimLeavePre * call s:save_window()
+  function! s:save_window()
+	let options = [
+	  \ 'set columns=' . &columns,
+	  \ 'set lines=' . &lines,
+	  \ 'winpos ' . getwinposx() . ' ' . getwinposy(),
+	  \ ]
+	call writefile(options, g:save_window_file)
+  endfunction
+augroup END
+
+if filereadable(g:save_window_file)
+  execute 'source' g:save_window_file
+endif
+
+
+
+
+"----------------------------------------
+" 表示設定
+"----------------------------------------
+"ツールバーを非表示
+"set guioptions-=T
+"コマンドラインの高さ
+set cmdheight=2
+
+"カラー設定:
+colorscheme desert
+
+"フォント設定
+"フォントは英語名で指定すると問題が起きにくくなります
+if has('xfontset')
+"  set guifontset=a14,r14,k14
+elseif has('unix')
+
+elseif has('mac')
+"  set guifont=Osaka-Mono:h14
+elseif has('win32') || has('win64')
+  " set guifont=M+2VM+IPAG_circle:h11:w6:cSHIFTJIS
+  " set guifontwide=M+2VM+IPAG_circle:h11:w6:cSHIFTJIS
+  set guifont=Ricty:h13:w6:cSHIFTJIS
+  set guifontwide=Ricty:h13:w6:cSHIFTJIS
+endif
+
+"印刷用フォント
+if has('printer')
+  if has('win32') || has('win64')
+"    set printfont=MS_Mincho:h12:cSHIFTJIS
+"    set printfont=MS_Gothic:h12:cSHIFTJIS
+  endif
+endif
+
+
+
+"----------------------------------------
+"メニューアイテム作成
+"----------------------------------------
+silent! aunmenu &File.Save
+silent! aunmenu &File.保存(&S)
+silent! aunmenu &File.差分表示(&D)\.\.\.
+
+let message_revert="再読込しますか?"
+amenu <silent> 10.330 &File.再読込(&U)<Tab>:e!  :if confirm(message_revert, "&Yes\n&No")==1<Bar> e! <Bar> endif<CR>
+amenu <silent> 10.331 &File.バッファ削除(&K)<Tab>:bd  :confirm bd<CR>
+amenu <silent> 10.340 &File.保存(&W)<Tab>:w  :if expand('%') == ''<Bar>browse confirm w<Bar>else<Bar>confirm w<Bar>endif<CR>
+amenu <silent> 10.341 &File.更新時保存(&S)<Tab>:update  :if expand('%') == ''<Bar>browse confirm w<Bar>else<Bar>confirm update<Bar>endif<CR>
+amenu <silent> 10.400 &File.現バッファ差分表示(&D)<Tab>:DiffOrig  :DiffOrig<CR>
+amenu <silent> 10.401 &File.裏バッファと差分表示(&D)<Tab>:Diff\ #  :Diff #<CR>
+amenu <silent> 10.402 &File.差分表示(&D)<Tab>:Diff  :browse vertical diffsplit<CR>
+
+
+
+
+" 個別のタブの表示設定をします
+function! GuiTabLabel()
+  " タブで表示する文字列の初期化をします
+  let l:label = ''
+
+  " タブに含まれるバッファ(ウィンドウ)についての情報をとっておきます。
+  let l:bufnrlist = tabpagebuflist(v:lnum)
+
+  " 表示文字列にバッファ名を追加します
+  " パスを全部表示させると長いのでファイル名だけを使います 詳しくは help fnamemodify()
+  let l:bufname = fnamemodify(bufname(l:bufnrlist[tabpagewinnr(v:lnum) - 1]), ':t')
+  " バッファ名がなければ No title としておきます。ここではマルチバイト文字を使わないほうが無難です
+  let l:label .= l:bufname == '' ? 'No title' : l:bufname
+
+  " タブ内にウィンドウが複数あるときにはその数を追加します(デフォルトで一応あるので)
+  let l:wincount = tabpagewinnr(v:lnum, '$')
+  if l:wincount > 1
+    let l:label .= '[' . l:wincount . ']'
+  endif
+
+  " このタブページに変更のあるバッファがるときには '[+]' を追加します(デフォルトで一応あるので)
+  for bufnr in l:bufnrlist
+    if getbufvar(bufnr, "&modified")
+      let l:label .= '[+]'
+      break
+    endif
+  endfor
+
+  " 表示文字列を返します
+  return l:label
+endfunction
+
+" guitablabel に上の関数を設定します
+" その表示の前に %N というところでタブ番号を表示させています
+set guitablabel=%N:\ %{GuiTabLabel()}
+
+
+
