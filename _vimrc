@@ -15,6 +15,7 @@ endif
 Bundle 'Shougo/neocomplcache'        
 Bundle 'Shougo/unite.vim'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'thinca/vim-ref'
 
 filetype plugin indent on
 
@@ -274,5 +275,13 @@ function! s:unite_my_settings()
 	nmap <silent><buffer> <ESC><ESC> q
 	imap <silent><buffer> <ESC><ESC> <ESC>q
 endfunction
+
+
+
+" vim-ref
+nmap <leader>ra :<C-u>Ref alc<Space>
+
+let g:ref_alc_start_linenumber = 39 " •\¦‚·‚és”
+let g:ref_alc_encoding = 'Shift-JIS' " •¶š‰»‚¯‘Îô
 
 
