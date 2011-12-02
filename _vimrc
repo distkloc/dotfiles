@@ -16,6 +16,10 @@ Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'thinca/vim-ref'
+" Bundle 'mattn/vimplenote-vim'
+" Bundle 'mattn/webapi-vim'
+Bundle 'TwitVim'
+Bundle 'vim-scripts/YankRing.vim'
 
 filetype plugin indent on
 
@@ -117,8 +121,8 @@ set softtabstop=4
 "tabの代わりに半角スペースで挿入する空白数
 set shiftwidth=4
 
-"ヤンクでクリップボードへ
-set clipboard+=unnamed
+"ヤンクでクリップボードへ(YankRingでエラーになるのでunnamedplus追加)
+set clipboard=unnamedplus,unnamed
 
 "常にタブを表示
 set showtabline=2
@@ -201,12 +205,12 @@ nnoremap <silent> [TABCMD]s :<c-u>tabs<cr>
 "+plugin----------------------------------------------------------
 "plugin設定は全て.vimrcへ
 
-" NERD_comments
+""" NERD_comments
 let NERDSpaceDelims = 1
 let NERDShutUp = 1
 
 
-" neocomplcache
+""" neocomplcache
 let g:neocomplcache_enable_at_startup = 1
 " NeoComplCacheEnable
 let g:neocomplcache_max_list = 30
@@ -236,7 +240,7 @@ inoremap <expr><C-e> neocomplcache#cancel_popup()
 
 
 
-" unite.vim
+""" unite.vim
 " 入力モードで開始する
 " let g:unite_enable_start_insert=1
 
@@ -278,11 +282,49 @@ endfunction
 
 
 
-" vim-ref
+""" vim-ref
 nmap <leader>ra :<C-u>Ref alc<Space>
 
 let g:ref_alc_start_linenumber = 39 " 表示する行数
 if has("win32") || has("win64")
 	let g:ref_alc_encoding = 'Shift-JIS' " Windows文字化け対策
 endif
+
+
+" ローカルに配置する設定ファイル
+if filereadable(expand('~/.vimrc.local'))
+  source ~/.vimrc.local
+endif
+
+
+""" vimplenote
+
+
+
+""" TwitVim
+let twitvim_count = 15	"表示するつぶやき数
+
+if has("win32") || has("win64")
+	" \gで開くブラウザ
+	let twitvim_browser_cmd = 'C:\Progra~1\Mozill~1\firefox.exe'	"windows
+endif
+
+" ポスト
+nmap <leader>wp :<C-u>PosttoTwitter<CR>
+" TL表示
+nmap <leader>wf :<C-u>FriendsTwitter<CR>
+" 古いページ表示
+nmap <leader>wn :<C-u>NextTwitter<CR>
+" 新しいページ表示
+nmap <leader>wr :<C-u>PreviousTwitter<CR>
+
+
+
+""" YankRing
+:let g:yankring_max_history = 20	"履歴数
+
+" ヤンク履歴表示
+nmap <leader>ys :<C-u>YRShow<CR>
+" ヤンク履歴クリア
+nmap <leader>yc :<C-u>YRClear<CR>
 
