@@ -13,11 +13,13 @@ else
 endif
 
 Bundle 'Shougo/neocomplcache'        
+Bundle 'Shougo/vimproc'
 Bundle 'Shougo/unite.vim'
+Bundle 'Sixeight/unite-grep'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'thinca/vim-ref'
-" Bundle 'mattn/vimplenote-vim'
 " Bundle 'mattn/webapi-vim'
+" Bundle 'mattn/vimplenote-vim'
 Bundle 'TwitVim'
 Bundle 'vim-scripts/YankRing.vim'
 
@@ -149,25 +151,6 @@ set cindent
 "runtime path
 set runtimepath+=$HOME/vimfiles
 
-"qfuxgrep
-set runtimepath+=C:\Progra~1\qfixapp
-let mygrepprg = 'c:/Progra~1/Gow/bin/grep'
-
-"grep
-" set grepprg=grep\ -rnIH\ 
-
-"grep.vim
-" let Grep_Path = 'C:\Progra~1\GnuWin32\bin\grep.exe -i'
-" let Fgrep_Path = 'C:\Progra~1\GnuWin32\bin\fgrep.exe -i'
-" let Egrep_Path = 'C:\Progra~1\GnuWin32\bin\egrep.exe -i'
-" let Grep_Find_Path = 'C:\Progra~1\GnuWin32\bin\find.exe'
-" let Grep_Xargs_Path = 'C:\Progra~1\GnuWin32\bin\xargs.exe'
-
-" let Grep_Shell_Quote_Char = '"'
-
-" let Grep_Skip_Dirs = '.svn'
-" let Grep_Skip_Files = '*.bak *~'
-
 
 "Escの2回押しでハイライト消去
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
@@ -191,14 +174,14 @@ nmap     <leader>t [TABCMD]
 
 nnoremap <silent> [TABCMD]f :<c-u>tabfirst<cr>
 nnoremap <silent> [TABCMD]l :<c-u>tablast<cr>
-nnoremap <silent> [TABCMD]n :<c-u>tabnext<cr>
-nnoremap <silent> [TABCMD]N :<c-u>tabNext<cr>
-nnoremap <silent> [TABCMD]p :<c-u>tabprevious<cr>
 nnoremap <silent> [TABCMD]e :<c-u>tabedit<cr>
 nnoremap <silent> [TABCMD]c :<c-u>tabclose<cr>
 nnoremap <silent> [TABCMD]o :<c-u>tabonly<cr>
 nnoremap <silent> [TABCMD]s :<c-u>tabs<cr>
-
+"現在のタブを指定タブ位置へ移動
+nnoremap [TABCMD]m :<c-u>tabmove<space>
+"指定タブへ移動
+nnoremap [TABCMD]n :<c-u>tabnext<space>
 
 
 
@@ -280,21 +263,25 @@ function! s:unite_my_settings()
 	imap <silent><buffer> <ESC><ESC> <ESC>q
 endfunction
 
+" unite-grep
+let g:unite_source_grep_default_opts = "-iHn"
+
 
 
 """ vim-ref
-nmap <leader>ra :<C-u>Ref alc<Space>
-
 let g:ref_alc_start_linenumber = 39 " 表示する行数
 if has("win32") || has("win64")
 	let g:ref_alc_encoding = 'Shift-JIS' " Windows文字化け対策
 endif
 
+"スペースアルク
+nmap <leader>ra :<C-u>Ref alc<Space>
+
 
 " ローカルに配置する設定ファイル
-if filereadable(expand('~/.vimrc.local'))
-  source ~/.vimrc.local
-endif
+" if filereadable(expand('~/.vimrc.local'))
+"  source ~/.vimrc.local
+" endif
 
 
 """ vimplenote
