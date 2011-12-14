@@ -9,7 +9,7 @@ if has("win32") || has("win64")
 	call neobundle#rc(expand('~/vimfiles/bundle/'))
 else
 	set rtp+=~/.vim/neobundle.vim.git/ 
-	call neobundle#rc(expand('~/.bundle'))
+	call neobundle#rc(expand('~/.vim/bundle'))
 endif
 
 NeoBundle 'Shougo/neocomplcache'        
