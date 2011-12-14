@@ -33,8 +33,12 @@ endif
 "----------------------------------------
 " 表示設定
 "----------------------------------------
-"ツールバーを非表示
-"set guioptions-=T
+"横スクロールバー表示
+set guioptions+=b
+"ツールバー非表示
+set guioptions-=T
+"メニュー非表示
+set guioptions-=m
 "コマンドラインの高さ
 set cmdheight=2
 
@@ -50,8 +54,6 @@ elseif has('unix')
 elseif has('mac')
 "  set guifont=Osaka-Mono:h14
 elseif has('win32') || has('win64')
-  " set guifont=M+2VM+IPAG_circle:h11:w6:cSHIFTJIS
-  " set guifontwide=M+2VM+IPAG_circle:h11:w6:cSHIFTJIS
   set guifont=Ricty:h13:w6:cSHIFTJIS
   set guifontwide=Ricty:h13:w6:cSHIFTJIS
 endif
@@ -69,9 +71,9 @@ endif
 "----------------------------------------
 "メニューアイテム作成
 "----------------------------------------
-silent! aunmenu &File.Save
-silent! aunmenu &File.保存(&S)
-silent! aunmenu &File.差分表示(&D)\.\.\.
+" silent! aunmenu &File.Save
+" silent! aunmenu &File.保存(&S)
+" silent! aunmenu &File.差分表示(&D)\.\.\.
 
 let message_revert="再読込しますか?"
 amenu <silent> 10.330 &File.再読込(&U)<Tab>:e!  :if confirm(message_revert, "&Yes\n&No")==1<Bar> e! <Bar> endif<CR>
@@ -102,15 +104,15 @@ function! GuiTabLabel()
   " タブ内にウィンドウが複数あるときにはその数を追加します(デフォルトで一応あるので)
   let l:wincount = tabpagewinnr(v:lnum, '$')
   if l:wincount > 1
-    let l:label .= '[' . l:wincount . ']'
+	let l:label .= '[' . l:wincount . ']'
   endif
 
   " このタブページに変更のあるバッファがるときには '[+]' を追加します(デフォルトで一応あるので)
   for bufnr in l:bufnrlist
-    if getbufvar(bufnr, "&modified")
-      let l:label .= '[+]'
-      break
-    endif
+	if getbufvar(bufnr, "&modified")
+	  let l:label .= '[+]'
+	  break
+	endif
   endfor
 
   " 表示文字列を返します
