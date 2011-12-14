@@ -1,27 +1,28 @@
 "--------------------------------
-"vundle設定
+"neobundle.vim設定
 "--------------------------------
 set nocompatible
 filetype off
 
 if has("win32") || has("win64")
-  set rtp+=~/vimfiles/vundle.git/ 
-  call vundle#rc('~/vimfiles/bundle/')
+  set rtp+=~/vimfiles/neobundle.vim.git/ 
+  call neobundle#rc(expand('~/vimfiles/bundle/'))
 else
-  set rtp+=~/.vim/vundle.git/ 
-  call vundle#rc()
+  set rtp+=~/.vim/neobundle.vim.git/ 
+  call neobundle#rc(expand('~/.bundle'))
 endif
 
-Bundle 'Shougo/neocomplcache'        
-Bundle 'Shougo/vimproc'
-Bundle 'Shougo/unite.vim'
-Bundle 'Sixeight/unite-grep'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'thinca/vim-ref'
-" Bundle 'mattn/webapi-vim'
-" Bundle 'mattn/vimplenote-vim'
-Bundle 'TwitVim'
-Bundle 'vim-scripts/YankRing.vim'
+NeoBundle 'Shougo/neocomplcache'        
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Sixeight/unite-grep'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'thinca/vim-quickrun'
+" NeoBundle 'mattn/webapi-vim'
+" NeoBundle 'mattn/vimplenote-vim'
+NeoBundle 'TwitVim'
+NeoBundle 'vim-scripts/YankRing.vim'
 
 filetype plugin indent on
 
@@ -112,10 +113,6 @@ endif
 "--------------------------------------
 "折り返し無し
 set nowrap
-"横スクロールバー表示
-set guioptions+=b
-"ツールバー非表示
-set guioptions-=T
 "tab挿入時の空白数
 set tabstop=4
 "オートインデント時に挿入される空白数
@@ -131,8 +128,8 @@ set showtabline=2
 "同時タブ表示数
 set tabpagemax=15
 
-
-
+" 検索時に大文字小文字を無視
+set ignorecase
 
 "escキーをCtl+jに割り当て
 map <C-j> <esc>
@@ -182,6 +179,26 @@ nnoremap <silent> [TABCMD]s :<c-u>tabs<cr>
 nnoremap [TABCMD]m :<c-u>tabmove<space>
 "指定タブへ移動
 nnoremap [TABCMD]n :<c-u>tabnext<space>
+
+
+
+"カレントディレクトリ設定
+command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>') 
+function! s:ChangeCurrentDir(directory, bang)
+    if a:directory == ''
+        lcd %:p:h
+    else
+        execute 'lcd' . a:directory
+    endif
+
+    if a:bang == ''
+        pwd
+    endif
+endfunction
+
+" Change current directory.
+nnoremap <silent> <Leader>cd :<C-u>CD<CR>
+
 
 
 
@@ -276,6 +293,23 @@ endif
 
 "スペースアルク
 nmap <leader>ra :<C-u>Ref alc<Space>
+
+
+
+""" quickrun
+let g:quickrun_config = {
+\   '*': {'runmode': 'async:remote:vimproc'},
+\ }
+
+"c#
+let g:quickrun_config = { }
+let g:quickrun_config['cs'] = {
+			\ 'command'  : 'csc',
+			\ 'runmode'  : 'simple',
+			\ 'exec'     : ['%c /nologo %s:gs?/?\\? > /dev/null', '"%S:p:r:gs?/?\\?.exe" %a', ':call delete("%S:p:r.exe")'],
+			\ 'tempfile' : '{tempname()}.cs',
+			\ }
+
 
 
 " ローカルに配置する設定ファイル
