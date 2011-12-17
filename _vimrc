@@ -15,7 +15,7 @@ endif
 NeoBundle 'Shougo/neocomplcache'        
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Sixeight/unite-grep'
+NeoBundle 'Shougo/vimfiler'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
@@ -23,6 +23,7 @@ NeoBundle 'thinca/vim-quickrun'
 " NeoBundle 'mattn/vimplenote-vim'
 NeoBundle 'TwitVim'
 NeoBundle 'vim-scripts/YankRing.vim'
+NeoBundle 'ack.vim'
 
 filetype plugin indent on
 
@@ -148,7 +149,6 @@ set cindent
 "runtime path
 set runtimepath+=$HOME/vimfiles
 
-
 "Escの2回押しでハイライト消去
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 
@@ -244,6 +244,10 @@ nnoremap <silent> <Leader>cd :<C-u>CD<CR>
  " 入力モードで開始する
  " let g:unite_enable_start_insert=1
 
+ " 最近使用したファイルの最大保存件数
+ let g:unite_source_file_mru_limit = 20
+ " 最近使用したディレクトリの最大保存件数
+ let g:unite_source_directory_mru_limit = 15
  " バッファ一覧
  nnoremap <silent> <leader>ub :<C-u>Unite buffer<CR>
  " 現在のディレクトリのファイル一覧
@@ -283,6 +287,9 @@ nnoremap <silent> <Leader>cd :<C-u>CD<CR>
  " unite-grep
  let g:unite_source_grep_default_opts = "-iHn"
 
+
+ """ VimFiler
+ nnoremap <silent> <leader>vf :<C-u>VimFiler<CR>
 
 
  """ vim-ref
