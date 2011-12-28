@@ -1,13 +1,4 @@
 
-"IMEの状態をカラー表示
-if has('multi_byte_ime')
-  highlight Cursor guifg=NONE guibg=Green
-  highlight CursorIM guifg=NONE guibg=Purple
-endif
-
-
-
-
 "ウィンドウの位置、サイズ設定
 let g:save_window_file = expand('~/.vimwinpos')
 augroup SaveWindow
@@ -44,6 +35,12 @@ set cmdheight=2
 
 "カラー設定:
 colorscheme desert
+
+"IMEの状態をカラー表示
+if has('multi_byte_ime')
+  highlight CursorIM guifg=NONE guibg=Green
+endif
+
 
 "フォント設定
 "フォントは英語名で指定すると問題が起きにくくなります
