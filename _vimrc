@@ -6,7 +6,7 @@ filetype off
 
 if has("win32") || has("win64")
 	set rtp+=~/vimfiles/neobundle.vim.git/ 
-	call neobundle#rc(expand('~/vimfiles/bundle/'))
+	call neobundle#rc(expand('~/vimfiles/bundle'))
 else
 	set rtp+=~/.vim/neobundle.vim.git/ 
 	call neobundle#rc(expand('~/.vim/bundle'))
@@ -23,7 +23,6 @@ NeoBundle 'thinca/vim-quickrun'
 " NeoBundle 'mattn/vimplenote-vim'
 NeoBundle 'TwitVim'
 NeoBundle 'vim-scripts/YankRing.vim'
-NeoBundle 'ack.vim'
 
 filetype plugin indent on
 
@@ -152,6 +151,14 @@ set runtimepath+=$HOME/vimfiles
 "Escの2回押しでハイライト消去
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 
+"grepをackにする
+set grepprg=ack
+"grep後にquickfixを開く
+augroup grepOpen
+  autocmd!
+  autocmd QuickfixCmdPost grep cw
+augroup END
+
 
 "マウス中クリックでペースト機能無効化
 map <MiddleMouse> <Nop>
@@ -248,22 +255,25 @@ nnoremap <silent> <Leader>cd :<C-u>CD<CR>
  let g:unite_source_file_mru_limit = 20
  " 最近使用したディレクトリの最大保存件数
  let g:unite_source_directory_mru_limit = 15
+
+ nnoremap [unite]  <nop>
+ nmap     <leader>u [unite]
  " バッファ一覧
- nnoremap <silent> <leader>ub :<C-u>Unite buffer<CR>
+ nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
  " 現在のディレクトリのファイル一覧
- nnoremap <silent> <leader>ud :<C-u>Unite file -buffer-name=files<CR>
+ nnoremap <silent> [unite]d :<C-u>Unite file -buffer-name=files<CR>
  " 現在開いているファイルのディレクトリ以下のファイル一覧
- nnoremap <silent> <leader>uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+ nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
  " レジスタ一覧
- nnoremap <silent> <leader>ur :<C-u>Unite -buffer-name=register register<CR>
+ nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
  " 最近使用したファイル一覧
- nnoremap <silent> <leader>um :<C-u>Unite file_mru<CR>
+ nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
  " カレントディレクトリ内の最近使用したファイル一覧
- nnoremap <silent> <leader>uc :<C-u>UniteWithCurrentDir file_mru<CR>
+ nnoremap <silent> [unite]c :<C-u>UniteWithCurrentDir file_mru<CR>
  " 最近開いたファイル
- nnoremap <silent> <leader>uu :<C-u>Unite buffer file_mru<CR>
+ nnoremap <silent> [unite]u :<C-u>Unite buffer file_mru<CR>
  " 全部乗せ
- nnoremap <silent> <leader>ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+ nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 
  " unite.vim上でのキーマッピング
  autocmd FileType unite call s:unite_my_settings()
