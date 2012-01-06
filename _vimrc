@@ -113,11 +113,11 @@ endif
 "--------------------------------------
 "折り返し無し
 set nowrap
+"tabを半角スペースに展開
+set expandtab
 "tab挿入時の空白数
 set tabstop=4
 "オートインデント時に挿入される空白数
-set softtabstop=4
-"tabの代わりに半角スペースで挿入する空白数
 set shiftwidth=4
 
 "ヤンクでクリップボードへ(YankRingでエラーになるのでunnamedplus追加)
@@ -125,11 +125,11 @@ set clipboard=unnamedplus,unnamed
 
 "常にタブを表示
 set showtabline=2
-"同時タブ表示数
-set tabpagemax=15
 
 " 検索時に大文字小文字を無視
 set ignorecase
+" 大文字が入力されたときはignorecaseをoff
+set smartcase
 
 "escキーをCtl+jに割り当て
 map <C-j> <esc>
@@ -255,6 +255,8 @@ nnoremap <silent> <Leader>cd :<C-u>CD<CR>
  let g:unite_source_file_mru_limit = 20
  " 最近使用したディレクトリの最大保存件数
  let g:unite_source_directory_mru_limit = 15
+ " 絞り込みテキスト候補の表示更新間隔
+ let g:unite_update_time = 1000
 
  nnoremap [unite]  <nop>
  nmap     <leader>u [unite]
