@@ -98,13 +98,13 @@ endif
  set novisualbell
  set visualbell t_vb=
 
- if has('multi_byte_ime') || has('xim')
-   set iminsert=0 imsearch=0
-   if has('xim') && has('GUI_GTK')
-	 "XIMの入力開始キー
-	 "set imactivatekey=C-space
-   endif
- endif
+ " if has('multi_byte_ime') || has('xim')
+   " set iminsert=0 imsearch=0
+   " if has('xim') && has('GUI_GTK')
+	 " "XIMの入力開始キー
+	 " "set imactivatekey=C-space
+   " endif
+ " endif
 
 
 
@@ -207,6 +207,10 @@ endfunction
 nnoremap <silent> <Leader>cd :<C-u>CD<CR>
 
 
+"diffオプション
+set diffopt=vertical
+"diffsplit
+nnoremap <Leader>ds :<C-u>diffsplit<Space>
 
 
  "+plugin----------------------------------------------------------
