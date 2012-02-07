@@ -22,7 +22,7 @@ NeoBundle 'thinca/vim-quickrun'
 " NeoBundle 'mattn/webapi-vim'
 " NeoBundle 'mattn/vimplenote-vim'
 NeoBundle 'TwitVim'
-NeoBundle 'vim-scripts/YankRing.vim'
+" NeoBundle 'vim-scripts/YankRing.vim'
 
 filetype plugin indent on
 
@@ -98,30 +98,27 @@ endif
  set novisualbell
  set visualbell t_vb=
 
- " if has('multi_byte_ime') || has('xim')
-   " set iminsert=0 imsearch=0
-   " if has('xim') && has('GUI_GTK')
-	 " "XIMの入力開始キー
-	 " "set imactivatekey=C-space
-   " endif
- " endif
-
-
 
 "--------------------------------------
 "その他設定
 "--------------------------------------
 "折り返し無し
 set nowrap
+
 "tabを半角スペースに展開
 set expandtab
+augroup ettext
+	autocmd!
+	autocmd BufRead,BufNewFile *.asp,*inc,*.htm set noexpandtab
+augroup END
+
 "tab挿入時の空白数
 set tabstop=4
 "オートインデント時に挿入される空白数
 set shiftwidth=4
 
-"ヤンクでクリップボードへ(YankRingでエラーになるのでunnamedplus追加)
-set clipboard=unnamedplus,unnamed
+"ヤンクでクリップボードへ
+set clipboard=unnamed
 
 "常にタブを表示
 set showtabline=2
@@ -211,6 +208,9 @@ nnoremap <silent> <Leader>cd :<C-u>CD<CR>
 set diffopt=vertical
 "diffsplit
 nnoremap <Leader>ds :<C-u>diffsplit<Space>
+
+"ステータスライン
+set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\%03.3b]\ %l,%v
 
 
  "+plugin----------------------------------------------------------
@@ -303,6 +303,9 @@ nnoremap <Leader>ds :<C-u>diffsplit<Space>
  " unite-grep
  let g:unite_source_grep_default_opts = "-iHn"
 
+ " unite history/yank
+ let g:unite_source_history_yank_enable = 1
+ nnoremap <silent> [unite]y :<C-u>Unite history/yank<CR>
 
  """ VimFiler
  nnoremap <silent> <leader>vf :<C-u>VimFiler<CR>
@@ -366,10 +369,10 @@ nnoremap <Leader>ds :<C-u>diffsplit<Space>
 
 
  """ YankRing
- :let g:yankring_max_history = 20	"履歴数
+ " :let g:yankring_max_history = 20	"履歴数
 
- " ヤンク履歴表示
- nmap <leader>ys :<C-u>YRShow<CR>
- " ヤンク履歴クリア
- nmap <leader>yc :<C-u>YRClear<CR>
+ " " ヤンク履歴表示
+ " nmap <leader>ys :<C-u>YRShow<CR>
+ " " ヤンク履歴クリア
+ " nmap <leader>yc :<C-u>YRClear<CR>
 
