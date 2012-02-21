@@ -22,7 +22,6 @@ NeoBundle 'thinca/vim-quickrun'
 " NeoBundle 'mattn/webapi-vim'
 " NeoBundle 'mattn/vimplenote-vim'
 NeoBundle 'TwitVim'
-" NeoBundle 'vim-scripts/YankRing.vim'
 
 filetype plugin indent on
 
@@ -142,6 +141,9 @@ let &directory = &backupdir
 "C言語スタイルのインデント
 set cindent
 
+"コマンドラインの高さ
+set cmdheight=2
+
 "runtime path
 set runtimepath+=$HOME/vimfiles
 
@@ -207,7 +209,7 @@ nnoremap <silent> <Leader>cd :<C-u>CD<CR>
 "diffオプション
 set diffopt=vertical
 "diffsplit
-nnoremap <Leader>ds :<C-u>diffsplit<Space>
+nnoremap <Leader>ds :<C-u>diffsplit<Space>#
 
 "ステータスライン
 set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\%03.3b]\ %l,%v
@@ -252,9 +254,7 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
 
 
  """ unite.vim
- " 入力モードで開始する
- " let g:unite_enable_start_insert=1
-
+ 
  " 最近使用したファイルの最大保存件数
  let g:unite_source_file_mru_limit = 20
  " 最近使用したディレクトリの最大保存件数
@@ -366,13 +366,4 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
  " 新しいページ表示
  nmap <leader>wr :<C-u>PreviousTwitter<CR>
 
-
-
- """ YankRing
- " :let g:yankring_max_history = 20	"履歴数
-
- " " ヤンク履歴表示
- " nmap <leader>ys :<C-u>YRShow<CR>
- " " ヤンク履歴クリア
- " nmap <leader>yc :<C-u>YRClear<CR>
 
