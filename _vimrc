@@ -16,6 +16,8 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
+NeoBundle 'sgur/unite-qf'
+NeoBundle 'tsukkee/unite-help'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
@@ -152,11 +154,11 @@ nmap <ESC><ESC> :nohlsearch<CR><ESC>
 
 "grepをackにする
 set grepprg=ack
-"grep後にquickfixを開く
-augroup grepOpen
-  autocmd!
-  autocmd QuickfixCmdPost grep cw
-augroup END
+" "grep後にquickfixを開く
+" augroup grepOpen
+  " autocmd!
+  " autocmd QuickfixCmdPost grep cw
+" augroup END
 
 
 "マウス中クリックでペースト機能無効化
@@ -185,7 +187,6 @@ nnoremap <silent> [TABCMD]s :<c-u>tabs<cr>
 nnoremap [TABCMD]m :<c-u>tabmove<space>
 "指定タブへ移動
 nnoremap [TABCMD]n :<c-u>tabnext<space>
-
 
 
 "カレントディレクトリ設定
@@ -254,7 +255,6 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
 
 
  """ unite.vim
- 
  " 最近使用したファイルの最大保存件数
  let g:unite_source_file_mru_limit = 20
  " 最近使用したディレクトリの最大保存件数
@@ -263,7 +263,10 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
  let g:unite_update_time = 1000
 
  nnoremap [unite]  <nop>
+ xnoremap [unite]  <nop>
  nmap     <leader>u [unite]
+ xmap     <leader>u [unite]
+ 
  " バッファ一覧
  nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
  " 現在のディレクトリのファイル一覧
@@ -280,6 +283,10 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
  nnoremap <silent> [unite]u :<C-u>Unite buffer file_mru<CR>
  " 全部乗せ
  nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+ " unite-qf
+ nnoremap <silent> [unite]q :<C-u>Unite qf<CR>
+ " unite-help
+ nnoremap <silent> [unite]h :<c-u>unite help<cr>
 
  " unite.vim上でのキーマッピング
  autocmd FileType unite call s:unite_my_settings()
@@ -305,7 +312,9 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
 
  " unite history/yank
  let g:unite_source_history_yank_enable = 1
+ let g:unite_source_history_yank_limit = 30
  nnoremap <silent> [unite]y :<C-u>Unite history/yank<CR>
+ xnoremap <silent> [unite]r d:<C-u>Unite -buffer-name=register register history/yank<CR>
 
  """ VimFiler
  nnoremap <silent> <leader>vf :<C-u>VimFiler<CR>
