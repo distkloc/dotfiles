@@ -39,9 +39,7 @@ if has('multi_byte_ime') || has('xim')
     "XIMの入力開始キー
     "set imactivatekey=C-space
   endif
-endif
-"IMEの状態をカラー表示
-if has('multi_byte_ime')
+  "IMEの状態をカラー表示
   highlight CursorIM guifg=NONE guibg=Green
 endif
 
