@@ -17,13 +17,16 @@ NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'sgur/unite-qf'
-NeoBundle 'tsukkee/unite-help'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
-" NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mattn/webapi-vim'
+" NeoBundle 'mojako/ref-sources.vim'
 " NeoBundle 'mattn/vimplenote-vim'
-NeoBundle 'TwitVim'
+NeoBundle 'vim-scripts/TwitVim'
+NeoBundle 'vim-scripts/Align'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'mattn/zencoding-vim'
 
 filetype plugin indent on
 
@@ -174,19 +177,28 @@ imap <4-MiddleMouse> <Nop>
 
 
 "タブ操作キーマッピング 
-nnoremap [TABCMD]  <nop>
-nmap     <leader>t [TABCMD]
+nnoremap [tabcmd]  <Nop>
+nmap     <leader>t [tabcmd]
 
-nnoremap <silent> [TABCMD]f :<c-u>tabfirst<cr>
-nnoremap <silent> [TABCMD]l :<c-u>tablast<cr>
-nnoremap <silent> [TABCMD]e :<c-u>tabedit<cr>
-nnoremap <silent> [TABCMD]c :<c-u>tabclose<cr>
-nnoremap <silent> [TABCMD]o :<c-u>tabonly<cr>
-nnoremap <silent> [TABCMD]s :<c-u>tabs<cr>
+nnoremap <silent> [tabcmd]f :<C-u>tabfirst<CR>
+nnoremap <silent> [tabcmd]l :<C-u>tablast<CR>
+nnoremap <silent> [tabcmd]e :<C-u>tabedit<CR>
+nnoremap <silent> [tabcmd]c :<C-u>tabclose<CR>
+nnoremap <silent> [tabcmd]o :<C-u>tabonly<CR>
+nnoremap <silent> [tabcmd]s :<C-u>tabs<CR>
 "現在のタブを指定タブ位置へ移動
-nnoremap [TABCMD]m :<c-u>tabmove<space>
+nnoremap [tabcmd]m :<C-u>tabmove<Space>
 "指定タブへ移動
-nnoremap [TABCMD]n :<c-u>tabnext<space>
+nnoremap [tabcmd]n :<C-u>tabnext<Space>
+nnoremap [tabcmd]1 :<C-u>tabnext1<CR>
+nnoremap [tabcmd]2 :<C-u>tabnext2<CR>
+nnoremap [tabcmd]3 :<C-u>tabnext3<CR>
+nnoremap [tabcmd]4 :<C-u>tabnext4<CR>
+nnoremap [tabcmd]5 :<C-u>tabnext5<CR>
+nnoremap [tabcmd]6 :<C-u>tabnext6<CR>
+nnoremap [tabcmd]7 :<C-u>tabnext7<CR>
+nnoremap [tabcmd]8 :<C-u>tabnext8<CR>
+nnoremap [tabcmd]9 :<C-u>tabnext9<CR>
 
 
 "カレントディレクトリ設定
@@ -210,7 +222,7 @@ nnoremap <silent> <Leader>cd :<C-u>CD<CR>
 "diffオプション
 set diffopt=vertical
 "diffsplit
-nnoremap <Leader>ds :<C-u>diffsplit<Space>#
+nnoremap <Leader>di :<C-u>diffsplit<Space>#
 
 "ステータスライン
 set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\%03.3b]\ %l,%v
@@ -226,7 +238,6 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
 
  """ neocomplcache
  let g:neocomplcache_enable_at_startup = 1
- " NeoComplCacheEnable
  let g:neocomplcache_max_list = 30
  let g:neocomplcache_auto_completion_start_length = 2
  let g:neocomplcache_enable_smart_case = 1
@@ -235,6 +246,9 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
  "" search with camel case like Eclipse
  let g:neocomplcache_enable_camel_case_completion = 1
  let g:neocomplcache_enable_underbar_completion = 1
+ "" zencoding連携
+ let g:use_zen_complete_tag = 1
+ 
  "imap <C-k> <Plug>(neocomplcache_snippets_expand)
  "smap <C-k> <Plug>(neocomplcache_snippets_expand)
  inoremap <expr><C-g> neocomplcache#undo_completion()
@@ -285,13 +299,14 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
  nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
  " unite-qf
  nnoremap <silent> [unite]q :<C-u>Unite qf<CR>
- " unite-help
- nnoremap <silent> [unite]h :<c-u>unite help<cr>
+ " " unite-help
+ " nnoremap <silent> [unite]h :<c-u>unite help<cr>
 
  " unite.vim上でのキーマッピング
  autocmd FileType unite call s:unite_my_settings()
  function! s:unite_my_settings()
 	 " 単語単位からパス単位で削除するように変更
+	 nmap <buffer> <C-w> <Plug>(unite_delete_backward_path)
 	 imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
 
 	 " ウィンドウを分割して開く
@@ -320,14 +335,23 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
  nnoremap <silent> <leader>vf :<C-u>VimFiler<CR>
 
 
+ """ ref-sources
+ " let g:ref_alc2_overwrite_alc = 1
+ " let g:ref_auto_resize = 1
+ " let g:ref_use_cache = 1
+
  """ vim-ref
- let g:ref_alc_start_linenumber = 39 " 表示する行数
+ " let g:ref_alc_start_linenumber = 39 " 表示する行数
  if has("win32") || has("win64")
-	 let g:ref_alc_encoding = 'Shift-JIS' " Windows文字化け対策
+     let s:cfg  = expand('~/lynx.cfg')
+     let g:ref_alc_cmd = 'lynx.exe -cfg='.s:cfg.' -dump -nonumbers %s'
+     let g:ref_alc_encoding = 'cp932' " Windows文字化け対策
  endif
 
  "スペースアルク
  nmap <leader>ra :<C-u>Ref alc<Space>
+ " "コトバンク英和
+ " nmap <leader>rk :<C-u>Ref kotobankej<Space>
 
 
 
@@ -374,5 +398,9 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
  nmap <leader>wn :<C-u>NextTwitter<CR>
  " 新しいページ表示
  nmap <leader>wr :<C-u>PreviousTwitter<CR>
+
+
+ """ Align
+ let g:Align_xstrlen=3
 
 
