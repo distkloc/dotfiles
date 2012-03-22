@@ -29,6 +29,14 @@ set guioptions-=T
 "メニュー非表示
 set guioptions-=m
 
+
+"全角スペース強調表示
+augroup highlightIdegraphicSpace
+	autocmd!
+	autocmd ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkCyan guibg=DarkCyan
+	autocmd VimEnter,WinEnter * match IdeographicSpace /　/
+augroup END
+
 "カラー設定:
 colorscheme desert
 
@@ -53,8 +61,10 @@ elseif has('unix')
 elseif has('mac')
 "  set guifont=Osaka-Mono:h14
 elseif has('win32') || has('win64')
-  set guifont=Ricty:h13:cSHIFTJIS
-  set guifontwide=Ricty:h13:cSHIFTJIS
+  " set guifont=Ricty:h13:cSHIFTJIS
+  " set guifontwide=Ricty:h13:cSHIFTJIS
+  set guifont=Consolas:h13:cSHIFTJIS
+  set guifontwide=Consolas:h13:cSHIFTJIS
 endif
 
 "印刷用フォント
