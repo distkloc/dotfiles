@@ -127,6 +127,9 @@ set clipboard=unnamed
 "常にタブを表示
 set showtabline=2
 
+"自動改行OFF
+set textwidth=0
+
 " 検索時に大文字小文字を無視
 set ignorecase
 " 大文字が入力されたときはignorecaseをoff
