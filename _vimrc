@@ -12,21 +12,21 @@ else
 	call neobundle#rc(expand('~/.vim/bundle'))
 endif
 
-NeoBundle 'Shougo/neocomplcache'        
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'sgur/unite-qf'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'mattn/webapi-vim'
-" NeoBundle 'mojako/ref-sources.vim'
-" NeoBundle 'mattn/vimplenote-vim'
-NeoBundle 'vim-scripts/TwitVim'
-NeoBundle 'vim-scripts/Align'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'mattn/zencoding-vim'
+ NeoBundle 'Shougo/neocomplcache'        
+ NeoBundle 'Shougo/vimproc'
+ NeoBundle 'Shougo/unite.vim'
+ NeoBundle 'Shougo/vimfiler'
+ NeoBundle 'sgur/unite-qf'
+ NeoBundle 'scrooloose/nerdcommenter'
+ NeoBundle 'thinca/vim-ref'
+ NeoBundle 'thinca/vim-quickrun'
+ NeoBundle 'mattn/webapi-vim'
+ NeoBundle 'mattn/wwwrenderer-vim'
+ NeoBundle 'mattn/zencoding-vim'
+ " NeoBundle 'mattn/vimplenote-vim'
+ NeoBundle 'vim-scripts/TwitVim'
+ NeoBundle 'vim-scripts/Align'
+ NeoBundle 'tpope/vim-surround'
 
 filetype plugin indent on
 
@@ -233,7 +233,6 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
 
  """ NERD_comments
  let NERDSpaceDelims = 1
- let NERDShutUp = 1
 
 
  """ neocomplcache
@@ -335,23 +334,13 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
  nnoremap <silent> <leader>vf :<C-u>VimFiler<CR>
 
 
- """ ref-sources
- " let g:ref_alc2_overwrite_alc = 1
- " let g:ref_auto_resize = 1
- " let g:ref_use_cache = 1
-
  """ vim-ref
- " let g:ref_alc_start_linenumber = 39 " 表示する行数
- if has("win32") || has("win64")
-     let s:cfg  = expand('~/lynx.cfg')
-     let g:ref_alc_cmd = 'lynx.exe -cfg='.s:cfg.' -dump -nonumbers %s'
-     let g:ref_alc_encoding = 'cp932' " Windows文字化け対策
- endif
+ let g:ref_alc_start_linenumber = 39 " 表示する行数
+ let g:ref_alc_cmd = ':wwwrenderer#render("%s")'    " renderer-vim   
+ let g:ref_alc_use_cache = 1
 
  "スペースアルク
  nmap <leader>ra :<C-u>Ref alc<Space>
- " "コトバンク英和
- " nmap <leader>rk :<C-u>Ref kotobankej<Space>
 
 
 
