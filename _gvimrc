@@ -38,7 +38,11 @@ augroup highlightIdegraphicSpace
 augroup END
 
 "カラー設定:
-colorscheme desert
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'nanotech/jellybeans.vim'
+" colorscheme jellybeans
+colorscheme hybrid
+
 
 if has('multi_byte_ime') || has('xim')
   "起動直後の挿入モードでは日本語入力を有効にしない
@@ -49,6 +53,8 @@ if has('multi_byte_ime') || has('xim')
   endif
   "IMEの状態をカラー表示
   highlight CursorIM guifg=NONE guibg=Green
+  "挿入モード終了時に日本語入力をオフ
+  inoremap <ESC> <ESC>:set iminsert=0<CR>
 endif
 
 
