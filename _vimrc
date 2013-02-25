@@ -27,6 +27,8 @@ endif
  NeoBundle 'vim-scripts/TwitVim'
  NeoBundle 'vim-scripts/Align'
  NeoBundle 'tpope/vim-surround'
+ " NeoBundle 'kana/vim-metarw'
+ " NeoBundle 'sorah/metarw-simplenote.vim'
 
 filetype plugin indent on
 
@@ -127,8 +129,11 @@ set clipboard=unnamed
 "常にタブを表示
 set showtabline=2
 
+"自動改行無効
+set formatoptions=q
+
 "自動改行OFF
-set textwidth=0
+" set textwidth=0
 
 " 検索時に大文字小文字を無視
 set ignorecase
@@ -178,6 +183,11 @@ map <4-MiddleMouse> <Nop>
 imap <4-MiddleMouse> <Nop>
 
 
+"visualモードで削除時にレジスタに入れないキーマッピング
+xnoremap bx "_x
+
+"ペースト時にヤンクしない
+vnoremap <silent> <C-p> "0p<CR>
 
 "タブ操作キーマッピング 
 nnoremap [tabcmd]  <Nop>
@@ -193,15 +203,6 @@ nnoremap <silent> [tabcmd]s :<C-u>tabs<CR>
 nnoremap [tabcmd]m :<C-u>tabmove<Space>
 "指定タブへ移動
 nnoremap [tabcmd]n :<C-u>tabnext<Space>
-nnoremap [tabcmd]1 :<C-u>tabnext1<CR>
-nnoremap [tabcmd]2 :<C-u>tabnext2<CR>
-nnoremap [tabcmd]3 :<C-u>tabnext3<CR>
-nnoremap [tabcmd]4 :<C-u>tabnext4<CR>
-nnoremap [tabcmd]5 :<C-u>tabnext5<CR>
-nnoremap [tabcmd]6 :<C-u>tabnext6<CR>
-nnoremap [tabcmd]7 :<C-u>tabnext7<CR>
-nnoremap [tabcmd]8 :<C-u>tabnext8<CR>
-nnoremap [tabcmd]9 :<C-u>tabnext9<CR>
 
 
 "カレントディレクトリ設定
@@ -241,7 +242,7 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
  """ neocomplcache
  let g:neocomplcache_enable_at_startup = 1
  let g:neocomplcache_max_list = 30
- let g:neocomplcache_auto_completion_start_length = 2
+ let g:neocomplcache_auto_completion_start_length = 3
  let g:neocomplcache_enable_smart_case = 1
  "" like AutoComplPop
  let g:neocomplcache_enable_auto_select = 1
@@ -338,7 +339,7 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
 
 
  """ vim-ref
- let g:ref_alc_start_linenumber = 39 " 表示する行数
+ " let g:ref_alc_start_linenumber = 39 " 表示する行数
  let g:ref_alc_cmd = ':wwwrenderer#render("%s")'    " renderer-vim   
  let g:ref_alc_use_cache = 1
 
@@ -370,7 +371,6 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
 
 
  """ vimplenote
-
 
 
  """ TwitVim
