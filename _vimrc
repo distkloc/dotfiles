@@ -15,8 +15,9 @@ endif
  NeoBundle 'Shougo/neocomplcache'        
  NeoBundle 'Shougo/vimproc'
  NeoBundle 'Shougo/unite.vim'
+ NeoBundle 'Shougo/vimshell'
  NeoBundle 'Shougo/vimfiler'
- NeoBundle 'sgur/unite-qf'
+ NeoBundle 'osyo-manga/unite-quickfix'
  NeoBundle 'scrooloose/nerdcommenter'
  NeoBundle 'thinca/vim-ref'
  NeoBundle 'thinca/vim-quickrun'
@@ -258,15 +259,14 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
  inoremap <expr><C-l> neocomplcache#complete_common_string()
  "" SuperTab like snippets behavior.
  "imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
- "" <CR>: close popup and save indent.
- "inoremap <expr><CR> neocomplcache#smart_close_popup() . (&indentexpr != '' ? "\<C-f>\<CR>X\<BS>":"\<CR>")
- inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
- "" <TAB>: completion.
+
+ "" <TAB> or <CR>: completion.
  inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+ inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
  "" <C-h>, <BS>: close popup and delete backword char.
  inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
  inoremap <expr><BS> neocomplcache#smart_close_popup() . "\<C-h>"
- inoremap <expr><C-y> neocomplcache#close_popup()
  inoremap <expr><C-e> neocomplcache#cancel_popup()
 
 
@@ -300,8 +300,10 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
  nnoremap <silent> [unite]u :<C-u>Unite buffer file_mru<CR>
  " 全部乗せ
  nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
- " unite-qf
- nnoremap <silent> [unite]q :<C-u>Unite qf<CR>
+ " unite-quickfix
+ nnoremap <silent> [unite]q :<C-u>Unite quickfix<CR>
+ " unite-bookmark
+ nnoremap <silent> [unite]k :<C-u>Unite bookmark<CR>
  " " unite-help
  " nnoremap <silent> [unite]h :<c-u>unite help<cr>
 
@@ -337,14 +339,14 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
  """ VimFiler
  nnoremap <silent> <leader>vf :<C-u>VimFiler<CR>
 
+ """ VimShell
+ nnoremap <silent> <leader>vs :<C-u>VimShell<CR>
+ nnoremap <silent> <leader>vsc :<C-u>VimShellCurrentDir<CR>
 
  """ vim-ref
  " let g:ref_alc_start_linenumber = 39 " 表示する行数
  let g:ref_alc_cmd = ':wwwrenderer#render("%s")'    " renderer-vim   
  let g:ref_alc_use_cache = 1
-
- "スペースアルク
- nmap <leader>ra :<C-u>Ref alc<Space>
 
 
 
@@ -369,8 +371,6 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
  "  source ~/.vimrc.local
  " endif
 
-
- """ vimplenote
 
 
  """ TwitVim
