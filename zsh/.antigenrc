@@ -1,0 +1,18 @@
+source ~/dotfiles/zsh/antigen/antigen.zsh
+
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+antigen-bundle git
+antigen-bundle autojump
+antigen-bundle bundler
+
+# Syntax highlighting bundle.
+antigen-bundle zsh-users/zsh-syntax-highlighting
+
+# Load the theme.
+antigen-theme daveverwer
+
+# Tell antigen that you're done.
+antigen-apply
+
