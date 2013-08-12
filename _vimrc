@@ -13,23 +13,72 @@ else
 endif
 
  NeoBundle 'Shougo/neocomplcache'        
- NeoBundle 'Shougo/vimproc'
  NeoBundle 'Shougo/unite.vim'
- NeoBundle 'Shougo/vimshell'
- NeoBundle 'Shougo/vimfiler'
  NeoBundle 'osyo-manga/unite-quickfix'
  NeoBundle 'scrooloose/nerdcommenter'
  NeoBundle 'thinca/vim-ref'
  NeoBundle 'thinca/vim-quickrun'
  NeoBundle 'mattn/webapi-vim'
  NeoBundle 'mattn/wwwrenderer-vim'
- NeoBundle 'mattn/zencoding-vim'
- " NeoBundle 'mattn/vimplenote-vim'
- NeoBundle 'vim-scripts/TwitVim'
+ NeoBundle 'mattn/emmet-vim'
  NeoBundle 'vim-scripts/Align'
  NeoBundle 'tpope/vim-surround'
- " NeoBundle 'kana/vim-metarw'
- " NeoBundle 'sorah/metarw-simplenote.vim'
+
+NeoBundle 'Shougo/vimproc', {
+  \ 'build' : {
+  \     'windows' : 'make -f make_mingw32.mak',
+  \     'cygwin' : 'make -f make_cygwin.mak',
+  \     'mac' : 'make -f make_mac.mak',
+  \     'unix' : 'make -f make_unix.mak',
+  \    },
+  \ }
+
+NeoBundleLazy 'Shougo/vimshell', {
+    \ 'autoload' : {
+    \     'commands' : ['VimShell', 'VimShellSendString', 'VimShellCurrentDir'],
+    \     }
+    \ }
+
+NeoBundleLazy 'Shougo/vimfiler', {
+    \ 'depends' : 
+    \     ['Shougo/unite.vim'],
+    \ 'autoload' : {
+    \     'commands' : ['VimFiler', 'VimFilerCurrentDir',
+    \                   'VimFilerBufferDir', 'VimFilerSplit',
+    \                   'VimFilerExplorer']
+    \     }
+    \ }
+
+NeoBundleLazy 'sgur/vim-gitgutter', {
+    \ 'depends' : 
+    \     ['Shougo/vimproc'],
+    \ 'autoload' : {
+    \     'commands' : ['GitGutterToggle', 'GitGutterLineHighlightsToggle']
+    \     }
+    \ }
+
+
+NeoBundleLazy 'sgur/vim-gitgutter', {
+    \ 'autoload' : {
+    \     'commands' : ['GitGutterToggle', 'GitGutterLineHighlightsToggle']
+    \     }
+    \ }
+
+NeoBundleLazy 'basyura/twibill.vim'
+NeoBundleLazy 'basyura/TweetVim', {
+    \ 'depends' :
+    \     ['basyura/twibill.vim',
+    \      'tyru/open-browser.vim'],
+    \ 'autoload' : {
+    \     'commands' :
+    \         ['TweetVimHomeTimeline',
+    \          'TweetVimMentions',
+    \          'TweetVimSay',
+    \          'TweetVimUserTimeline',
+    \          'TweetVimUserStream']
+    \     }
+    \ }
+
 
 filetype plugin indent on
 
@@ -344,9 +393,6 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
  nnoremap <silent> <leader>vsc :<C-u>VimShellCurrentDir<CR>
 
  """ vim-ref
- " let g:ref_alc_start_linenumber = 39 " 表示する行数
- let g:ref_alc_cmd = ':wwwrenderer#render("%s")'    " renderer-vim   
- let g:ref_alc_use_cache = 1
 
 
 
@@ -373,26 +419,25 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
 
 
 
- """ TwitVim
- let twitvim_count = 15	"表示するつぶやき数
 
- if has("win32") || has("win64")
-	 " \gで開くブラウザ
-	 " let twitvim_browser_cmd = 'C:\Progra~1\Mozill~1\firefox.exe'	
-	 let twitvim_browser_cmd = expand('~\AppData\Local\Google\Chrome\Application\chrome.exe')
- endif
-
- " ポスト
- nmap <leader>wp :<C-u>PosttoTwitter<CR>
- " TL表示
- nmap <leader>wf :<C-u>FriendsTwitter<CR>
- " 古いページ表示
- nmap <leader>wn :<C-u>NextTwitter<CR>
- " 新しいページ表示
- nmap <leader>wr :<C-u>PreviousTwitter<CR>
+ """ TweetVim
+ " Post
+ nnoremap <leader>ws :<C-u>TweetVimSay<CR>
+ " TL
+ nnoremap <leader>wh :<C-u>TweetVimHomeTimeline<CR>
+ " Mention
+ nnoremap <leader>wm :<C-u>TwetVimMentions<CR>
 
 
  """ Align
  let g:Align_xstrlen=3
 
+
+ """ vim-gitgutter
+let g:gitgutter_system_function       = 'vimproc#system'
+let g:gitgutter_system_error_function = 'vimproc#get_last_status'
+let g:gitgutter_shellescape_function  = 'vimproc#shellescape'
+
+nnoremap <silent> <leader>gg :<C-u>GitGutterToggle<CR>
+nnoremap <silent> <leader>gh :<C-u>GitGutterLineHighlightsToggle<CR>
 
