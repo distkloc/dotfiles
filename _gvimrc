@@ -37,11 +37,10 @@ augroup highlightIdegraphicSpace
 	autocmd VimEnter,WinEnter * match IdeographicSpace /　/
 augroup END
 
-"カラー設定:
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'nanotech/jellybeans.vim'
-" colorscheme jellybeans
+"color scheme
+NeoBundleSource vim-hybrid
 colorscheme hybrid
+
 
 
 if has('multi_byte_ime') || has('xim')
@@ -59,7 +58,6 @@ endif
 
 
 "フォント設定
-"フォントは英語名で指定すると問題が起きにくくなります
 if has('xfontset')
 "  set guifontset=a14,r14,k14
 elseif has('unix')
@@ -67,10 +65,8 @@ elseif has('unix')
 elseif has('mac')
 "  set guifont=Osaka-Mono:h14
 elseif has('win32') || has('win64')
-  " set guifont=Ricty:h13:cSHIFTJIS
-  " set guifontwide=Ricty:h13:cSHIFTJIS
-  set guifont=Consolas:h13:cSHIFTJIS
-  set guifontwide=Consolas:h13:cSHIFTJIS
+    set guifont=Consolas\ for\ Powerline\ FixedD:h13
+    set guifontwide=Consolas:h13:cSHIFTJIS
 endif
 
 "印刷用フォント
