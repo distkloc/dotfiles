@@ -6,6 +6,7 @@ antigen use oh-my-zsh
 antigen-bundle git
 antigen-bundle autojump
 antigen-bundle bundler
+antigen-bundle brew
 
 # Syntax highlighting bundle.
 antigen-bundle zsh-users/zsh-syntax-highlighting
