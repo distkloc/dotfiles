@@ -1,5 +1,5 @@
 "--------------------------------
-"neobundle.vimİ’è
+"neobundle.vimè¨­å®š
 "--------------------------------
 set nocompatible
 filetype off
@@ -12,17 +12,18 @@ else
 	call neobundle#rc(expand('~/.vim/bundle'))
 endif
 
- NeoBundle 'Shougo/neocomplcache'        
- NeoBundle 'Shougo/unite.vim'
- NeoBundle 'osyo-manga/unite-quickfix'
- NeoBundle 'scrooloose/nerdcommenter'
- NeoBundle 'thinca/vim-ref'
- NeoBundle 'thinca/vim-quickrun'
- NeoBundle 'mattn/webapi-vim'
- NeoBundle 'mattn/wwwrenderer-vim'
- NeoBundle 'mattn/emmet-vim'
- NeoBundle 'vim-scripts/Align'
- NeoBundle 'tpope/vim-surround'
+NeoBundle 'Shougo/neocomplcache'        
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'osyo-manga/unite-quickfix'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mattn/wwwrenderer-vim'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'vim-scripts/Align'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'bling/vim-airline'
 
 NeoBundle 'Shougo/vimproc', {
   \ 'build' : {
@@ -79,150 +80,102 @@ NeoBundleLazy 'basyura/TweetVim', {
     \     }
     \ }
 
+"color scheme
+NeoBundleLazy 'w0ng/vim-hybrid'
 
 filetype plugin indent on
 
 
 
-scriptencoding cp932
+set encoding=utf-8
 
+scriptencoding utf-8
 
-" •¶šƒR[ƒh‚Ì©“®”F¯
-if &encoding !=# 'utf-8'
-  set encoding=japan
-  set fileencoding=japan
-endif
-if has('iconv')
-  let s:enc_euc = 'euc-jp'
-  let s:enc_jis = 'iso-2022-jp'
-  " iconv‚ªeucJP-ms‚É‘Î‰‚µ‚Ä‚¢‚é‚©‚ğƒ`ƒFƒbƒN
-  if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
-	let s:enc_euc = 'eucjp-ms'
-	let s:enc_jis = 'iso-2022-jp-3'
-  " iconv‚ªJISX0213‚É‘Î‰‚µ‚Ä‚¢‚é‚©‚ğƒ`ƒFƒbƒN
-  elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
-	let s:enc_euc = 'euc-jisx0213'
-	let s:enc_jis = 'iso-2022-jp-3'
-  endif
-  " fileencodings‚ğ\’z
-  if &encoding ==# 'utf-8'
-	let s:fileencodings_default = &fileencodings
-	let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
-	let &fileencodings = &fileencodings .','. s:fileencodings_default
-	unlet s:fileencodings_default
-  else
-	let &fileencodings = &fileencodings .','. s:enc_jis
-	set fileencodings+=utf-8,ucs-2le,ucs-2
-	if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
-	  set fileencodings+=cp932
-	  set fileencodings-=euc-jp
-	  set fileencodings-=euc-jisx0213
-	  set fileencodings-=eucjp-ms
-	  let &encoding = s:enc_euc
-	  let &fileencoding = s:enc_euc
-	else
-	  let &fileencodings = &fileencodings .','. s:enc_euc
-	endif
-  endif
-  " ’è”‚ğˆ•ª
-  unlet s:enc_euc
-  unlet s:enc_jis
-endif
-" “ú–{Œê‚ğŠÜ‚Ü‚È‚¢ê‡‚Í fileencoding ‚É encoding ‚ğg‚¤‚æ‚¤‚É‚·‚é
-if has('autocmd')
-  function! AU_ReCheck_FENC()
-	if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
-	  let &fileencoding=&encoding
-	endif
-  endfunction
-  autocmd BufReadPost * call AU_ReCheck_FENC()
-endif
-" ‰üsƒR[ƒh‚Ì©“®”F¯
+" æ–‡å­—ã‚³ãƒ¼ãƒ‰è‡ªå‹•èªè­˜
+set fileencodings=utf-8,cp932,iso-2022-jp,euc-jp,default,latin
+
+" æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã®è‡ªå‹•èªè­˜
 set fileformats=unix,dos,mac
-"  ‚Æ‚©›‚Ì•¶š‚ª‚ ‚Á‚Ä‚àƒJ[ƒ\ƒ‹ˆÊ’u‚ª‚¸‚ê‚È‚¢‚æ‚¤‚É‚·‚é
-if exists('&ambiwidth')
-  set ambiwidth=double
-endif
 
 
 
  "----------------------------------------
- "ƒVƒXƒeƒ€İ’è
+ "ã‚·ã‚¹ãƒ†ãƒ è¨­å®š
  "----------------------------------------
- "ƒGƒ‰[‚Ì‰¹‚ÆƒrƒWƒ…ƒAƒ‹ƒxƒ‹‚Ì—}§B
+ "ã‚¨ãƒ©ãƒ¼æ™‚ã®éŸ³ã¨ãƒ“ã‚¸ãƒ¥ã‚¢ãƒ«ãƒ™ãƒ«ã®æŠ‘åˆ¶ã€‚
  set noerrorbells
  set novisualbell
  set visualbell t_vb=
 
 
 "--------------------------------------
-"‚»‚Ì‘¼İ’è
+"ãã®ä»–è¨­å®š
 "--------------------------------------
-"Ü‚è•Ô‚µ–³‚µ
+"æŠ˜ã‚Šè¿”ã—ç„¡ã—
 set nowrap
 
-"tab‚ğ”¼ŠpƒXƒy[ƒX‚É“WŠJ
+"tabã‚’åŠè§’ã‚¹ãƒšãƒ¼ã‚¹ã«å±•é–‹
 set expandtab
 augroup ettext
 	autocmd!
 	autocmd BufRead,BufNewFile *.asp,*inc,*.htm set noexpandtab
 augroup END
 
-"tab‘}“ü‚Ì‹ó”’”
+"tabæŒ¿å…¥æ™‚ã®ç©ºç™½æ•°
 set tabstop=4
-"ƒI[ƒgƒCƒ“ƒfƒ“ƒg‚É‘}“ü‚³‚ê‚é‹ó”’”
+"ã‚ªãƒ¼ãƒˆã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆæ™‚ã«æŒ¿å…¥ã•ã‚Œã‚‹ç©ºç™½æ•°
 set shiftwidth=4
 
-"ƒ„ƒ“ƒN‚ÅƒNƒŠƒbƒvƒ{[ƒh‚Ö
+"ãƒ¤ãƒ³ã‚¯ã§ã‚¯ãƒªãƒƒãƒ—ãƒœãƒ¼ãƒ‰ã¸
 set clipboard=unnamed
 
-"í‚Éƒ^ƒu‚ğ•\¦
+"å¸¸ã«ã‚¿ãƒ–ã‚’è¡¨ç¤º
 set showtabline=2
 
-"©“®‰üs–³Œø
+"è‡ªå‹•æ”¹è¡Œç„¡åŠ¹
 set formatoptions=q
 
-"©“®‰üsOFF
+"è‡ªå‹•æ”¹è¡ŒOFF
 " set textwidth=0
 
-" ŒŸõ‚É‘å•¶š¬•¶š‚ğ–³‹
+" æ¤œç´¢æ™‚ã«å¤§æ–‡å­—å°æ–‡å­—ã‚’ç„¡è¦–
 set ignorecase
-" ‘å•¶š‚ª“ü—Í‚³‚ê‚½‚Æ‚«‚Íignorecase‚ğoff
+" å¤§æ–‡å­—ãŒå…¥åŠ›ã•ã‚ŒãŸã¨ãã¯ignorecaseã‚’off
 set smartcase
 
-"escƒL[‚ğCtl+j‚ÉŠ„‚è“–‚Ä
+"escã‚­ãƒ¼ã‚’Ctl+jã«å‰²ã‚Šå½“ã¦
 map <C-j> <esc>
 imap <C-j> <esc>
 
-"s”Ô†•\¦
+"è¡Œç•ªå·è¡¨ç¤º
 set number
 
-"©“®ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹‚ÌƒpƒX
+"è‡ªå‹•ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
 set backupdir=~/dotfiles/vimbkup
 let &directory = &backupdir
 
-"CŒ¾ŒêƒXƒ^ƒCƒ‹‚ÌƒCƒ“ƒfƒ“ƒg
+"Cè¨€èªã‚¹ã‚¿ã‚¤ãƒ«ã®ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆ
 set cindent
 
-"ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“‚Ì‚‚³
+"ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ã®é«˜ã•
 set cmdheight=2
 
 "runtime path
 set runtimepath+=$HOME/vimfiles
 
-"Esc‚Ì2‰ñ‰Ÿ‚µ‚ÅƒnƒCƒ‰ƒCƒgÁ‹
+"Escã®2å›æŠ¼ã—ã§ãƒã‚¤ãƒ©ã‚¤ãƒˆæ¶ˆå»
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 
-"grep‚ğack‚É‚·‚é
+"grepã‚’ackã«ã™ã‚‹
 set grepprg=ack
-" "grepŒã‚Équickfix‚ğŠJ‚­
+" "grepå¾Œã«quickfixã‚’é–‹ã
 " augroup grepOpen
   " autocmd!
   " autocmd QuickfixCmdPost grep cw
 " augroup END
 
 
-"ƒ}ƒEƒX’†ƒNƒŠƒbƒN‚Åƒy[ƒXƒg‹@”\–³Œø‰»
+"ãƒã‚¦ã‚¹ä¸­ã‚¯ãƒªãƒƒã‚¯ã§ãƒšãƒ¼ã‚¹ãƒˆæ©Ÿèƒ½ç„¡åŠ¹åŒ–
 map <MiddleMouse> <Nop>
 imap <MiddleMouse> <Nop>
 map <2-MiddleMouse> <Nop>
@@ -233,13 +186,13 @@ map <4-MiddleMouse> <Nop>
 imap <4-MiddleMouse> <Nop>
 
 
-"visualƒ‚[ƒh‚Åíœ‚ÉƒŒƒWƒXƒ^‚É“ü‚ê‚È‚¢ƒL[ƒ}ƒbƒsƒ“ƒO
+"visualãƒ¢ãƒ¼ãƒ‰ã§å‰Šé™¤æ™‚ã«ãƒ¬ã‚¸ã‚¹ã‚¿ã«å…¥ã‚Œãªã„ã‚­ãƒ¼ãƒãƒƒãƒ”ãƒ³ã‚°
 xnoremap bx "_x
 
-"ƒy[ƒXƒg‚Éƒ„ƒ“ƒN‚µ‚È‚¢
+"ãƒšãƒ¼ã‚¹ãƒˆæ™‚ã«ãƒ¤ãƒ³ã‚¯ã—ãªã„
 vnoremap <silent> <C-p> "0p<CR>
 
-"ƒ^ƒu‘€ìƒL[ƒ}ƒbƒsƒ“ƒO 
+"ã‚¿ãƒ–æ“ä½œã‚­ãƒ¼ãƒãƒƒãƒ”ãƒ³ã‚° 
 nnoremap [tabcmd]  <Nop>
 nmap     <leader>t [tabcmd]
 
@@ -249,13 +202,13 @@ nnoremap <silent> [tabcmd]e :<C-u>tabedit<CR>
 nnoremap <silent> [tabcmd]c :<C-u>tabclose<CR>
 nnoremap <silent> [tabcmd]o :<C-u>tabonly<CR>
 nnoremap <silent> [tabcmd]s :<C-u>tabs<CR>
-"Œ»İ‚Ìƒ^ƒu‚ğw’èƒ^ƒuˆÊ’u‚ÖˆÚ“®
+"ç¾åœ¨ã®ã‚¿ãƒ–ã‚’æŒ‡å®šã‚¿ãƒ–ä½ç½®ã¸ç§»å‹•
 nnoremap [tabcmd]m :<C-u>tabmove<Space>
-"w’èƒ^ƒu‚ÖˆÚ“®
+"æŒ‡å®šã‚¿ãƒ–ã¸ç§»å‹•
 nnoremap [tabcmd]n :<C-u>tabnext<Space>
 
 
-"ƒJƒŒƒ“ƒgƒfƒBƒŒƒNƒgƒŠİ’è
+"ã‚«ãƒ¬ãƒ³ãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªè¨­å®š
 command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>') 
 function! s:ChangeCurrentDir(directory, bang)
   if a:directory == ''
@@ -273,17 +226,15 @@ endfunction
 nnoremap <silent> <Leader>cd :<C-u>CD<CR>
 
 
-"diffƒIƒvƒVƒ‡ƒ“
+"diffã‚ªãƒ—ã‚·ãƒ§ãƒ³
 set diffopt=vertical
 "diffsplit
 nnoremap <Leader>di :<C-u>diffsplit<Space>#
 
-"ƒXƒe[ƒ^ƒXƒ‰ƒCƒ“
-set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\%03.3b]\ %l,%v
 
 
  "+plugin----------------------------------------------------------
- "pluginİ’è‚Í‘S‚Ä.vimrc‚Ö
+ "pluginè¨­å®šã¯å…¨ã¦.vimrcã¸
 
  """ NERD_comments
  let NERDSpaceDelims = 1
@@ -299,7 +250,7 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
  "" search with camel case like Eclipse
  let g:neocomplcache_enable_camel_case_completion = 1
  let g:neocomplcache_enable_underbar_completion = 1
- "" zencoding˜AŒg
+ "" zencodingé€£æº
  let g:use_zen_complete_tag = 1
  
  "imap <C-k> <Plug>(neocomplcache_snippets_expand)
@@ -321,11 +272,11 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
 
 
  """ unite.vim
- " Å‹ßg—p‚µ‚½ƒtƒ@ƒCƒ‹‚ÌÅ‘å•Û‘¶Œ”
+ " æœ€è¿‘ä½¿ç”¨ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã®æœ€å¤§ä¿å­˜ä»¶æ•°
  let g:unite_source_file_mru_limit = 20
- " Å‹ßg—p‚µ‚½ƒfƒBƒŒƒNƒgƒŠ‚ÌÅ‘å•Û‘¶Œ”
+ " æœ€è¿‘ä½¿ç”¨ã—ãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®æœ€å¤§ä¿å­˜ä»¶æ•°
  let g:unite_source_directory_mru_limit = 15
- " i‚è‚İƒeƒLƒXƒgŒó•â‚Ì•\¦XVŠÔŠu
+ " çµã‚Šè¾¼ã¿ãƒ†ã‚­ã‚¹ãƒˆå€™è£œã®è¡¨ç¤ºæ›´æ–°é–“éš”
  let g:unite_update_time = 1000
 
  nnoremap [unite]  <nop>
@@ -333,21 +284,21 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
  nmap     <leader>u [unite]
  xmap     <leader>u [unite]
  
- " ƒoƒbƒtƒ@ˆê——
+ " ãƒãƒƒãƒ•ã‚¡ä¸€è¦§
  nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
- " Œ»İ‚ÌƒfƒBƒŒƒNƒgƒŠ‚Ìƒtƒ@ƒCƒ‹ˆê——
+ " ç¾åœ¨ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§
  nnoremap <silent> [unite]d :<C-u>Unite file -buffer-name=files<CR>
- " Œ»İŠJ‚¢‚Ä‚¢‚éƒtƒ@ƒCƒ‹‚ÌƒfƒBƒŒƒNƒgƒŠˆÈ‰º‚Ìƒtƒ@ƒCƒ‹ˆê——
+ " ç¾åœ¨é–‹ã„ã¦ã„ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªä»¥ä¸‹ã®ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§
  nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
- " ƒŒƒWƒXƒ^ˆê——
+ " ãƒ¬ã‚¸ã‚¹ã‚¿ä¸€è¦§
  nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
- " Å‹ßg—p‚µ‚½ƒtƒ@ƒCƒ‹ˆê——
+ " æœ€è¿‘ä½¿ç”¨ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§
  nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
- " ƒJƒŒƒ“ƒgƒfƒBƒŒƒNƒgƒŠ“à‚ÌÅ‹ßg—p‚µ‚½ƒtƒ@ƒCƒ‹ˆê——
+ " ã‚«ãƒ¬ãƒ³ãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªå†…ã®æœ€è¿‘ä½¿ç”¨ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§
  nnoremap <silent> [unite]c :<C-u>UniteWithCurrentDir file_mru<CR>
- " Å‹ßŠJ‚¢‚½ƒtƒ@ƒCƒ‹
+ " æœ€è¿‘é–‹ã„ãŸãƒ•ã‚¡ã‚¤ãƒ«
  nnoremap <silent> [unite]u :<C-u>Unite buffer file_mru<CR>
- " ‘S•”æ‚¹
+ " å…¨éƒ¨ä¹—ã›
  nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
  " unite-quickfix
  nnoremap <silent> [unite]q :<C-u>Unite quickfix<CR>
@@ -356,22 +307,22 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
  " " unite-help
  " nnoremap <silent> [unite]h :<c-u>unite help<cr>
 
- " unite.vimã‚Å‚ÌƒL[ƒ}ƒbƒsƒ“ƒO
+ " unite.vimä¸Šã§ã®ã‚­ãƒ¼ãƒãƒƒãƒ”ãƒ³ã‚°
  autocmd FileType unite call s:unite_my_settings()
  function! s:unite_my_settings()
-	 " ’PŒê’PˆÊ‚©‚çƒpƒX’PˆÊ‚Åíœ‚·‚é‚æ‚¤‚É•ÏX
+	 " å˜èªå˜ä½ã‹ã‚‰ãƒ‘ã‚¹å˜ä½ã§å‰Šé™¤ã™ã‚‹ã‚ˆã†ã«å¤‰æ›´
 	 nmap <buffer> <C-w> <Plug>(unite_delete_backward_path)
 	 imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
 
-	 " ƒEƒBƒ“ƒhƒE‚ğ•ªŠ„‚µ‚ÄŠJ‚­
+	 " ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’åˆ†å‰²ã—ã¦é–‹ã
 	 nnoremap <silent> <buffer> <expr> <C-h> unite#do_action('split')
 	 inoremap <silent> <buffer> <expr> <C-h> unite#do_action('split')
 
-	 " ƒEƒBƒ“ƒhƒE‚ğc‚É•ªŠ„‚µ‚ÄŠJ‚­
+	 " ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’ç¸¦ã«åˆ†å‰²ã—ã¦é–‹ã
 	 nnoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
 	 inoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
 
-	 " ESCƒL[‚ğ2‰ñ‰Ÿ‚·‚ÆI—¹‚·‚é
+	 " ESCã‚­ãƒ¼ã‚’2å›æŠ¼ã™ã¨çµ‚äº†ã™ã‚‹
 	 nmap <silent><buffer> <ESC><ESC> q
 	 imap <silent><buffer> <ESC><ESC> <ESC>q
  endfunction
@@ -412,7 +363,7 @@ set statusline=%t%m%R%H%W\ %=[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%Y][#%n][ASCII=\
 
 
 
- " ƒ[ƒJƒ‹‚É”z’u‚·‚éİ’èƒtƒ@ƒCƒ‹
+ " ãƒ­ãƒ¼ã‚«ãƒ«ã«é…ç½®ã™ã‚‹è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«
  " if filereadable(expand('~/.vimrc.local'))
  "  source ~/.vimrc.local
  " endif
@@ -440,4 +391,20 @@ let g:gitgutter_shellescape_function  = 'vimproc#shellescape'
 
 nnoremap <silent> <leader>gg :<C-u>GitGutterToggle<CR>
 nnoremap <silent> <leader>gh :<C-u>GitGutterLineHighlightsToggle<CR>
+
+
+""" airline
+let g:airline_theme = 'tomorrow'
+
+let g:airline#extensions#whitespace#enabled = 0
+
+let g:airline_left_sep = 'â®€'
+let g:airline_left_alt_sep = 'â®'
+let g:airline_right_sep = 'â®‚'
+let g:airline_right_alt_sep = 'â®ƒ'
+let g:airline#extensions#branch#symbol = 'â­ '
+let g:airline#extensions#readonly#symbol = 'â­¤'
+let g:airline_linecolumn_prefix = 'â­¡'
+
+
 
