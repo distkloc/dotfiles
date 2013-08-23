@@ -1,5 +1,5 @@
 
-"ƒEƒBƒ“ƒhƒE‚ÌˆÊ’uAƒTƒCƒYİ’è
+"ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ä½ç½®ã€ã‚µã‚¤ã‚ºè¨­å®š
 let g:save_window_file = expand('~/.vimwinpos')
 augroup SaveWindow
   autocmd!
@@ -20,21 +20,21 @@ endif
 
 
 "----------------------------------------
-" •\¦İ’è
+" è¡¨ç¤ºè¨­å®š
 "----------------------------------------
-"‰¡ƒXƒNƒ[ƒ‹ƒo[•\¦
+"æ¨ªã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒãƒ¼è¡¨ç¤º
 set guioptions+=b
-"ƒc[ƒ‹ƒo[”ñ•\¦
+"ãƒ„ãƒ¼ãƒ«ãƒãƒ¼éè¡¨ç¤º
 set guioptions-=T
-"ƒƒjƒ…[”ñ•\¦
+"ãƒ¡ãƒ‹ãƒ¥ãƒ¼éè¡¨ç¤º
 set guioptions-=m
 
 
-"‘SŠpƒXƒy[ƒX‹­’²•\¦
+"å…¨è§’ã‚¹ãƒšãƒ¼ã‚¹å¼·èª¿è¡¨ç¤º
 augroup highlightIdegraphicSpace
 	autocmd!
 	autocmd ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkCyan guibg=DarkCyan
-	autocmd VimEnter,WinEnter * match IdeographicSpace /@/
+	autocmd VimEnter,WinEnter * match IdeographicSpace /ã€€/
 augroup END
 
 "color scheme
@@ -44,20 +44,20 @@ colorscheme hybrid
 
 
 if has('multi_byte_ime') || has('xim')
-  "‹N“®’¼Œã‚Ì‘}“üƒ‚[ƒh‚Å‚Í“ú–{Œê“ü—Í‚ğ—LŒø‚É‚µ‚È‚¢
+  "èµ·å‹•ç›´å¾Œã®æŒ¿å…¥ãƒ¢ãƒ¼ãƒ‰ã§ã¯æ—¥æœ¬èªå…¥åŠ›ã‚’æœ‰åŠ¹ã«ã—ãªã„
   set iminsert=0 imsearch=0
   if has('xim') && has('GUI_GTK')
-    "XIM‚Ì“ü—ÍŠJnƒL[
+    "XIMã®å…¥åŠ›é–‹å§‹ã‚­ãƒ¼
     "set imactivatekey=C-space
   endif
-  "IME‚Ìó‘Ô‚ğƒJƒ‰[•\¦
+  "IMEã®çŠ¶æ…‹ã‚’ã‚«ãƒ©ãƒ¼è¡¨ç¤º
   highlight CursorIM guifg=NONE guibg=Green
-  "‘}“üƒ‚[ƒhI—¹‚É“ú–{Œê“ü—Í‚ğƒIƒt
+  "æŒ¿å…¥ãƒ¢ãƒ¼ãƒ‰çµ‚äº†æ™‚ã«æ—¥æœ¬èªå…¥åŠ›ã‚’ã‚ªãƒ•
   inoremap <ESC> <ESC>:set iminsert=0<CR>
 endif
 
 
-"ƒtƒHƒ“ƒgİ’è
+"ãƒ•ã‚©ãƒ³ãƒˆè¨­å®š
 if has('xfontset')
 "  set guifontset=a14,r14,k14
 elseif has('unix')
@@ -69,7 +69,7 @@ elseif has('win32') || has('win64')
     set guifontwide=Consolas:h13:cSHIFTJIS
 endif
 
-"ˆóü—pƒtƒHƒ“ƒg
+"å°åˆ·ç”¨ãƒ•ã‚©ãƒ³ãƒˆ
 if has('printer')
   if has('win32') || has('win64')
 "    set printfont=MS_Mincho:h12:cSHIFTJIS
@@ -80,27 +80,27 @@ endif
 
 
 
-" ŒÂ•Ê‚Ìƒ^ƒu‚Ì•\¦İ’è‚ğ‚µ‚Ü‚·
+" å€‹åˆ¥ã®ã‚¿ãƒ–ã®è¡¨ç¤ºè¨­å®šã‚’ã—ã¾ã™
 function! GuiTabLabel()
-  " ƒ^ƒu‚Å•\¦‚·‚é•¶š—ñ‚Ì‰Šú‰»‚ğ‚µ‚Ü‚·
+  " ã‚¿ãƒ–ã§è¡¨ç¤ºã™ã‚‹æ–‡å­—åˆ—ã®åˆæœŸåŒ–ã‚’ã—ã¾ã™
   let l:label = ''
 
-  " ƒ^ƒu‚ÉŠÜ‚Ü‚ê‚éƒoƒbƒtƒ@(ƒEƒBƒ“ƒhƒE)‚É‚Â‚¢‚Ä‚Ìî•ñ‚ğ‚Æ‚Á‚Ä‚¨‚«‚Ü‚·B
+  " ã‚¿ãƒ–ã«å«ã¾ã‚Œã‚‹ãƒãƒƒãƒ•ã‚¡(ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦)ã«ã¤ã„ã¦ã®æƒ…å ±ã‚’ã¨ã£ã¦ãŠãã¾ã™ã€‚
   let l:bufnrlist = tabpagebuflist(v:lnum)
 
-  " •\¦•¶š—ñ‚Éƒoƒbƒtƒ@–¼‚ğ’Ç‰Á‚µ‚Ü‚·
-  " ƒpƒX‚ğ‘S•”•\¦‚³‚¹‚é‚Æ’·‚¢‚Ì‚Åƒtƒ@ƒCƒ‹–¼‚¾‚¯‚ğg‚¢‚Ü‚· Ú‚µ‚­‚Í help fnamemodify()
+  " è¡¨ç¤ºæ–‡å­—åˆ—ã«ãƒãƒƒãƒ•ã‚¡åã‚’è¿½åŠ ã—ã¾ã™
+  " ãƒ‘ã‚¹ã‚’å…¨éƒ¨è¡¨ç¤ºã•ã›ã‚‹ã¨é•·ã„ã®ã§ãƒ•ã‚¡ã‚¤ãƒ«åã ã‘ã‚’ä½¿ã„ã¾ã™ è©³ã—ãã¯ help fnamemodify()
   let l:bufname = fnamemodify(bufname(l:bufnrlist[tabpagewinnr(v:lnum) - 1]), ':t')
-  " ƒoƒbƒtƒ@–¼‚ª‚È‚¯‚ê‚Î No title ‚Æ‚µ‚Ä‚¨‚«‚Ü‚·B‚±‚±‚Å‚Íƒ}ƒ‹ƒ`ƒoƒCƒg•¶š‚ğg‚í‚È‚¢‚Ù‚¤‚ª–³“ï‚Å‚·
+  " ãƒãƒƒãƒ•ã‚¡åãŒãªã‘ã‚Œã° No title ã¨ã—ã¦ãŠãã¾ã™ã€‚ã“ã“ã§ã¯ãƒãƒ«ãƒãƒã‚¤ãƒˆæ–‡å­—ã‚’ä½¿ã‚ãªã„ã»ã†ãŒç„¡é›£ã§ã™
   let l:label .= l:bufname == '' ? 'No title' : l:bufname
 
-  " ƒ^ƒu“à‚ÉƒEƒBƒ“ƒhƒE‚ª•¡”‚ ‚é‚Æ‚«‚É‚Í‚»‚Ì”‚ğ’Ç‰Á‚µ‚Ü‚·(ƒfƒtƒHƒ‹ƒg‚Åˆê‰‚ ‚é‚Ì‚Å)
+  " ã‚¿ãƒ–å†…ã«ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒè¤‡æ•°ã‚ã‚‹ã¨ãã«ã¯ãã®æ•°ã‚’è¿½åŠ ã—ã¾ã™(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ä¸€å¿œã‚ã‚‹ã®ã§)
   let l:wincount = tabpagewinnr(v:lnum, '$')
   if l:wincount > 1
 	let l:label .= '[' . l:wincount . ']'
   endif
 
-  " ‚±‚Ìƒ^ƒuƒy[ƒW‚É•ÏX‚Ì‚ ‚éƒoƒbƒtƒ@‚ª‚é‚Æ‚«‚É‚Í '[+]' ‚ğ’Ç‰Á‚µ‚Ü‚·(ƒfƒtƒHƒ‹ƒg‚Åˆê‰‚ ‚é‚Ì‚Å)
+  " ã“ã®ã‚¿ãƒ–ãƒšãƒ¼ã‚¸ã«å¤‰æ›´ã®ã‚ã‚‹ãƒãƒƒãƒ•ã‚¡ãŒã‚‹ã¨ãã«ã¯ '[+]' ã‚’è¿½åŠ ã—ã¾ã™(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ä¸€å¿œã‚ã‚‹ã®ã§)
   for bufnr in l:bufnrlist
 	if getbufvar(bufnr, "&modified")
 	  let l:label .= '[+]'
@@ -108,12 +108,12 @@ function! GuiTabLabel()
 	endif
   endfor
 
-  " •\¦•¶š—ñ‚ğ•Ô‚µ‚Ü‚·
+  " è¡¨ç¤ºæ–‡å­—åˆ—ã‚’è¿”ã—ã¾ã™
   return l:label
 endfunction
 
-" guitablabel ‚Éã‚ÌŠÖ”‚ğİ’è‚µ‚Ü‚·
-" ‚»‚Ì•\¦‚Ì‘O‚É %N ‚Æ‚¢‚¤‚Æ‚±‚ë‚Åƒ^ƒu”Ô†‚ğ•\¦‚³‚¹‚Ä‚¢‚Ü‚·
+" guitablabel ã«ä¸Šã®é–¢æ•°ã‚’è¨­å®šã—ã¾ã™
+" ãã®è¡¨ç¤ºã®å‰ã« %N ã¨ã„ã†ã¨ã“ã‚ã§ã‚¿ãƒ–ç•ªå·ã‚’è¡¨ç¤ºã•ã›ã¦ã„ã¾ã™
 set guitablabel=%N:\ %{GuiTabLabel()}
 
 
