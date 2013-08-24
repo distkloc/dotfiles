@@ -250,8 +250,6 @@ nnoremap <Leader>di :<C-u>diffsplit<Space>#
  "" search with camel case like Eclipse
  let g:neocomplcache_enable_camel_case_completion = 1
  let g:neocomplcache_enable_underbar_completion = 1
- "" zencoding連携
- let g:use_zen_complete_tag = 1
  
  "imap <C-k> <Plug>(neocomplcache_snippets_expand)
  "smap <C-k> <Plug>(neocomplcache_snippets_expand)
