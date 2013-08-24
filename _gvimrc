@@ -60,13 +60,13 @@ endif
 "フォント設定
 if has('xfontset')
 "  set guifontset=a14,r14,k14
-elseif has('unix')
-
 elseif has('mac')
-"  set guifont=Osaka-Mono:h14
+    set guifont=Inconsolata_for_Powerline:h14
+    set guifontwide=Ricty:h14
 elseif has('win32') || has('win64')
-    set guifont=Consolas\ for\ Powerline\ FixedD:h13
+    set guifont=Consolas_for_Powerline_FixedD:h13
     set guifontwide=Consolas:h13:cSHIFTJIS
+elseif has('unix')
 endif
 
 "印刷用フォント
