@@ -1,7 +1,30 @@
+set nocompatible
+
+" OS判定フラグ
+let s:is_windows = has('win16') || has('win32') || has('win64')
+let s:is_cygwin = has('win32unix')
+let s:is_mac = !s:is_windows && !s:is_cygwin
+      \ && (has('mac') || has('macunix') || has('gui_macvim')
+      \ || (!executable('xdg-open') && system('uname') =~? '^darwin'))
+
+" 言語指定
+if s:is_windows
+  " For Windows.
+  language messages ja_JP
+elseif s:is_mac
+  " For Mac.
+  language messages ja_JP.UTF-8
+  language ctype ja_JP.UTF-8
+  language time ja_JP.UTF-8
+else
+  " For Linux.
+  language messages C
+endif
+
+
 "--------------------------------
 "neobundle.vim設定
 "--------------------------------
-set nocompatible
 filetype off
 
 if has("win32") || has("win64")
@@ -12,7 +35,6 @@ else
 	call neobundle#rc(expand('~/.vim/bundle'))
 endif
 
-NeoBundle 'Shougo/neocomplcache'        
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'scrooloose/nerdcommenter'
@@ -22,8 +44,20 @@ NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/wwwrenderer-vim'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'vim-scripts/Align'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'bling/vim-airline'
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'rhysd/clever-f.vim'
+
+function! s:meet_neocomplete_requirements()
+    return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
+endfunction
+
+if s:meet_neocomplete_requirements()
+    NeoBundle 'Shougo/neocomplete.vim'
+    NeoBundleFetch 'Shougo/neocomplcache.vim'
+else
+    NeoBundleFetch 'Shougo/neocomplete.vim'
+    NeoBundle 'Shougo/neocomplcache.vim'
+endif
 
 NeoBundle 'Shougo/vimproc', {
   \ 'build' : {
@@ -87,16 +121,108 @@ filetype plugin indent on
 
 
 
+"---------------------------------------------------------------------------
+" Encoding: "{{{
+
 set encoding=utf-8
 
 scriptencoding utf-8
 
-" 文字コード自動認識
-set fileencodings=utf-8,cp932,iso-2022-jp,euc-jp,default,latin
 
-" 改行コードの自動認識
+" https://github.com/Shougo/shougo-s-github
+" termencoding 
+if !has('gui_running')
+  if &term ==# 'win32' &&
+        \ (v:version < 703 || (v:version == 703 && has('patch814')))
+    " Setting when use the non-GUI Japanese console.
+
+    " Garbled unless set this.
+    set termencoding=cp932
+    " Japanese input changes itself unless set this.  Be careful because the
+    " automatic recognition of the character code is not possible!
+    set encoding=japan
+  else
+    if $ENV_ACCESS ==# 'linux'
+      set termencoding=euc-jp
+    elseif $ENV_ACCESS ==# 'colinux'
+      set termencoding=utf-8
+    else  " fallback
+      set termencoding=  " same as 'encoding'
+    endif
+  endif
+elseif s:is_windows
+  " For system.
+  set termencoding=cp932
+endif
+"}}}
+
+" The automatic recognition of the character code."{{{
+if !exists('did_encoding_settings') && has('iconv')
+  let s:enc_euc = 'euc-jp'
+  let s:enc_jis = 'iso-2022-jp'
+
+  " Does iconv support JIS X 0213?
+  if iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
+    let s:enc_euc = 'euc-jisx0213,euc-jp'
+    let s:enc_jis = 'iso-2022-jp-3'
+  endif
+
+  " Build encodings.
+  let &fileencodings = 'ucs-bom'
+  if &encoding !=# 'utf-8'
+    let &fileencodings = &fileencodings . ',' . 'ucs-2le'
+    let &fileencodings = &fileencodings . ',' . 'ucs-2'
+  endif
+  let &fileencodings = &fileencodings . ',' . s:enc_jis
+
+  if &encoding ==# 'utf-8'
+    let &fileencodings = &fileencodings . ',' . s:enc_euc
+    let &fileencodings = &fileencodings . ',' . 'cp932'
+  elseif &encoding =~# '^euc-\%(jp\|jisx0213\)$'
+    let &encoding = s:enc_euc
+    let &fileencodings = &fileencodings . ',' . 'utf-8'
+    let &fileencodings = &fileencodings . ',' . 'cp932'
+  else  " cp932
+    let &fileencodings = &fileencodings . ',' . 'utf-8'
+    let &fileencodings = &fileencodings . ',' . s:enc_euc
+  endif
+  let &fileencodings = &fileencodings . ',' . &encoding
+
+  unlet s:enc_euc
+  unlet s:enc_jis
+
+  let did_encoding_settings = 1
+endif
+"}}}
+
+if has('kaoriya')
+  " For Kaoriya only.
+  set fileencodings=guess
+endif
+
+" When do not include Japanese, use encoding for fileencoding.
+function! s:ReCheck_FENC() "{{{
+  let is_multi_byte = search("[^\x01-\x7e]", 'n', 100, 100)
+  if &fileencoding =~# 'iso-2022-jp' && !is_multi_byte
+    let &fileencoding = &encoding
+  endif
+endfunction "}}}
+
+augroup ReCheckFenc
+	autocmd!
+    autocmd BufReadPost * call s:ReCheck_FENC()
+augroup END
+
+
+
+set fileformat=unix
 set fileformats=unix,dos,mac
 
+" □や◯文字があってもカーソル位置がずれないように
+" Win版Kaoriyaではautoが使用可能
+if &ambiwidth !=# 'auto'
+  set ambiwidth=double
+endif
 
 
  "----------------------------------------
@@ -240,32 +366,61 @@ nnoremap <Leader>di :<C-u>diffsplit<Space>#
  let NERDSpaceDelims = 1
 
 
- """ neocomplcache
- let g:neocomplcache_enable_at_startup = 1
- let g:neocomplcache_max_list = 30
- let g:neocomplcache_auto_completion_start_length = 3
- let g:neocomplcache_enable_smart_case = 1
- "" like AutoComplPop
- let g:neocomplcache_enable_auto_select = 1
- "" search with camel case like Eclipse
- let g:neocomplcache_enable_camel_case_completion = 1
- let g:neocomplcache_enable_underbar_completion = 1
- 
- "imap <C-k> <Plug>(neocomplcache_snippets_expand)
- "smap <C-k> <Plug>(neocomplcache_snippets_expand)
- inoremap <expr><C-g> neocomplcache#undo_completion()
- inoremap <expr><C-l> neocomplcache#complete_common_string()
- "" SuperTab like snippets behavior.
- "imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+ """ neocomplete
+if s:meet_neocomplete_requirements()
+    let g:neocomplete#enable_at_startup = 1
+    let g:neocomplete#max_list = 30
+    let g:neocomplete#auto_completion_start_length = 3
+    let g:neocomplete#enable_smart_case = 1
+    "" like AutoComplPop
+    " let g:neocomplete#enable_auto_select = 1
+    "" search with camel case like Eclipse
+    let g:neocomplete#enable_camel_case_completion = 1
+    let g:neocomplete#enable_underbar_completion = 1
 
- "" <TAB> or <CR>: completion.
- inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
- inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
- inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
- "" <C-h>, <BS>: close popup and delete backword char.
- inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
- inoremap <expr><BS> neocomplcache#smart_close_popup() . "\<C-h>"
- inoremap <expr><C-e> neocomplcache#cancel_popup()
+    "imap <C-k> <Plug>(neocomplete#snippets_expand)
+    "smap <C-k> <Plug>(neocomplete#snippets_expand)
+    inoremap <expr><C-g> neocomplete#undo_completion()
+    inoremap <expr><C-l> neocomplete#complete_common_string()
+    "" SuperTab like snippets behavior.
+    "imap <expr><TAB> neocomplete#sources#snippets_complete#expandable() ? "\<Plug>(neocomplete#snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+
+    "" <TAB> or <CR>: completion.
+    " inoremap <expr><TAB> pumvisible() ? "\<C-n>" . neocomplete#close_popup() : "\<TAB>"
+    inoremap <expr><CR> pumvisible() ? neocomplete#close_popup() : "\<CR>"
+    "" <C-h>, <BS>: close popup and delete backword char.
+    " inoremap <expr><C-h> neocomplete#smart_close_popup() . "\<C-h>"
+    inoremap <expr><BS> neocomplete#smart_close_popup() . "\<C-h>"
+    inoremap <expr><C-e> neocomplete#cancel_popup()
+else
+    let g:neocomplcache_enable_at_startup = 1
+    let g:neocomplcache_max_list = 30
+    let g:neocomplcache_auto_completion_start_length = 3
+    let g:neocomplcache_enable_smart_case = 1
+    "" like AutoComplPop
+    " let g:neocomplcache_enable_auto_select = 1
+    "" search with camel case like Eclipse
+    let g:neocomplcache_enable_camel_case_completion = 1
+    let g:neocomplcache_enable_underbar_completion = 1
+
+    "imap <C-k> <Plug>(neocomplcache_snippets_expand)
+    "smap <C-k> <Plug>(neocomplcache_snippets_expand)
+    inoremap <expr><C-g> neocomplcache#undo_completion()
+    inoremap <expr><C-l> neocomplcache#complete_common_string()
+    "" SuperTab like snippets behavior.
+    "imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+
+    " inoremap <expr><TAB> pumvisible() ? "\<C-n>" . neocomplcache#close_popup() : "\<TAB>"
+    inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+    "" <C-h>, <BS>: close popup and delete backword char.
+    " inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
+    inoremap <expr><BS> neocomplcache#smart_close_popup() . "\<C-h>"
+    inoremap <expr><C-e> neocomplcache#cancel_popup()
+endif
+
+"" <TAB> or <CR>: completion.
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 
 
@@ -391,18 +546,74 @@ nnoremap <silent> <leader>gg :<C-u>GitGutterToggle<CR>
 nnoremap <silent> <leader>gh :<C-u>GitGutterLineHighlightsToggle<CR>
 
 
-""" airline
-let g:airline_theme = 'tomorrow'
 
-let g:airline#extensions#whitespace#enabled = 0
+""" lightline
+let g:lightline = {
+        \ 'colorscheme': 'wombat',
+        \ 'mode_map': {'c': 'NORMAL'},
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+        \ },
+        \ 'component_function': {
+        \   'modified': 'MyModified',
+        \   'readonly': 'MyReadonly',
+        \   'fugitive': 'MyFugitive',
+        \   'filename': 'MyFilename',
+        \   'fileformat': 'MyFileformat',
+        \   'filetype': 'MyFiletype',
+        \   'fileencoding': 'MyFileencoding',
+        \   'mode': 'MyMode'
+        \ }
+        \ }
 
-let g:airline_left_sep = '⮀'
-let g:airline_left_alt_sep = '⮁'
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
-let g:airline#extensions#branch#symbol = '⭠'
-let g:airline#extensions#readonly#symbol = '⭤'
-let g:airline_linecolumn_prefix = '⭡'
+function! MyModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! MyReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+endfunction
+
+function! MyFilename()
+  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MyFugitive()
+  try
+    if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+      return fugitive#head()
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! MyFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! MyMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
 
 
+
+""" clever-f
+let g:clever_f_smart_case = 1
+let g:clever_f_use_migemo = 1
+let g:clever_f_fix_key_direction = 1
+let g:clever_f_chars_match_any_signs = ';'
 
