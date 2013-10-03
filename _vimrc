@@ -25,15 +25,19 @@ endif
 "--------------------------------
 "neobundle.vim設定
 "--------------------------------
-filetype off
-
-if has("win32") || has("win64")
-	set rtp+=~/vimfiles/neobundle.vim.git/ 
+if s:is_windows
+    if has('vim_starting')
+        set rtp+=~/vimfiles/bundle/neobundle.vim/ 
+    endif
 	call neobundle#rc(expand('~/vimfiles/bundle'))
 else
-	set rtp+=~/.vim/neobundle.vim.git/ 
+    if has('vim_starting')
+        set rtp+=~/.vim/bundle/neobundle.vim/ 
+    endif
 	call neobundle#rc(expand('~/.vim/bundle'))
 endif
+
+NeoBundleFetch "Shougo/neobundle.vim"
 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'osyo-manga/unite-quickfix'
@@ -46,6 +50,7 @@ NeoBundle 'mattn/emmet-vim'
 NeoBundle 'vim-scripts/Align'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'rhysd/clever-f.vim'
+NeoBundle 'tpope/vim-surround'
 
 function! s:meet_neocomplete_requirements()
     return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
@@ -116,9 +121,12 @@ NeoBundleLazy 'basyura/TweetVim', {
 
 "color scheme
 NeoBundleLazy 'w0ng/vim-hybrid'
+NeoBundleLazy 'vim-scripts/Wombat'
 
 filetype plugin indent on
 
+" Installation check.
+ NeoBundleCheck
 
 
 "---------------------------------------------------------------------------
@@ -316,22 +324,55 @@ imap <4-MiddleMouse> <Nop>
 xnoremap bx "_x
 
 "ペースト時にヤンクしない
-vnoremap <silent> <C-p> "0p<CR>
+vnoremap <silent> <C-p> "0p
 
-"タブ操作キーマッピング 
+" "タブ操作キーマッピング 
 nnoremap [tabcmd]  <Nop>
 nmap     <leader>t [tabcmd]
 
-nnoremap <silent> [tabcmd]f :<C-u>tabfirst<CR>
-nnoremap <silent> [tabcmd]l :<C-u>tablast<CR>
-nnoremap <silent> [tabcmd]e :<C-u>tabedit<CR>
-nnoremap <silent> [tabcmd]c :<C-u>tabclose<CR>
-nnoremap <silent> [tabcmd]o :<C-u>tabonly<CR>
-nnoremap <silent> [tabcmd]s :<C-u>tabs<CR>
-"現在のタブを指定タブ位置へ移動
-nnoremap [tabcmd]m :<C-u>tabmove<Space>
-"指定タブへ移動
-nnoremap [tabcmd]n :<C-u>tabnext<Space>
+
+" Anywhere SID.
+function! s:SID_PREFIX()
+  return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
+endfunction
+
+" Set tabline.
+function! s:my_tabline()  "{{{
+  let s = ''
+  for i in range(1, tabpagenr('$'))
+    let bufnrs = tabpagebuflist(i)
+    let bufnr = bufnrs[tabpagewinnr(i) - 1]  " first window, first appears
+    let no = i  " display 0-origin tabpagenr.
+    let mod = getbufvar(bufnr, '&modified') ? '!' : ' '
+    let title = fnamemodify(bufname(bufnr), ':t')
+    let title = '[' . title . ']'
+    let s .= '%'.i.'T'
+    let s .= '%#' . (i == tabpagenr() ? 'TabLineSel' : 'TabLine') . '#'
+    let s .= no . ':' . title
+    let s .= mod
+    let s .= '%#TabLineFill# '
+  endfor
+  let s .= '%#TabLineFill#%T%=%#TabLine#'
+  return s
+endfunction "}}}
+let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
+
+" Tab jump
+for n in range(1, 9)
+  execute 'nnoremap <silent> [tabcmd]'.n  ':<C-u>tabnext'.n.'<CR>'
+endfor
+" t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
+
+" c 新しいタブを一番右に作る
+map <silent> [tabcmd]c :tablast <bar> tabnew<CR>
+" x タブを閉じる
+map <silent> [tabcmd]x :tabclose<CR>
+" n 次のタブ
+map <silent> [tabcmd]n :tabnext<CR>
+" p 前のタブ
+map <silent> [tabcmd]p :tabprevious<CR>
+
+
 
 
 "カレントディレクトリ設定
