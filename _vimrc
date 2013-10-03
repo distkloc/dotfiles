@@ -98,12 +98,6 @@ NeoBundleLazy 'sgur/vim-gitgutter', {
     \ }
 
 
-NeoBundleLazy 'sgur/vim-gitgutter', {
-    \ 'autoload' : {
-    \     'commands' : ['GitGutterToggle', 'GitGutterLineHighlightsToggle']
-    \     }
-    \ }
-
 NeoBundleLazy 'basyura/twibill.vim'
 NeoBundleLazy 'basyura/TweetVim', {
     \ 'depends' :
@@ -122,6 +116,7 @@ NeoBundleLazy 'basyura/TweetVim', {
 "color scheme
 NeoBundleLazy 'w0ng/vim-hybrid'
 NeoBundleLazy 'vim-scripts/Wombat'
+NeoBundleLazy 'nanotech/jellybeans.vim'
 
 filetype plugin indent on
 
