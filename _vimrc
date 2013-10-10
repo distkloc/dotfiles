@@ -27,14 +27,14 @@ endif
 "--------------------------------
 if s:is_windows
     if has('vim_starting')
-        set rtp+=~/vimfiles/bundle/neobundle.vim/ 
+        set rtp+=~/vimfiles/bundle/neobundle.vim/
     endif
-	call neobundle#rc(expand('~/vimfiles/bundle'))
+    call neobundle#rc(expand('~/vimfiles/bundle'))
 else
     if has('vim_starting')
         set rtp+=~/.vim/bundle/neobundle.vim/ 
     endif
-	call neobundle#rc(expand('~/.vim/bundle'))
+    call neobundle#rc(expand('~/.vim/bundle'))
 endif
 
 NeoBundleFetch "Shougo/neobundle.vim"
@@ -212,7 +212,7 @@ function! s:ReCheck_FENC() "{{{
 endfunction "}}}
 
 augroup ReCheckFenc
-	autocmd!
+    autocmd!
     autocmd BufReadPost * call s:ReCheck_FENC()
 augroup END
 
@@ -246,8 +246,8 @@ set nowrap
 "tabを半角スペースに展開
 set expandtab
 augroup ettext
-	autocmd!
-	autocmd BufRead,BufNewFile *.asp,*inc,*.htm set noexpandtab
+    autocmd!
+    autocmd BufRead,BufNewFile *.asp,*inc,*.htm set noexpandtab
 augroup END
 
 "tab挿入時の空白数
@@ -325,33 +325,6 @@ vnoremap <silent> <C-p> "0p
 nnoremap [tabcmd]  <Nop>
 nmap     <leader>t [tabcmd]
 
-
-" Anywhere SID.
-function! s:SID_PREFIX()
-  return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
-endfunction
-
-" Set tabline.
-function! s:my_tabline()  "{{{
-  let s = ''
-  for i in range(1, tabpagenr('$'))
-    let bufnrs = tabpagebuflist(i)
-    let bufnr = bufnrs[tabpagewinnr(i) - 1]  " first window, first appears
-    let no = i  " display 0-origin tabpagenr.
-    let mod = getbufvar(bufnr, '&modified') ? '!' : ' '
-    let title = fnamemodify(bufname(bufnr), ':t')
-    let title = '[' . title . ']'
-    let s .= '%'.i.'T'
-    let s .= '%#' . (i == tabpagenr() ? 'TabLineSel' : 'TabLine') . '#'
-    let s .= no . ':' . title
-    let s .= mod
-    let s .= '%#TabLineFill# '
-  endfor
-  let s .= '%#TabLineFill#%T%=%#TabLine#'
-  return s
-endfunction "}}}
-let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
-
 " Tab jump
 for n in range(1, 9)
   execute 'nnoremap <silent> [tabcmd]'.n  ':<C-u>tabnext'.n.'<CR>'
@@ -373,15 +346,15 @@ map <silent> [tabcmd]p :tabprevious<CR>
 "カレントディレクトリ設定
 command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>') 
 function! s:ChangeCurrentDir(directory, bang)
-  if a:directory == ''
-	lcd %:p:h
-	else
-	execute 'lcd' . a:directory
-  endif
-	
-  if a:bang == ''
-	pwd
-  endif
+    if a:directory == ''
+        lcd %:p:h
+    else
+        execute 'lcd' . a:directory
+    endif
+
+    if a:bang == ''
+        pwd
+    endif
 endfunction
 
 " Change current directory.
@@ -499,21 +472,21 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
  " unite.vim上でのキーマッピング
  autocmd FileType unite call s:unite_my_settings()
  function! s:unite_my_settings()
-	 " 単語単位からパス単位で削除するように変更
-	 nmap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-	 imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+    " 単語単位からパス単位で削除するように変更
+    nmap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+    imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
 
-	 " ウィンドウを分割して開く
-	 nnoremap <silent> <buffer> <expr> <C-h> unite#do_action('split')
-	 inoremap <silent> <buffer> <expr> <C-h> unite#do_action('split')
+    " ウィンドウを分割して開く
+    nnoremap <silent> <buffer> <expr> <C-h> unite#do_action('split')
+    inoremap <silent> <buffer> <expr> <C-h> unite#do_action('split')
 
-	 " ウィンドウを縦に分割して開く
-	 nnoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
-	 inoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
+    " ウィンドウを縦に分割して開く
+    nnoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
+    inoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
 
-	 " ESCキーを2回押すと終了する
-	 nmap <silent><buffer> <ESC><ESC> q
-	 imap <silent><buffer> <ESC><ESC> <ESC>q
+    " ESCキーを2回押すと終了する
+    nmap <silent><buffer> <ESC><ESC> q
+    imap <silent><buffer> <ESC><ESC> <ESC>q
  endfunction
 
  " unite-grep
@@ -544,11 +517,11 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
  "c#
  let g:quickrun_config = { }
  let g:quickrun_config['cs'] = {
-			 \ 'command'  : 'csc',
-			 \ 'runmode'  : 'simple',
-			 \ 'exec'     : ['%c /nologo %s:gs?/?\\? > /dev/null', '"%S:p:r:gs?/?\\?.exe" %a', ':call delete("%S:p:r.exe")'],
-			 \ 'tempfile' : '{tempname()}.cs',
-			 \ }
+     \ 'command'  : 'csc',
+     \ 'runmode'  : 'simple',
+     \ 'exec'     : ['%c /nologo %s:gs?/?\\? > /dev/null', '"%S:p:r:gs?/?\\?.exe" %a', ':call delete("%S:p:r.exe")'],
+     \ 'tempfile' : '{tempname()}.cs',
+     \ }
 
 
 
@@ -585,10 +558,14 @@ nnoremap <silent> <leader>gh :<C-u>GitGutterLineHighlightsToggle<CR>
 
 """ lightline
 let g:lightline = {
-        \ 'colorscheme': 'wombat',
+        \ 'colorscheme': 'jellybeans',
         \ 'mode_map': {'c': 'NORMAL'},
         \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ],
+        \   'right': [ [ 'lineinfo' ],
+        \            [ 'percent' ],
+        \            [ 'bufnum' ],
+        \            [ 'fileformat', 'fileencoding', 'filetype' ] ] 
         \ },
         \ 'component_function': {
         \   'modified': 'MyModified',
