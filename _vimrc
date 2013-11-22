@@ -64,6 +64,14 @@ else
     NeoBundle 'Shougo/neocomplcache.vim'
 endif
 
+NeoBundle 'Shougo/neosnippet.vim'
+
+NeoBundleLazy 'kana/vim-smartinput', { 
+	\ 'autoload' : {
+	\	'insert' : '1'
+	\	}
+	\}
+
 NeoBundle 'Shougo/vimproc', {
   \ 'build' : {
   \     'windows' : 'make -f make_mingw32.mak',
@@ -98,7 +106,6 @@ NeoBundleLazy 'sgur/vim-gitgutter', {
     \ }
 
 
-NeoBundleLazy 'basyura/twibill.vim'
 NeoBundleLazy 'basyura/TweetVim', {
     \ 'depends' :
     \     ['basyura/twibill.vim',
@@ -374,6 +381,10 @@ nnoremap <Leader>di :<C-u>diffsplit<Space>#
  """ NERD_comments
  let NERDSpaceDelims = 1
 
+ """ smartinput
+call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)', '<BS>', '<BS>')
+call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-h)', '<BS>', '<C-h>')
+call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)', '<Enter>', '<Enter>')
 
  """ neocomplete
 if s:meet_neocomplete_requirements()
@@ -401,6 +412,19 @@ if s:meet_neocomplete_requirements()
     " inoremap <expr><C-h> neocomplete#smart_close_popup() . "\<C-h>"
     inoremap <expr><BS> neocomplete#smart_close_popup() . "\<C-h>"
     inoremap <expr><C-e> neocomplete#cancel_popup()
+
+    " <BS> でポップアップを閉じて文字を削除
+    imap <expr> <BS> neocomplete#smart_close_popup() . "\<Plug>(smartinput_BS)"
+
+    " <C-h> でポップアップを閉じて文字を削除
+    imap <expr> <C-h> neocomplete#smart_close_popup() . "\<Plug>(smartinput_C-h)"
+
+    " <CR> でポップアップ中の候補を選択し改行する
+    imap <expr> <CR> neocomplete#smart_close_popup() . "\<Plug>(smartinput_CR)"
+
+    " <CR> でポップアップ中の候補を選択するだけで、改行はしないバージョン
+    " ポップアップがないときには改行する
+    imap <expr> <CR> pumvisible() ? neocomplete#close_popup() : "\<Plug>(smartinput_CR)"
 else
     let g:neocomplcache_enable_at_startup = 1
     let g:neocomplcache_max_list = 30
@@ -558,7 +582,7 @@ nnoremap <silent> <leader>gh :<C-u>GitGutterLineHighlightsToggle<CR>
 
 """ lightline
 let g:lightline = {
-        \ 'colorscheme': 'jellybeans',
+        \ 'colorscheme': 'Tomorrow_Night',
         \ 'mode_map': {'c': 'NORMAL'},
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ],
