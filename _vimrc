@@ -83,7 +83,7 @@ NeoBundle 'Shougo/vimproc', {
 
 NeoBundleLazy 'Shougo/vimshell', {
     \ 'autoload' : {
-    \     'commands' : ['VimShell', 'VimShellSendString', 'VimShellCurrentDir'],
+    \     'commands' : ['VimShell', 'VimShellSendString', 'VimShellCurrentDir']
     \     }
     \ }
 
@@ -105,6 +105,11 @@ NeoBundleLazy 'sgur/vim-gitgutter', {
     \     }
     \ }
 
+NeoBundleLazy 'osyo-manga/vim-over', {
+    \ 'autoload' : {
+    \     'commands' : ['OverCommandLine']
+    \     }
+    \ }
 
 NeoBundleLazy 'basyura/TweetVim', {
     \ 'depends' :
@@ -235,13 +240,13 @@ if &ambiwidth !=# 'auto'
 endif
 
 
- "----------------------------------------
- "システム設定
- "----------------------------------------
- "エラー時の音とビジュアルベルの抑制。
- set noerrorbells
- set novisualbell
- set visualbell t_vb=
+"----------------------------------------
+"システム設定
+"----------------------------------------
+"エラー時の音とビジュアルベルの抑制。
+set noerrorbells
+set novisualbell
+set visualbell t_vb=
 
 
 "--------------------------------------
@@ -375,18 +380,18 @@ nnoremap <Leader>di :<C-u>diffsplit<Space>#
 
 
 
- "+plugin----------------------------------------------------------
- "plugin設定は全て.vimrcへ
+"+plugin----------------------------------------------------------
+"plugin設定は全て.vimrcへ
 
- """ NERD_comments
- let NERDSpaceDelims = 1
+"" NERD_comments
+let NERDSpaceDelims = 1
 
- """ smartinput
+"" smartinput
 call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)', '<BS>', '<BS>')
 call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-h)', '<BS>', '<C-h>')
 call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)', '<Enter>', '<Enter>')
 
- """ neocomplete
+"" neocomplete
 if s:meet_neocomplete_requirements()
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#max_list = 30
@@ -457,95 +462,95 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 
 
- """ unite.vim
- " 最近使用したファイルの最大保存件数
- let g:unite_source_file_mru_limit = 20
- " 最近使用したディレクトリの最大保存件数
- let g:unite_source_directory_mru_limit = 15
- " 絞り込みテキスト候補の表示更新間隔
- let g:unite_update_time = 1000
+"" unite.vim
+" 最近使用したファイルの最大保存件数
+let g:unite_source_file_mru_limit = 20
+" 最近使用したディレクトリの最大保存件数
+let g:unite_source_directory_mru_limit = 15
+" 絞り込みテキスト候補の表示更新間隔
+let g:unite_update_time = 1000
 
- nnoremap [unite]  <nop>
- xnoremap [unite]  <nop>
- nmap     <leader>u [unite]
- xmap     <leader>u [unite]
- 
- " バッファ一覧
- nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
- " 現在のディレクトリのファイル一覧
- nnoremap <silent> [unite]d :<C-u>Unite file -buffer-name=files<CR>
- " 現在開いているファイルのディレクトリ以下のファイル一覧
- nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
- " レジスタ一覧
- nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
- " 最近使用したファイル一覧
- nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
- " カレントディレクトリ内の最近使用したファイル一覧
- nnoremap <silent> [unite]c :<C-u>UniteWithCurrentDir file_mru<CR>
- " 最近開いたファイル
- nnoremap <silent> [unite]u :<C-u>Unite buffer file_mru<CR>
- " 全部乗せ
- nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
- " unite-quickfix
- nnoremap <silent> [unite]q :<C-u>Unite quickfix<CR>
- " unite-bookmark
- nnoremap <silent> [unite]k :<C-u>Unite bookmark<CR>
- " " unite-help
- " nnoremap <silent> [unite]h :<c-u>unite help<cr>
+nnoremap [unite]  <nop>
+xnoremap [unite]  <nop>
+nmap     <leader>u [unite]
+xmap     <leader>u [unite]
 
- " unite.vim上でのキーマッピング
- autocmd FileType unite call s:unite_my_settings()
- function! s:unite_my_settings()
-    " 単語単位からパス単位で削除するように変更
-    nmap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-    imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+" バッファ一覧
+nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
+" 現在のディレクトリのファイル一覧
+nnoremap <silent> [unite]d :<C-u>Unite file -buffer-name=files<CR>
+" 現在開いているファイルのディレクトリ以下のファイル一覧
+nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+" レジスタ一覧
+nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
+" 最近使用したファイル一覧
+nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
+" カレントディレクトリ内の最近使用したファイル一覧
+nnoremap <silent> [unite]c :<C-u>UniteWithCurrentDir file_mru<CR>
+" 最近開いたファイル
+nnoremap <silent> [unite]u :<C-u>Unite buffer file_mru<CR>
+" 全部乗せ
+nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+" unite-quickfix
+nnoremap <silent> [unite]q :<C-u>Unite quickfix<CR>
+" unite-bookmark
+nnoremap <silent> [unite]k :<C-u>Unite bookmark<CR>
+" " unite-help
+" nnoremap <silent> [unite]h :<c-u>unite help<cr>
 
-    " ウィンドウを分割して開く
-    nnoremap <silent> <buffer> <expr> <C-h> unite#do_action('split')
-    inoremap <silent> <buffer> <expr> <C-h> unite#do_action('split')
+" unite.vim上でのキーマッピング
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()
+" 単語単位からパス単位で削除するように変更
+nmap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
 
-    " ウィンドウを縦に分割して開く
-    nnoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
-    inoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
+" ウィンドウを分割して開く
+nnoremap <silent> <buffer> <expr> <C-h> unite#do_action('split')
+inoremap <silent> <buffer> <expr> <C-h> unite#do_action('split')
 
-    " ESCキーを2回押すと終了する
-    nmap <silent><buffer> <ESC><ESC> q
-    imap <silent><buffer> <ESC><ESC> <ESC>q
- endfunction
+" ウィンドウを縦に分割して開く
+nnoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
+inoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
 
- " unite-grep
- let g:unite_source_grep_default_opts = "-iHn"
+" ESCキーを2回押すと終了する
+nmap <silent><buffer> <ESC><ESC> q
+imap <silent><buffer> <ESC><ESC> <ESC>q
+endfunction
 
- " unite history/yank
- let g:unite_source_history_yank_enable = 1
- let g:unite_source_history_yank_limit = 30
- nnoremap <silent> [unite]y :<C-u>Unite history/yank<CR>
- xnoremap <silent> [unite]r d:<C-u>Unite -buffer-name=register register history/yank<CR>
+" unite-grep
+let g:unite_source_grep_default_opts = "-iHn"
 
- """ VimFiler
- nnoremap <silent> <leader>vf :<C-u>VimFiler<CR>
+" unite history/yank
+let g:unite_source_history_yank_enable = 1
+let g:unite_source_history_yank_limit = 30
+nnoremap <silent> [unite]y :<C-u>Unite history/yank<CR>
+xnoremap <silent> [unite]r d:<C-u>Unite -buffer-name=register register history/yank<CR>
 
- """ VimShell
- nnoremap <silent> <leader>vs :<C-u>VimShell<CR>
- nnoremap <silent> <leader>vsc :<C-u>VimShellCurrentDir<CR>
+"" VimFiler
+nnoremap <silent> <leader>vf :<C-u>VimFiler<CR>
 
- """ vim-ref
+"" VimShell
+nnoremap <silent> <leader>vs :<C-u>VimShell<CR>
+nnoremap <silent> <leader>vsc :<C-u>VimShellCurrentDir<CR>
+
+"" vim-ref
 
 
 
- """ quickrun
- let g:quickrun_config = {
- \   '*': {'runmode': 'async:remote:vimproc'},
+"" quickrun
+let g:quickrun_config = {
+\   '*': {'runmode': 'async:remote:vimproc'},
+\ }
+
+"c#
+let g:quickrun_config = { }
+let g:quickrun_config['cs'] = {
+ \ 'command'  : 'csc',
+ \ 'runmode'  : 'simple',
+ \ 'exec'     : ['%c /nologo %s:gs?/?\\? > /dev/null', '"%S:p:r:gs?/?\\?.exe" %a', ':call delete("%S:p:r.exe")'],
+ \ 'tempfile' : '{tempname()}.cs',
  \ }
-
- "c#
- let g:quickrun_config = { }
- let g:quickrun_config['cs'] = {
-     \ 'command'  : 'csc',
-     \ 'runmode'  : 'simple',
-     \ 'exec'     : ['%c /nologo %s:gs?/?\\? > /dev/null', '"%S:p:r:gs?/?\\?.exe" %a', ':call delete("%S:p:r.exe")'],
-     \ 'tempfile' : '{tempname()}.cs',
-     \ }
 
 
 
@@ -557,20 +562,20 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 
 
- """ TweetVim
- " Post
- nnoremap <leader>ws :<C-u>TweetVimSay<CR>
- " TL
- nnoremap <leader>wh :<C-u>TweetVimHomeTimeline<CR>
- " Mention
- nnoremap <leader>wm :<C-u>TwetVimMentions<CR>
+"" TweetVim
+" Post
+nnoremap <leader>ws :<C-u>TweetVimSay<CR>
+" TL
+nnoremap <leader>wh :<C-u>TweetVimHomeTimeline<CR>
+" Mention
+nnoremap <leader>wm :<C-u>TwetVimMentions<CR>
 
 
- """ Align
- let g:Align_xstrlen=3
+"" Align
+let g:Align_xstrlen=3
 
 
- """ vim-gitgutter
+"" vim-gitgutter
 let g:gitgutter_system_function       = 'vimproc#system'
 let g:gitgutter_system_error_function = 'vimproc#get_last_status'
 let g:gitgutter_shellescape_function  = 'vimproc#shellescape'
@@ -580,7 +585,7 @@ nnoremap <silent> <leader>gh :<C-u>GitGutterLineHighlightsToggle<CR>
 
 
 
-""" lightline
+"" lightline
 let g:lightline = {
         \ 'colorscheme': 'Tomorrow_Night',
         \ 'mode_map': {'c': 'NORMAL'},
@@ -648,9 +653,14 @@ endfunction
 
 
 
-""" clever-f
+"" clever-f
 let g:clever_f_smart_case = 1
 let g:clever_f_use_migemo = 1
 let g:clever_f_fix_key_direction = 1
 let g:clever_f_chars_match_any_signs = ';'
+
+
+"" over.vim 
+nnoremap <silent> <Leader>oc :OverCommandLine<CR>
+
 
