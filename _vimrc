@@ -25,17 +25,10 @@ endif
 "--------------------------------
 "neobundle.vim設定
 "--------------------------------
-if s:is_windows
-    if has('vim_starting')
-        set rtp+=~/vimfiles/bundle/neobundle.vim/
-    endif
-    call neobundle#rc(expand('~/vimfiles/bundle'))
-else
-    if has('vim_starting')
-        set rtp+=~/.vim/bundle/neobundle.vim/ 
-    endif
-    call neobundle#rc(expand('~/.vim/bundle'))
+if has('vim_starting')
+    set rtp+=~/.vim/bundle/neobundle.vim/ 
 endif
+call neobundle#rc(expand('~/.vim/bundle'))
 
 NeoBundleFetch "Shougo/neobundle.vim"
 
@@ -301,9 +294,6 @@ set cindent
 "コマンドラインの高さ
 set cmdheight=2
 
-"runtime path
-set runtimepath+=$HOME/vimfiles
-
 "Escの2回押しでハイライト消去
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 
@@ -501,21 +491,21 @@ nnoremap <silent> [unite]k :<C-u>Unite bookmark<CR>
 " unite.vim上でのキーマッピング
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
-" 単語単位からパス単位で削除するように変更
-nmap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+    " 単語単位からパス単位で削除するように変更
+    nmap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+    imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
 
-" ウィンドウを分割して開く
-nnoremap <silent> <buffer> <expr> <C-h> unite#do_action('split')
-inoremap <silent> <buffer> <expr> <C-h> unite#do_action('split')
+    " ウィンドウを分割して開く
+    nnoremap <silent> <buffer> <expr> <C-h> unite#do_action('split')
+    inoremap <silent> <buffer> <expr> <C-h> unite#do_action('split')
 
-" ウィンドウを縦に分割して開く
-nnoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
-inoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
+    " ウィンドウを縦に分割して開く
+    nnoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
+    inoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
 
-" ESCキーを2回押すと終了する
-nmap <silent><buffer> <ESC><ESC> q
-imap <silent><buffer> <ESC><ESC> <ESC>q
+    " ESCキーを2回押すと終了する
+    nmap <silent><buffer> <ESC><ESC> q
+    imap <silent><buffer> <ESC><ESC> <ESC>q
 endfunction
 
 " unite-grep
