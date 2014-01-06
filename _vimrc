@@ -44,6 +44,7 @@ NeoBundle 'vim-scripts/Align'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'LeafCage/yankround.vim'
 
 function! s:meet_neocomplete_requirements()
     return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
@@ -117,6 +118,13 @@ NeoBundleLazy 'basyura/TweetVim', {
     \          'TweetVimUserStream']
     \     }
     \ }
+
+NeoBundle 'rhysd/unite-codic.vim', {
+    \ 'depends' :
+    \     ['Shougo/unite.vim', 
+    \       'koron/codic-vim']
+    \ }
+
 
 "color scheme
 NeoBundleLazy 'w0ng/vim-hybrid'
@@ -475,8 +483,6 @@ nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
 " 最近使用したファイル一覧
 nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
-" カレントディレクトリ内の最近使用したファイル一覧
-nnoremap <silent> [unite]c :<C-u>UniteWithCurrentDir file_mru<CR>
 " 最近開いたファイル
 nnoremap <silent> [unite]u :<C-u>Unite buffer file_mru<CR>
 " 全部乗せ
@@ -487,6 +493,8 @@ nnoremap <silent> [unite]q :<C-u>Unite quickfix<CR>
 nnoremap <silent> [unite]k :<C-u>Unite bookmark<CR>
 " " unite-help
 " nnoremap <silent> [unite]h :<c-u>unite help<cr>
+" unite-codic
+nnoremap <silent> [unite]c :<C-u>Unite codic<CR>
 
 " unite.vim上でのキーマッピング
 autocmd FileType unite call s:unite_my_settings()
@@ -511,11 +519,8 @@ endfunction
 " unite-grep
 let g:unite_source_grep_default_opts = "-iHn"
 
-" unite history/yank
-let g:unite_source_history_yank_enable = 1
-let g:unite_source_history_yank_limit = 30
-nnoremap <silent> [unite]y :<C-u>Unite history/yank<CR>
-xnoremap <silent> [unite]r d:<C-u>Unite -buffer-name=register register history/yank<CR>
+" unite yankround
+nnoremap <silent> [unite]y :<C-u>Unite yankround<CR>
 
 "" VimFiler
 nnoremap <silent> <leader>vf :<C-u>VimFiler<CR>
@@ -652,5 +657,13 @@ let g:clever_f_chars_match_any_signs = ';'
 
 "" over.vim 
 nnoremap <silent> <Leader>oc :OverCommandLine<CR>
+
+"" yankround
+nmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap gp <Plug>(yankround-gp)
+nmap gP <Plug>(yankround-gP)
+nmap <C-p> <Plug>(yankround-prev)
+nmap <C-n> <Plug>(yankround-next)
 
 
