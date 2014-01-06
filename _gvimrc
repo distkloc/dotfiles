@@ -1,5 +1,5 @@
 
-"ウィンドウの位置、サイズ設定
+"Window position and size
 let g:save_window_file = expand('~/.vimwinpos')
 augroup SaveWindow
   autocmd!
@@ -20,7 +20,7 @@ endif
 
 
 "----------------------------------------
-" 表示設定
+" Display configuration
 "----------------------------------------
 "横スクロールバー表示
 set guioptions+=b
@@ -57,7 +57,7 @@ if has('multi_byte_ime') || has('xim')
 endif
 
 
-"フォント設定
+" font
 if has('xfontset')
 "  set guifontset=a14,r14,k14
 elseif has('mac')
@@ -69,3 +69,6 @@ elseif has('win32') || has('win64')
 elseif has('unix')
 endif
 
+" transparency
+autocmd FocusGained * set transparency=225
+autocmd FocusLost * set transparency=157
