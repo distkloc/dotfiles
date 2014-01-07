@@ -337,9 +337,8 @@ nmap     <leader>t [tabcmd]
 
 " Tab jump
 for n in range(1, 9)
-  execute 'nnoremap <silent> [tabcmd]'.n  ':<C-u>tabnext'.n.'<CR>'
+  execute 'nnoremap <silent> <leader>'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
-" t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
 
 " c 新しいタブを一番右に作る
 map <silent> [tabcmd]c :tablast <bar> tabnew<CR>
