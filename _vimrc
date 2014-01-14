@@ -130,6 +130,7 @@ NeoBundle 'rhysd/unite-codic.vim', {
 NeoBundleLazy 'w0ng/vim-hybrid'
 NeoBundleLazy 'vim-scripts/Wombat'
 NeoBundleLazy 'nanotech/jellybeans.vim'
+NeoBundleLazy 'cocopon/iceberg.vim'
 
 filetype plugin indent on
 
