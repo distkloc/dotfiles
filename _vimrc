@@ -461,6 +461,8 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 
 "" unite.vim
+" Start with insert mode
+let g:unite_enable_start_insert = 1
 " 最近使用したファイルの最大保存件数
 let g:unite_source_file_mru_limit = 20
 " 最近使用したディレクトリの最大保存件数
