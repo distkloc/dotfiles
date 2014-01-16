@@ -39,8 +39,8 @@ augroup highlightIdegraphicSpace
 augroup END
 
 "color scheme
-NeoBundleSource iceberg.vim
-colorscheme iceberg
+NeoBundleSource vim-hybrid
+colorscheme hybrid
 
 
 if has('multi_byte_ime') || has('xim')
