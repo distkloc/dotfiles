@@ -34,7 +34,6 @@ NeoBundleFetch "Shougo/neobundle.vim"
 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'osyo-manga/unite-quickfix'
-NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'mattn/webapi-vim'
@@ -42,23 +41,19 @@ NeoBundle 'mattn/wwwrenderer-vim'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'vim-scripts/Align'
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'LeafCage/yankround.vim'
+NeoBundle 'tomtom/tcomment_vim'
 
-function! s:meet_neocomplete_requirements()
-    return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
-endfunction
+NeoBundle 'Shougo/neocomplete', {
+    \ 'depends' : 'Shougo/context_filetype.vim',
+    \ 'disabled' : !has('lua'),
+    \ 'vim_version' : '7.3.885'
+    \ }
 
-if s:meet_neocomplete_requirements()
-    NeoBundle 'Shougo/neocomplete.vim'
-    NeoBundleFetch 'Shougo/neocomplcache.vim'
-else
-    NeoBundleFetch 'Shougo/neocomplete.vim'
-    NeoBundle 'Shougo/neocomplcache.vim'
-endif
-
-NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets', {
+    \ 'depends' :
+    \     ['Shougo/neosnippet.vim']
+    \ }
 
 NeoBundleLazy 'kana/vim-smartinput', { 
 	\ 'autoload' : {
@@ -95,7 +90,7 @@ NeoBundleLazy 'sgur/vim-gitgutter', {
     \ 'depends' : 
     \     ['Shougo/vimproc'],
     \ 'autoload' : {
-    \     'commands' : ['GitGutterToggle', 'GitGutterLineHighlightsToggle']
+    \     'commands' : ['GitgutterToggle', 'GitGutterLineHighlightsToggle']
     \     }
     \ }
 
@@ -125,10 +120,20 @@ NeoBundle 'rhysd/unite-codic.vim', {
     \       'koron/codic-vim']
     \ }
 
+NeoBundleLazy 'LeafCage/yankround.vim', {
+    \ 'autoload' : {
+    \   'mappings' : ['<Plug>(yankround-']
+    \   }
+    \ }
+
+NeoBundleLazy 'rhysd/clever-f.vim', {
+    \ 'autoload' : {
+    \   'mappings' : ['n', 'f', 'F', 't', 'T']
+    \   }
+    \ }
 
 "color scheme
 NeoBundleLazy 'w0ng/vim-hybrid'
-NeoBundleLazy 'vim-scripts/Wombat'
 NeoBundleLazy 'nanotech/jellybeans.vim'
 NeoBundleLazy 'cocopon/iceberg.vim'
 
@@ -390,69 +395,43 @@ call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-h)', '<BS>', '<C-h>')
 call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)', '<Enter>', '<Enter>')
 
 "" neocomplete
-if s:meet_neocomplete_requirements()
-    let g:neocomplete#enable_at_startup = 1
-    let g:neocomplete#max_list = 30
-    let g:neocomplete#auto_completion_start_length = 3
-    let g:neocomplete#enable_smart_case = 1
-    "" like AutoComplPop
-    " let g:neocomplete#enable_auto_select = 1
-    "" search with camel case like Eclipse
-    let g:neocomplete#enable_camel_case_completion = 1
-    let g:neocomplete#enable_underbar_completion = 1
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#max_list = 30
+let g:neocomplete#auto_completion_start_length = 3
+let g:neocomplete#enable_smart_case = 1
+"" like AutoComplPop
+" let g:neocomplete#enable_auto_select = 1
+"" search with camel case like Eclipse
+let g:neocomplete#enable_camel_case_completion = 1
+let g:neocomplete#enable_underbar_completion = 1
 
-    "imap <C-k> <Plug>(neocomplete#snippets_expand)
-    "smap <C-k> <Plug>(neocomplete#snippets_expand)
-    inoremap <expr><C-g> neocomplete#undo_completion()
-    inoremap <expr><C-l> neocomplete#complete_common_string()
-    "" SuperTab like snippets behavior.
-    "imap <expr><TAB> neocomplete#sources#snippets_complete#expandable() ? "\<Plug>(neocomplete#snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+"imap <C-k> <Plug>(neocomplete#snippets_expand)
+"smap <C-k> <Plug>(neocomplete#snippets_expand)
+inoremap <expr><C-g> neocomplete#undo_completion()
+inoremap <expr><C-l> neocomplete#complete_common_string()
+"" SuperTab like snippets behavior.
+"imap <expr><TAB> neocomplete#sources#snippets_complete#expandable() ? "\<Plug>(neocomplete#snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 
-    "" <TAB> or <CR>: completion.
-    " inoremap <expr><TAB> pumvisible() ? "\<C-n>" . neocomplete#close_popup() : "\<TAB>"
-    inoremap <expr><CR> pumvisible() ? neocomplete#close_popup() : "\<CR>"
-    "" <C-h>, <BS>: close popup and delete backword char.
-    " inoremap <expr><C-h> neocomplete#smart_close_popup() . "\<C-h>"
-    inoremap <expr><BS> neocomplete#smart_close_popup() . "\<C-h>"
-    inoremap <expr><C-e> neocomplete#cancel_popup()
+"" <TAB> or <CR>: completion.
+" inoremap <expr><TAB> pumvisible() ? "\<C-n>" . neocomplete#close_popup() : "\<TAB>"
+inoremap <expr><CR> pumvisible() ? neocomplete#close_popup() : "\<CR>"
+"" <C-h>, <BS>: close popup and delete backword char.
+" inoremap <expr><C-h> neocomplete#smart_close_popup() . "\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup() . "\<C-h>"
+inoremap <expr><C-e> neocomplete#cancel_popup()
 
-    " <BS> でポップアップを閉じて文字を削除
-    imap <expr> <BS> neocomplete#smart_close_popup() . "\<Plug>(smartinput_BS)"
+" <BS> でポップアップを閉じて文字を削除
+imap <expr> <BS> neocomplete#smart_close_popup() . "\<Plug>(smartinput_BS)"
 
-    " <C-h> でポップアップを閉じて文字を削除
-    imap <expr> <C-h> neocomplete#smart_close_popup() . "\<Plug>(smartinput_C-h)"
+" <C-h> でポップアップを閉じて文字を削除
+imap <expr> <C-h> neocomplete#smart_close_popup() . "\<Plug>(smartinput_C-h)"
 
-    " <CR> でポップアップ中の候補を選択し改行する
-    imap <expr> <CR> neocomplete#smart_close_popup() . "\<Plug>(smartinput_CR)"
+" <CR> でポップアップ中の候補を選択し改行する
+imap <expr> <CR> neocomplete#smart_close_popup() . "\<Plug>(smartinput_CR)"
 
-    " <CR> でポップアップ中の候補を選択するだけで、改行はしないバージョン
-    " ポップアップがないときには改行する
-    imap <expr> <CR> pumvisible() ? neocomplete#close_popup() : "\<Plug>(smartinput_CR)"
-else
-    let g:neocomplcache_enable_at_startup = 1
-    let g:neocomplcache_max_list = 30
-    let g:neocomplcache_auto_completion_start_length = 3
-    let g:neocomplcache_enable_smart_case = 1
-    "" like AutoComplPop
-    " let g:neocomplcache_enable_auto_select = 1
-    "" search with camel case like Eclipse
-    let g:neocomplcache_enable_camel_case_completion = 1
-    let g:neocomplcache_enable_underbar_completion = 1
-
-    "imap <C-k> <Plug>(neocomplcache_snippets_expand)
-    "smap <C-k> <Plug>(neocomplcache_snippets_expand)
-    inoremap <expr><C-g> neocomplcache#undo_completion()
-    inoremap <expr><C-l> neocomplcache#complete_common_string()
-    "" SuperTab like snippets behavior.
-    "imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-
-    " inoremap <expr><TAB> pumvisible() ? "\<C-n>" . neocomplcache#close_popup() : "\<TAB>"
-    inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-    "" <C-h>, <BS>: close popup and delete backword char.
-    " inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
-    inoremap <expr><BS> neocomplcache#smart_close_popup() . "\<C-h>"
-    inoremap <expr><C-e> neocomplcache#cancel_popup()
-endif
+" <CR> でポップアップ中の候補を選択するだけで、改行はしないバージョン
+" ポップアップがないときには改行する
+imap <expr> <CR> pumvisible() ? neocomplete#close_popup() : "\<Plug>(smartinput_CR)"
 
 "" <TAB> or <CR>: completion.
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
