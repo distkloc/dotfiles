@@ -115,9 +115,9 @@ NeoBundleLazy 'basyura/TweetVim', {
     \ }
 
 NeoBundle 'rhysd/unite-codic.vim', {
-    \ 'depends' :
-    \     ['Shougo/unite.vim', 
-    \       'koron/codic-vim']
+    \ 'autoload' : {
+    \   'unite_sources' : ['codic'],
+    \  }
     \ }
 
 NeoBundleLazy 'LeafCage/yankround.vim', {
