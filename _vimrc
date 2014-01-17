@@ -90,7 +90,7 @@ NeoBundleLazy 'sgur/vim-gitgutter', {
     \ 'depends' : 
     \     ['Shougo/vimproc'],
     \ 'autoload' : {
-    \     'commands' : ['GitgutterToggle', 'GitGutterLineHighlightsToggle']
+    \     'commands' : ['GitGutterToggle', 'GitGutterLineHighlightsToggle']
     \     }
     \ }
 
