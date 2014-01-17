@@ -132,10 +132,23 @@ NeoBundleLazy 'rhysd/clever-f.vim', {
     \   }
     \ }
 
+NeoBundleLazy 'ujihisa/unite-colorscheme', {
+    \   'autoload' : {
+    \       'unite_sources' : ['colorscheme'],
+    \    }
+    \ }
+
 "color scheme
-NeoBundleLazy 'w0ng/vim-hybrid'
-NeoBundleLazy 'nanotech/jellybeans.vim'
-NeoBundleLazy 'cocopon/iceberg.vim'
+function! s:LazyLoadColorSheme(repository) 
+    execute "NeoBundleLazy '". a:repository . "', { 'autoload' : {'unite_sources' : ['colorscheme'] } }"
+endfunction 
+
+call s:LazyLoadColorSheme('w0ng/vim-hybrid')
+call s:LazyLoadColorSheme('cocopon/iceberg.vim')
+call s:LazyLoadColorSheme('vim-scripts/moria')
+call s:LazyLoadColorSheme('w0ng/vim-hybrid')
+call s:LazyLoadColorSheme('vim-scripts/louver.vim')
+
 
 filetype plugin indent on
 
@@ -476,6 +489,8 @@ nnoremap <silent> [unite]k :<C-u>Unite bookmark<CR>
 " nnoremap <silent> [unite]h :<c-u>unite help<cr>
 " unite-codic
 nnoremap <silent> [unite]c :<C-u>Unite codic<CR>
+" unite-colorscheme
+nnoremap <silent> [unite]s :<C-u>Unite colorscheme<CR>
 
 " unite.vim上でのキーマッピング
 autocmd FileType unite call s:unite_my_settings()
