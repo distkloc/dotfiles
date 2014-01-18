@@ -33,16 +33,11 @@ call neobundle#rc(expand('~/.vim/bundle'))
 NeoBundleFetch "Shougo/neobundle.vim"
 
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'osyo-manga/unite-quickfix'
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'mattn/wwwrenderer-vim'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'vim-scripts/Align'
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'tpope/vim-surround'
 NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'rhysd/unite-codic.vim'
+NeoBundle 'osyo-manga/unite-quickfix'
 
 NeoBundle 'Shougo/neocomplete', {
     \ 'depends' : 'Shougo/context_filetype.vim',
@@ -54,12 +49,6 @@ NeoBundle 'Shougo/neosnippet-snippets', {
     \ 'depends' :
     \     ['Shougo/neosnippet.vim']
     \ }
-
-NeoBundleLazy 'kana/vim-smartinput', { 
-	\ 'autoload' : {
-	\	'insert' : '1'
-	\	}
-	\}
 
 NeoBundle 'Shougo/vimproc', {
   \ 'build' : {
@@ -86,11 +75,35 @@ NeoBundleLazy 'Shougo/vimfiler', {
     \     }
     \ }
 
+NeoBundleLazy 'kana/vim-smartinput', { 
+	\ 'autoload' : {
+	\	'insert' : '1'
+	\	}
+	\}
+
+NeoBundleLazy 'thinca/vim-quickrun', {
+    \ 'autoload' : {
+    \     'commands' : ['QuickRun']
+    \     }
+    \ }
+
+NeoBundleLazy 'mattn/emmet-vim', {
+    \ 'autoload' : {
+    \   'filetypes' : ['htm', 'html', 'css'],
+    \   }
+    \ }
+
 NeoBundleLazy 'sgur/vim-gitgutter', {
     \ 'depends' : 
     \     ['Shougo/vimproc'],
     \ 'autoload' : {
-    \     'commands' : ['GitGutterToggle', 'GitGutterLineHighlightsToggle']
+    \     'commands' : ['GitGutterToggle'],
+    \     }
+    \ }
+
+NeoBundleLazy 'thinca/vim-ref', {
+    \ 'autoload' : {
+    \     'commands' : ['Ref']
     \     }
     \ }
 
@@ -103,6 +116,7 @@ NeoBundleLazy 'osyo-manga/vim-over', {
 NeoBundleLazy 'basyura/TweetVim', {
     \ 'depends' :
     \     ['basyura/twibill.vim',
+    \      'mattn/webapi-vim',
     \      'tyru/open-browser.vim'],
     \ 'autoload' : {
     \     'commands' :
@@ -110,14 +124,10 @@ NeoBundleLazy 'basyura/TweetVim', {
     \          'TweetVimMentions',
     \          'TweetVimSay',
     \          'TweetVimUserTimeline',
-    \          'TweetVimUserStream']
+    \          'TweetVimUserStream'],
+    \     'unite_sources' : 
+    \         ['tweetvim']
     \     }
-    \ }
-
-NeoBundle 'rhysd/unite-codic.vim', {
-    \ 'autoload' : {
-    \   'unite_sources' : ['codic'],
-    \  }
     \ }
 
 NeoBundleLazy 'LeafCage/yankround.vim', {
@@ -126,11 +136,19 @@ NeoBundleLazy 'LeafCage/yankround.vim', {
     \   }
     \ }
 
+NeoBundleLazy 'junegunn/vim-easy-align', {
+    \ 'autoload' : {
+    \   'mappings' : ['<Plug>(EasyAlign']
+    \   }
+    \ }
+
 NeoBundleLazy 'rhysd/clever-f.vim', {
     \ 'autoload' : {
     \   'mappings' : ['n', 'f', 'F', 't', 'T']
     \   }
     \ }
+
+NeoBundleLazy 'mattn/wwwrenderer-vim'
 
 NeoBundleLazy 'ujihisa/unite-colorscheme', {
     \   'autoload' : {
