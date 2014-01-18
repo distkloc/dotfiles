@@ -509,6 +509,8 @@ nnoremap <silent> [unite]k :<C-u>Unite bookmark<CR>
 nnoremap <silent> [unite]c :<C-u>Unite codic<CR>
 " unite-colorscheme
 nnoremap <silent> [unite]s :<C-u>Unite colorscheme<CR>
+" unite-tweetvim
+nnoremap <silent> [unite]t :<C-u>Unite tweetvim<CR>
 
 " unite.vim上でのキーマッピング
 autocmd FileType unite call s:unite_my_settings()
