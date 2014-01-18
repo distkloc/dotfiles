@@ -582,11 +582,16 @@ nnoremap <leader>wh :<C-u>TweetVimHomeTimeline<CR>
 nnoremap <leader>wm :<C-u>TwetVimMentions<CR>
 
 
-"" Align
-let g:Align_xstrlen=3
+"" vim-easy-align
+" Start interactive EasyAlign in visual mode
+vmap <Enter> <Plug>(EasyAlign)
+
+" Start interactive EasyAlign with a Vim movement
+nmap <Leader>a <Plug>(EasyAlign)
 
 
 "" vim-gitgutter
+let g:gitgutter_enabled = 0
 let g:gitgutter_system_function       = 'vimproc#system'
 let g:gitgutter_system_error_function = 'vimproc#get_last_status'
 let g:gitgutter_shellescape_function  = 'vimproc#shellescape'
