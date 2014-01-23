@@ -436,12 +436,8 @@ let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#enable_camel_case_completion = 1
 let g:neocomplete#enable_underbar_completion = 1
 
-"imap <C-k> <Plug>(neocomplete#snippets_expand)
-"smap <C-k> <Plug>(neocomplete#snippets_expand)
 inoremap <expr><C-g> neocomplete#undo_completion()
 inoremap <expr><C-l> neocomplete#complete_common_string()
-"" SuperTab like snippets behavior.
-"imap <expr><TAB> neocomplete#sources#snippets_complete#expandable() ? "\<Plug>(neocomplete#snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 
 "" <TAB> or <CR>: completion.
 " inoremap <expr><TAB> pumvisible() ? "\<C-n>" . neocomplete#close_popup() : "\<TAB>"
@@ -450,6 +446,8 @@ inoremap <expr><CR> pumvisible() ? neocomplete#close_popup() : "\<CR>"
 " inoremap <expr><C-h> neocomplete#smart_close_popup() . "\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup() . "\<C-h>"
 inoremap <expr><C-e> neocomplete#cancel_popup()
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 " <BS> でポップアップを閉じて文字を削除
 imap <expr> <BS> neocomplete#smart_close_popup() . "\<Plug>(smartinput_BS)"
@@ -464,10 +462,27 @@ imap <expr> <CR> neocomplete#smart_close_popup() . "\<Plug>(smartinput_CR)"
 " ポップアップがないときには改行する
 imap <expr> <CR> pumvisible() ? neocomplete#close_popup() : "\<Plug>(smartinput_CR)"
 
-"" <TAB> or <CR>: completion.
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+"" neosnippet
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+	\ "\<Plug>(neosnippet_expand_or_jump)"
+	\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+	\ "\<Plug>(neosnippet_expand_or_jump)"
+	\: "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+" user dictionary
+let g:neosnippet#snippets_directory='~\.mysnippets'
 
 
 "" unite.vim
