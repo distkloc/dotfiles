@@ -597,6 +597,7 @@ nmap <Leader>a <Plug>(EasyAlign)
 
 "" vim-gitgutter
 let g:gitgutter_enabled = 0
+let g:gitgutter_highlight_lines = 1
 let g:gitgutter_system_function       = 'vimproc#system'
 let g:gitgutter_system_error_function = 'vimproc#get_last_status'
 let g:gitgutter_shellescape_function  = 'vimproc#shellescape'
