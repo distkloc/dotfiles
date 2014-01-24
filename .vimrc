@@ -36,8 +36,9 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'rhysd/unite-codic.vim'
 NeoBundle 'osyo-manga/unite-quickfix'
+
+NeoBundleLazy 'mattn/wwwrenderer-vim'
 
 NeoBundle 'Shougo/neocomplete', {
     \ 'depends' : 'Shougo/context_filetype.vim',
@@ -148,10 +149,16 @@ NeoBundleLazy 'rhysd/clever-f.vim', {
     \   }
     \ }
 
-NeoBundleLazy 'mattn/wwwrenderer-vim'
+NeoBundleLazy 'rhysd/unite-codic.vim', {
+    \ 'depends' : 'koron/codic-vim',
+    \    'autoload' : {
+    \       'unite_sources' : ['codic'],
+    \    }
+    \ }
+
 
 NeoBundleLazy 'ujihisa/unite-colorscheme', {
-    \   'autoload' : {
+    \    'autoload' : {
     \       'unite_sources' : ['colorscheme'],
     \    }
     \ }
