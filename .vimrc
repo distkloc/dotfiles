@@ -571,14 +571,6 @@ let g:quickrun_config['cs'] = {
 
 
 
- " ローカルに配置する設定ファイル
- " if filereadable(expand('~/.vimrc.local'))
- "  source ~/.vimrc.local
- " endif
-
-
-
-
 "" TweetVim
 " Post
 nnoremap <leader>ws :<C-u>TweetVimSay<CR>
