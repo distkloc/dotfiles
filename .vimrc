@@ -534,17 +534,8 @@ function! s:unite_my_settings()
     nmap <buffer> <C-w> <Plug>(unite_delete_backward_path)
     imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
 
-    " ウィンドウを分割して開く
-    nnoremap <silent> <buffer> <expr> <C-h> unite#do_action('split')
-    inoremap <silent> <buffer> <expr> <C-h> unite#do_action('split')
-
-    " ウィンドウを縦に分割して開く
-    nnoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
-    inoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
-
-    " ESCキーを2回押すと終了する
-    nmap <silent><buffer> <ESC><ESC> q
-    imap <silent><buffer> <ESC><ESC> <ESC>q
+    " Close Unite buffer
+    imap <silent><buffer> <C-q> i_<Plug>(unite_exit)
 endfunction
 
 " unite-grep
