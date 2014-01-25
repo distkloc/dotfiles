@@ -349,8 +349,8 @@ set cmdheight=2
 "Escの2回押しでハイライト消去
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 
-"grepをackにする
-set grepprg=ack
+" Use pt as grep
+set grepprg=pt
 " "grep後にquickfixを開く
 " augroup grepOpen
   " autocmd!
@@ -552,7 +552,11 @@ function! s:unite_my_settings()
 endfunction
 
 " unite-grep
-let g:unite_source_grep_default_opts = "-iHn"
+nnoremap <silent> [unite]g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+if executable('pt')
+  let g:unite_source_grep_command = 'pt'
+  let g:unite_source_grep_max_candidates = 500
+endif
 
 " unite yankround
 nnoremap <silent> [unite]y :<C-u>Unite yankround<CR>
