@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DOT_FILES=( .vim .vimrc .gvimrc .zshrc )
+DOT_FILES=( .vim .vimrc .gvimrc .zshrc .zshenv )
 
 for file in ${DOT_FILES[@]}
 do
@@ -11,3 +11,4 @@ do
     echo "Symlink was created: $file"
   fi
 done
+
