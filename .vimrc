@@ -420,6 +420,12 @@ set diffopt=vertical
 nnoremap <Leader>di :<C-u>diffsplit<Space>#
 
 
+augroup DisableAutoCommentLine
+	autocmd!
+	autocmd BufEnter * setlocal formatoptions-=r
+	autocmd BufEnter * setlocal formatoptions-=o
+augroup END
+
 
 "+plugin----------------------------------------------------------
 "plugin設定は全て.vimrcへ
