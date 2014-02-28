@@ -16,3 +16,7 @@ cdpath=(.. ~ ~/src)
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 alias vi=vim
 
+
+# git
+alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit"
+
