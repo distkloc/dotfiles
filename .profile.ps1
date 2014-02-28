@@ -28,7 +28,7 @@ if (Test-Path $HistoryFile) {
 # Alias
 Set-Alias gs Invoke-GitStatus
 Set-Alias gskip Invoke-GitUpdateIndexSkipWorktree
-Set-Alias gnoskip Invoke-GitUpdateIndexSkipWorktree
+Set-Alias gnoskip Invoke-GitUpdateIndexNoSkipWorktree
 Set-Alias gignored Invoke-GitLsFiles
 Set-Alias gnffcmerge Invoke-GitNoFastForwordNoMerge
 Set-Alias glg Invoke-CoolGitLog
@@ -41,12 +41,12 @@ function Invoke-GitStatus
 
 function Invoke-GitUpdateIndexSkipWorktree
 {
-    git update-index --skip-worktree ($args -join " ")
+    git update-index --skip-worktree $args
 }
 
 function Invoke-GitUpdateIndexNoSkipWorktree
 {
-    git update-index --no-skip-worktree ($args -join " ")
+    git update-index --no-skip-worktree $args
 }
 
 function Invoke-GitLsFiles
