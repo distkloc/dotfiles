@@ -32,6 +32,7 @@ Set-Alias gnoskip Invoke-GitUpdateIndexSkipWorktree
 Set-Alias gignored Invoke-GitLsFiles
 Set-Alias gnffcmerge Invoke-GitNoFastForwordNoMerge
 Set-Alias glg Invoke-CoolGitLog
+Set-Alias cdw Invoke-CdWwwroot
 
 function Invoke-GitStatus
 {
@@ -61,4 +62,11 @@ function Invoke-GitNoFastForwordNoMerge ($branch)
 function Invoke-CoolGitLog
 {
     git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+}
+
+
+
+function Invoke-CdWwwroot
+{
+    cd C:/inetpub/wwwroot/
 }
