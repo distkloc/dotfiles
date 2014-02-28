@@ -427,6 +427,12 @@ augroup DisableAutoCommentLine
 augroup END
 
 
+" Open new lines without going into insert mode
+" http://www.vimbits.com/bits/493
+nnoremap <leader>o o<esc>
+nnoremap <leader>O O<esc>
+
+
 "+plugin----------------------------------------------------------
 "plugin設定は全て.vimrcへ
 
