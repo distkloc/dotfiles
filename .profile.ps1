@@ -24,8 +24,41 @@ if (Test-Path $HistoryFile) {
  Import-Clixml $HistoryFile | Add-History
 }
 
-# display current timestamp on prompt
-# function prompt {
-  # (Get-Date).ToString("yyyy/MM/dd hh:mm:ss:fff") + " " + $(get-location) + "> "
-# }
 
+# Alias
+Set-Alias gs Invoke-GitStatus
+Set-Alias gskip Invoke-GitUpdateIndexSkipWorktree
+Set-Alias gnoskip Invoke-GitUpdateIndexSkipWorktree
+Set-Alias gignored Invoke-GitLsFiles
+Set-Alias gnffcmerge Invoke-GitNoFastForwordNoMerge
+Set-Alias glg Invoke-CoolGitLog
+
+function Invoke-GitStatus
+{
+    git status
+}
+
+function Invoke-GitUpdateIndexSkipWorktree
+{
+    git update-index --skip-worktree ($args -join " ")
+}
+
+function Invoke-GitUpdateIndexNoSkipWorktree
+{
+    git update-index --no-skip-worktree ($args -join " ")
+}
+
+function Invoke-GitLsFiles
+{
+    git ls-files -v | grep "^[Sa-z]"
+}
+
+function Invoke-GitNoFastForwordNoMerge ($branch)
+{
+	git merge --no-ff --no-commit $branch
+}
+
+function Invoke-CoolGitLog
+{
+    git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+}
