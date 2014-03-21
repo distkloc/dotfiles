@@ -12,3 +12,7 @@ do
   fi
 done
 
+# vim directory
+mkdir ~/.vim/backup
+mkdir ~/.vim/swap
+
