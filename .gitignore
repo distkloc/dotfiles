@@ -1,5 +1,4 @@
-/vimfiles/bundle/
-/vimbkup/
+/.vim/
 
 # modified directories history
 .netrwhist

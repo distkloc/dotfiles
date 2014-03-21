@@ -347,8 +347,8 @@ imap <C-j> <esc>
 set number
 
 "自動バックアップファイルのパス
-set backupdir=~/dotfiles/vimbkup
-let &directory = &backupdir
+set backupdir=~/.vim/backup
+set directory=~/.vim/swap 
 
 "C言語スタイルのインデント
 set cindent
