@@ -1,5 +1,13 @@
 #!/bin/sh
 
+# neobundle.vim
+bundle_path=~/dotfiles/.vim/bundle
+if [ ! -d $bundle_path ]; then
+    mkdir -p $bundle_path
+    git clone git://github.com/Shougo/neobundle.vim ${bundle_path}/neobundle.vim
+fi
+
+# symlink
 DOT_FILES=( .vim .vimrc .gvimrc .zshrc .zshenv )
 
 for file in ${DOT_FILES[@]}
