@@ -80,6 +80,12 @@ NeoBundleLazy 'Shougo/vimfiler', {
     \     }
     \ }
 
+NeoBundleLazy 'Shougo/neomru.vim', {
+    \    'autoload' : {
+    \       'unite_sources' : ['file_mru', 'directory_mru']
+    \    }
+    \ }
+
 NeoBundleLazy 'kana/vim-smartinput', { 
 	\ 'autoload' : {
 	\	'insert' : '1'
