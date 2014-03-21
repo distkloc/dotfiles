@@ -504,8 +504,24 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
-" user dictionary
-let g:neosnippet#snippets_directory='~\.mysnippets'
+
+
+function! s:LoadVBSSnippet() "{{{
+    if !isdirectory(expand("~/.vim/bundle/mysnippets/vbs.snip/"))
+        echo "install mysnippets..."
+        :call system("git clone https://gist.github.com/9682844.git ~/.vim/bundle/mysnippets/vbs.snip")
+    endif
+
+    NeoSnippetSource ~/.vim/bundle/mysnippets/vbs.snip/vbs.snip
+
+    let g:neosnippet#scope_aliases['vb'] = 'vb,aspvbs'
+endfunction "}}}
+
+augroup LoadVBSSnippet
+    autocmd!
+    autocmd FileType vb,aspvbs call s:LoadVBSSnippet()
+augroup END
+
 
 
 "" unite.vim
