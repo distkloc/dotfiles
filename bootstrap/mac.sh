@@ -1,5 +1,15 @@
 #!/bin/sh
 
+# homebrew
+if ! type "brew" > /dev/null; then
+    ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+fi
+
+# nodebrew
+if ! type "nodebrew" > /dev/null; then
+    curl -L git.io/nodebrew | perl - setup
+fi
+
 # neobundle.vim
 bundle_path=~/dotfiles/.vim/bundle
 if [ ! -d $bundle_path ]; then
