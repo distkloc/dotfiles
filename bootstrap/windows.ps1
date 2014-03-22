@@ -57,3 +57,9 @@ else
     cmd /c mklink $profile "$Env:HOME\dotfiles\.profile.ps1"
 }
 
+
+# nodist
+if (-not (Get-Command "nodist" -ErrorAction SilentlyContinue))
+{
+    cinst nodist -Pre
+}
