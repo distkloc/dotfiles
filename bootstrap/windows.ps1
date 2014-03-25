@@ -11,11 +11,13 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 
 
 # Create vim directories and install neobundle
-$vimDir = "Env:HOME\dotfiles\.vim"
+$vimDir = "$Env:HOME\dotfiles\.vim"
+
+
 if(-not (Test-Path $vimDir))
 {
-    @("bundle", "backup", "swap")
-        | % { New-Item -ItemType Directory -Path "$vimDir\$_" }
+    @("bundle", "backup", "swap") |
+        % { New-Item -Path "$vimDir\$_" -ItemType Directory }
 
     git clone git://github.com/Shougo/neobundle.vim "$vimDir\bundle\neobundle.vim"
 }
@@ -32,31 +34,21 @@ function Invoke-Mklink($name)
     }
     else
     {
-        $dotfiles = "$Env:HOME\dotfiles"
+        $realPath = "$Env:HOME\dotfiles\$name"
 
-        if(Test-Path $link -pathType container)
+        if(Test-Path $realPath -pathType container)
         {
-            cmd /c mklink /d $link "$dotfiles\$name"
+            cmd /c mklink /d $link $realPath
         }
         else
         {
-            cmd /c mklink $link "$dotfiles\$name"
+            cmd /c mklink $link $realPath
         }
     }
 }
 
-@(".vimrc", ".gvimrc", ".vim")
-    | % { Invoke-Mklink $_ }
-
-if((Test-Path $profile))
-{
-    Write-Output "$profile already exists."
-}
-else
-{
-    cmd /c mklink $profile "$Env:HOME\dotfiles\.profile.ps1"
-}
-
+@(".vimrc", ".gvimrc", ".vim") |
+    % { Invoke-Mklink $_ }
 
 # nodist
 if (-not (Get-Command "nodist" -ErrorAction SilentlyContinue))
