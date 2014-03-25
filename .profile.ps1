@@ -1,11 +1,11 @@
 ### Powershell initialization script ###
 # Call from ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1 as follows:
 # 	. "~/dotfiles/.profile.ps1"
-# The head '.' is necessary.
+# The head '.' is necessary. This file needs to be loaded before posh-git profile file.
 ########################################
 
 
-# path for git
+# path for git (x86-64)
 $env:path += ";" + (Get-Item "Env:\ProgramFiles(x86)").Value + "\Git\bin"
 
 # saved history count 
