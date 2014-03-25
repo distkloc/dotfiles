@@ -64,7 +64,7 @@ elseif has('mac')
     set guifont=Inconsolata_for_Powerline:h14
     set guifontwide=Ricty:h14
 elseif has('win32') || has('win64')
-    set guifont=Consolas_for_Powerline_FixedD:h13
+    set guifont=Consolas:h13
     set guifontwide=Consolas:h13:cSHIFTJIS
 elseif has('unix')
 endif
