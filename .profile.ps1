@@ -4,8 +4,6 @@
 # The head '.' is necessary.
 ########################################
 
-# Load posh-git example profile
-. "C:\tools\poshgit\dahlbyk-posh-git-f9361ca\profile.example.ps1"
 
 # path for git
 $env:path += ";" + (Get-Item "Env:ProgramFiles").Value + "\Git\bin"
