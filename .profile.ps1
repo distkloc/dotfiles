@@ -6,7 +6,7 @@
 
 
 # path for git
-$env:path += ";" + (Get-Item "Env:ProgramFiles").Value + "\Git\bin"
+$env:path += ";" + (Get-Item "Env:\ProgramFiles(x86)").Value + "\Git\bin"
 
 # saved history count 
 $MaximumHistoryCount = 7000
