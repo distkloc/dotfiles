@@ -32,6 +32,11 @@ Set-Alias gnffcmerge Invoke-GitNoFastForwordNoMerge
 Set-Alias glg Invoke-CoolGitLog
 Set-Alias cdw Invoke-CdWwwroot
 
+$vimpath = "$Env:HOME\programs\vim74-kaoriya-win64"
+Set-Alias vim "$vimpath\vim.exe"
+Set-Alias gvim "$vimpath\gvim.exe"
+
+
 function Invoke-GitStatus
 {
     git status
@@ -61,7 +66,6 @@ function Invoke-CoolGitLog
 {
     git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
 }
-
 
 
 function Invoke-CdWwwroot
