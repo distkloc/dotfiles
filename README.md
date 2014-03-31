@@ -1,18 +1,18 @@
-# My very own dotfiles
+# My dotfiles
 
 ## Installation
 
-### Clone repository
-
-```
-git clone git@github.com:distkloc/dotfiles.git ~/dotfiles
-```
-
 ## OSX
+
+### Prerequisites
+
+* Git
+* Homebrew
 
 ### Run the setup script
 
 ```
+git clone git@github.com:distkloc/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 bootstrap/mac.sh
 ```
@@ -33,31 +33,29 @@ nodebrew use stable
 
 ## Windows (with PowerShell)
 
+### Prerequisites
+
+* Chocolatey
+* Git
+
 ### Change PowerShell execution policy
 
 ```
 Set-ExecutionPolicy RemoteSigned
 ```
 
-### Install Chocolatey
+### Run the setup script
 
-Because this installation uses git, you need to install it somewhere.
-
-Use chocolatey here.
-
-[Installation · chocolatey/chocolatey Wiki](https://github.com/chocolatey/chocolatey/wiki/Installation)
+```
+git clone git@github.com:distkloc/dotfiles.git $HOME\dotfiles
+cd ~/dotfiles
+./bootstrap/windows.ps1
+```
 
 ### Install chocolatey packages
 
 ```
-cd ~/dotfiles
 cinst chocolatey/packages.config
-```
-
-### Run the script
-
-```
-./bootstrap/windows.ps1
 ```
 
 ### Select node.js version with nodist
