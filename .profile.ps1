@@ -6,7 +6,11 @@
 
 
 # path for git (x86-64)
-$env:path += ";" + (Get-Item "Env:\ProgramFiles(x86)").Value + "\Git\bin"
+$Env:Path += ";" + (Get-Item "Env:\ProgramFiles(x86)").Value + "\Git\bin"
+
+# GOPATH
+$Env:GOPATH = "$HOME\go"
+$Env:Path += ";$Env:GOPATH\bin"
 
 # saved history count 
 $MaximumHistoryCount = 7000
