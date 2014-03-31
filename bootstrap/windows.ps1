@@ -10,6 +10,10 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 }
 
 
+# crlf
+git config --global core.autocrlf true
+
+
 # Create vim directories and install neobundle
 $vimDir = "$Env:HOME\dotfiles\.vim"
 
