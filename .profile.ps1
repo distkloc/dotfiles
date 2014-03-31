@@ -32,9 +32,9 @@ Set-Alias gnffcmerge Invoke-GitNoFastForwordNoMerge
 Set-Alias glg Invoke-CoolGitLog
 Set-Alias cdw Invoke-CdWwwroot
 
-$vimpath = "$Env:HOME\programs\vim74-kaoriya-win64"
-Set-Alias vim "$vimpath\vim.exe"
-Set-Alias gvim "$vimpath\gvim.exe"
+$vimpath = "$HOME\programs\vim74-kaoriya-win64"
+New-Alias vim "$vimpath\vim.exe" -Force
+New-Alias gvim "$vimpath\gvim.exe" -Force
 
 
 function Invoke-GitStatus
