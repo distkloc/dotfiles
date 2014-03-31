@@ -39,4 +39,5 @@ done
 # vim directory
 mkdir ~/.vim/backup
 mkdir ~/.vim/swap
+mkdir ~/.vim/undo
 

@@ -348,9 +348,9 @@ imap <C-j> <esc>
 "行番号表示
 set number
 
-"自動バックアップファイルのパス
 set backupdir=~/.vim/backup
 set directory=~/.vim/swap 
+set undodir=~/.vim/undo
 
 "C言語スタイルのインデント
 set cindent
