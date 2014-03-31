@@ -149,6 +149,12 @@ NeoBundleLazy 'junegunn/vim-easy-align', {
     \   }
     \ }
 
+NeoBundleLazy 'PProvost/vim-ps1', {
+    \ 'autoload' : {
+    \     'filetypes' : ['ps1']
+    \     }
+    \ }
+
 NeoBundleLazy 'rhysd/clever-f.vim', {
     \ 'autoload' : {
     \   'mappings' : ['n', 'f', 'F', 't', 'T']
