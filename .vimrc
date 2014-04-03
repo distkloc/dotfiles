@@ -36,7 +36,6 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'Lokaltog/vim-easymotion'
 
 NeoBundleLazy 'mattn/wwwrenderer-vim'
 
@@ -135,6 +134,12 @@ NeoBundleLazy 'basyura/TweetVim', {
     \     'unite_sources' : 
     \         ['tweetvim']
     \     }
+    \ }
+
+NeoBundleLazy 'Lokaltog/vim-easymotion' , {
+    \ 'autoload' : {
+    \   'mappings' : ['<Plug>(easymotion-']
+    \   }
     \ }
 
 NeoBundleLazy 'LeafCage/yankround.vim', {
