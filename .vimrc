@@ -36,6 +36,7 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'Lokaltog/vim-easymotion'
 
 NeoBundleLazy 'mattn/wwwrenderer-vim'
 
@@ -153,12 +154,6 @@ NeoBundleLazy 'PProvost/vim-ps1', {
     \ 'autoload' : {
     \     'filename_patterns' : ['\.ps1$']
     \     }
-    \ }
-
-NeoBundleLazy 'rhysd/clever-f.vim', {
-    \ 'autoload' : {
-    \   'mappings' : ['n', 'f', 'F', 't', 'T']
-    \   }
     \ }
 
 NeoBundleLazy 'rhysd/unite-codic.vim', {
@@ -726,13 +721,6 @@ endfunction
 
 
 
-"" clever-f
-let g:clever_f_smart_case = 1
-let g:clever_f_use_migemo = 1
-let g:clever_f_fix_key_direction = 1
-let g:clever_f_chars_match_any_signs = ';'
-
-
 "" over.vim 
 nnoremap <silent> <Leader>oc :OverCommandLine<CR>
 
@@ -743,5 +731,34 @@ nmap gp <Plug>(yankround-gp)
 nmap gP <Plug>(yankround-gP)
 nmap <C-p> <Plug>(yankround-prev)
 nmap <C-n> <Plug>(yankround-next)
+
+
+"" EasyMotion
+let g:EasyMotion_do_mapping = 0
+
+map f <Plug>(easymotion-fl)
+map t <Plug>(easymotion-tl)
+map F <Plug>(easymotion-Fl)
+map T <Plug>(easymotion-Tl)
+
+nmap s <Plug>(easymotion-s2)
+xmap s <Plug>(easymotion-s2)
+" Avoid conflict between vim-easymotion and surround.vim
+omap z <Plug>(easymotion-s2)
+
+" Turn on case sensitive feature
+let g:EasyMotion_smartcase = 1
+
+let g:EasyMotion_enter_jump_first = 1
+let g:EasyMotion_space_jump_first = 1
+
+" Extend search motions with vital-over command line interface
+" Incremental highlight of all the matches
+" Now, you don't need to repetitively press `n` or `N` with EasyMotion feature
+" `<Tab>` & `<S-Tab>` to scroll up/down a page of next match
+" :h easymotion-command-line
+nmap g/ <Plug>(easymotion-sn)
+xmap g/ <Plug>(easymotion-sn)
+omap g/ <Plug>(easymotion-tn)
 
 
