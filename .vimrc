@@ -36,7 +36,6 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'osyo-manga/unite-quickfix'
 
 NeoBundleLazy 'mattn/wwwrenderer-vim'
 
@@ -96,7 +95,7 @@ NeoBundleLazy 'thinca/vim-quickrun', {
 
 NeoBundleLazy 'mattn/emmet-vim', {
     \ 'autoload' : {
-    \   'filetypes' : ['htm', 'html', 'css'],
+    \   'filetypes' : ['html', 'css'],
     \   }
     \ }
 
@@ -139,7 +138,8 @@ NeoBundleLazy 'basyura/TweetVim', {
 
 NeoBundleLazy 'LeafCage/yankround.vim', {
     \ 'autoload' : {
-    \   'mappings' : ['<Plug>(yankround-']
+    \   'mappings' : ['<Plug>(yankround-'],
+    \   'unite_sources' : ['yankround']
     \   }
     \ }
 
@@ -168,6 +168,11 @@ NeoBundleLazy 'rhysd/unite-codic.vim', {
     \    }
     \ }
 
+NeoBundleLazy 'osyo-manga/unite-quickfix', {
+    \   'autoload' : {
+    \       'unite_sources' : ['quickfix']
+    \    }
+    \ }
 
 NeoBundleLazy 'ujihisa/unite-colorscheme', {
     \    'autoload' : {
