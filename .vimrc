@@ -151,7 +151,7 @@ NeoBundleLazy 'junegunn/vim-easy-align', {
 
 NeoBundleLazy 'PProvost/vim-ps1', {
     \ 'autoload' : {
-    \     'filetypes' : ['ps1']
+    \     'filename_patterns' : ['\.ps1$']
     \     }
     \ }
 
