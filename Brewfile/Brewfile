@@ -27,11 +27,12 @@ cask install skype || true
 cask install alfred || true
 cask install kobito || true
 cask install iterm2 || true
-cask install soundflower || true
 cask install appcleaner || true
+cask install soundflower || true
+cask install supercollider || true
+cask install processing || upgrade processing || true
 cask install amazon-cloud-player || upgrade amazon-cloud-player || true
 cask install bettertouchtool || upgrade bettertouchtool || true
-cask install processing || upgrade processing || true
 cask install google-japanese-ime || upgrade google-japanese-ime || true
 
 # link
