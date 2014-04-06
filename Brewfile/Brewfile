@@ -35,8 +35,6 @@ cask install amazon-cloud-player || upgrade amazon-cloud-player || true
 cask install bettertouchtool || upgrade bettertouchtool || true
 cask install google-japanese-ime || upgrade google-japanese-ime || true
 
-# link
-brew cask alfred link
 
 # Remove outdated versions from the cellar
 cleanup
