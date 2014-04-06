@@ -41,3 +41,6 @@ mkdir ~/.vim/backup
 mkdir ~/.vim/swap
 mkdir ~/.vim/undo
 
+
+# submodule initialization
+git submodule update --init
