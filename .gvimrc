@@ -77,8 +77,9 @@ augroup SetTransparency
         autocmd FocusGained * set transparency=7
         autocmd FocusLost * set transparency=40
     else
+        autocmd GuiEnter * set transparency=225
         autocmd FocusGained * set transparency=225
-        autocmd FocusLost * set transparency=157
+        autocmd FocusLost * set transparency=192
     endif
 augroup END
 
