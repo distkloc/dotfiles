@@ -6,6 +6,7 @@ update
 
 # Add Repository
 tap phinze/homebrew-cask
+tap sanemat/font
 
 # Packages
 install brew-cask || true
@@ -15,6 +16,7 @@ install zsh || true
 install go || true
 install tmux || true
 install rbenv || true
+install ricty || true
 
 
 # .dmg
