@@ -31,6 +31,7 @@ cask install kobito || true
 cask install iterm2 || true
 cask install appcleaner || true
 cask install java || true
+cask install mplayerx || true
 cask install soundflower || true
 cask install supercollider || true
 cask install processing || upgrade processing || true
