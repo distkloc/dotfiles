@@ -17,6 +17,7 @@ install go || true
 install tmux || true
 install rbenv || true
 install ruby-build || true
+install readline || true
 install ricty || true
 
 
