@@ -16,6 +16,7 @@ install zsh || true
 install go || true
 install tmux || true
 install rbenv || true
+install ruby-build || true
 install ricty || true
 
 
