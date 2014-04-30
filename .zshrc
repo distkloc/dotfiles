@@ -9,7 +9,7 @@ eval "$(rbenv init -)"
 
 
 setopt AUTO_CD
-cdpath=(.. ~ ~/src)
+cdpath=(.. ~ ~/dev)
 
 
 # vim
