@@ -5,6 +5,7 @@ update
 # upgrade
 
 # Add Repository
+tap homebrew/versions
 tap phinze/homebrew-cask
 tap sanemat/font
 
@@ -19,6 +20,7 @@ install rbenv || true
 install ruby-build || true
 install readline || true
 install ricty || true
+install heroku-toolbelt
 
 
 # .dmg
