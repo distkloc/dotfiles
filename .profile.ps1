@@ -12,6 +12,9 @@ $Env:Path += ";" + (Get-Item "Env:\ProgramFiles(x86)").Value + "\Git\bin"
 $Env:GOPATH = "$HOME\go"
 $Env:Path += ";$Env:GOPATH\bin"
 
+# msys
+$Env:Path += ";C:\MinGW\msys\1.0\bin"
+
 # saved history count 
 $MaximumHistoryCount = 7000
 
