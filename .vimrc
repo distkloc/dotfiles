@@ -155,6 +155,19 @@ NeoBundleLazy 'junegunn/vim-easy-align', {
     \   }
     \ }
 
+NeoBundleLazy 'tyru/open-browser.vim', {
+    \ 'autoload' : {
+    \   'functions' : ['openbrowser#load']
+    \ }}
+
+NeoBundleLazy 'superbrothers/vim-quickrun-markdown-gfm', {
+    \ 'depends' :
+    \     ['thinca/vim-quickrun'],
+    \ 'autoload' : {
+    \     'on_source' : ['vim-quickrun']
+    \     }
+    \ }
+
 NeoBundleLazy 'PProvost/vim-ps1', {
     \ 'autoload' : {
     \     'filename_patterns' : ['\.ps1$']
@@ -633,6 +646,14 @@ let g:quickrun_config['cs'] = {
  \ 'tempfile' : '{tempname()}.cs',
  \ }
 
+let g:quickrun_config = {
+\   'markdown': {
+\     'type': 'markdown/gfm',
+\     'outputter': 'browser'
+\   }
+\ }
+
+nnoremap <leader>qm :<C-u>QuickRun markdown<CR>
 
 
 "" TweetVim
