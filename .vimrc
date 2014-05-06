@@ -161,6 +161,12 @@ NeoBundleLazy 'PProvost/vim-ps1', {
     \     }
     \ }
 
+NeoBundleLazy 'groenewege/vim-less', {
+    \ 'autoload' : {
+    \     'filename_patterns' : ['\.less$']
+    \     }
+    \ }
+
 NeoBundleLazy 'rhysd/unite-codic.vim', {
     \ 'depends' : 'koron/codic-vim',
     \    'autoload' : {
