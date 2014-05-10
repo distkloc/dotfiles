@@ -24,7 +24,7 @@ if [ ! -d $bundle_path ]; then
 fi
 
 # symlink
-DOT_FILES=( .vim .vimrc .gvimrc .zshrc .zshenv )
+DOT_FILES=( .vim .vimrc .gvimrc .zshrc .zshenv .tmux.conf )
 
 for file in ${DOT_FILES[@]}
 do
