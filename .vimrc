@@ -95,7 +95,7 @@ NeoBundleLazy 'thinca/vim-quickrun', {
 
 NeoBundleLazy 'mattn/emmet-vim', {
     \ 'autoload' : {
-    \   'filetypes' : ['html', 'css'],
+    \   'filetypes' : ['html', 'css', 'eruby'],
     \   }
     \ }
 
