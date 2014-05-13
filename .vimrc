@@ -59,6 +59,8 @@ NeoBundle 'Shougo/vimproc', {
   \    },
   \ }
 
+NeoBundle 'tpope/vim-rails'
+
 NeoBundleLazy 'Shougo/vimshell', {
     \ 'autoload' : {
     \     'commands' : ['VimShell', 'VimShellSendString', 'VimShellCurrentDir']
