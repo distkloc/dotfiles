@@ -21,6 +21,7 @@ install ruby-build || true
 install readline || true
 install ricty || true
 install heroku-toolbelt
+install z
 
 
 # .dmg

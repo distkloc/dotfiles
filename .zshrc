@@ -11,6 +11,11 @@ eval "$(rbenv init -)"
 setopt AUTO_CD
 cdpath=(.. ~ ~/dev)
 
+# z
+. `brew --prefix`/etc/profile.d/z.sh
+function precmd () {
+   z --add "$(pwd -P)"
+}
 
 # vim
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
