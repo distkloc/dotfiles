@@ -469,12 +469,8 @@ nnoremap <leader>O O<esc>
 "plugin設定は全て.vimrcへ
 
 if !s:is_windows
-	NeoBundleSource seoul256.vim
-	" seoul256 (dark):
-	"   Range:   233 (darkest) ~ 239 (lightest)
-	"   Default: 237
-	let g:seoul256_background = 235
-	colorscheme seoul256
+	NeoBundleSource vim-hybrid
+	colorscheme hybrid
 endif
 
 "" NERD_comments
