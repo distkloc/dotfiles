@@ -211,6 +211,7 @@ call s:LazyLoadColorSheme('cocopon/iceberg.vim')
 call s:LazyLoadColorSheme('vim-scripts/moria')
 call s:LazyLoadColorSheme('w0ng/vim-hybrid')
 call s:LazyLoadColorSheme('vim-scripts/louver.vim')
+call s:LazyLoadColorSheme('junegunn/seoul256.vim')
 
 
 filetype plugin indent on
@@ -466,6 +467,15 @@ nnoremap <leader>O O<esc>
 
 "+plugin----------------------------------------------------------
 "plugin設定は全て.vimrcへ
+
+if !s:is_windows
+	NeoBundleSource seoul256.vim
+	" seoul256 (dark):
+	"   Range:   233 (darkest) ~ 239 (lightest)
+	"   Default: 237
+	let g:seoul256_background = 235
+	colorscheme seoul256
+endif
 
 "" NERD_comments
 let NERDSpaceDelims = 1
