@@ -28,9 +28,9 @@ if(-not (Test-Path $vimDir))
 
 
 # Symlink
-function Invoke-Mklink($name)
+function Invoke-Mklink($base, $dest)
 {
-    $link = "$Env:HOME\$name"
+    $link = "$Env:HOME\$dest"
 
     if((Test-Path $link))
     {
@@ -38,7 +38,7 @@ function Invoke-Mklink($name)
     }
     else
     {
-        $realPath = "$Env:HOME\dotfiles\$name"
+        $realPath = "$Env:HOME\dotfiles\.$base"
 
         if(Test-Path $realPath -pathType container)
         {
@@ -51,8 +51,13 @@ function Invoke-Mklink($name)
     }
 }
 
-@(".vimrc", ".gvimrc", ".vim") |
-    % { Invoke-Mklink $_ }
+$dothash = @{ 
+    vimrc=".vimrc"
+    gvimrc=".gvimrc"
+    vim="vimfiles"
+}
+
+$dothash.Keys | % { Invoke-Mklink $_ $dothash[$_] }
 
 
 
