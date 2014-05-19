@@ -1,4 +1,6 @@
-set nocompatible
+if has('vim_starting')
+	set nocompatible
+endif
 
 " OS判定フラグ
 let s:is_windows = has('win16') || has('win32') || has('win64')
