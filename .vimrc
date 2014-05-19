@@ -358,6 +358,9 @@ set visualbell t_vb=
 "折り返し無し
 set nowrap
 
+"Use space instead of hard tab
+set expandtab
+
 "tab挿入時の空白数
 set tabstop=4
 "オートインデント時に挿入される空白数
