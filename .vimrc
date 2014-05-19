@@ -191,6 +191,14 @@ NeoBundleLazy 'groenewege/vim-less', {
     \     }
     \ }
 
+NeoBundleLazy 'gist:distkloc/9682844', {
+\    'name': 'snippet_vb',
+\    'script_type': 'snippet',
+\    'autoload': {
+\       'filetypes': ['vb', 'aspvbs']
+\    }
+\ }
+
 NeoBundleLazy 'rhysd/unite-codic.vim', {
     \ 'depends' : 'koron/codic-vim',
     \    'autoload' : {
@@ -547,24 +555,6 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
-
-
-
-function! s:LoadVBSSnippet() "{{{
-    if !isdirectory(expand("~/.vim/bundle/mysnippets/vbs.snip/"))
-        echo "install mysnippets..."
-        :call system("git clone https://gist.github.com/9682844.git ~/.vim/bundle/mysnippets/vbs.snip")
-    endif
-
-    NeoSnippetSource ~/.vim/bundle/mysnippets/vbs.snip/vbs.snip
-
-    let g:neosnippet#scope_aliases['vb'] = 'vb,aspvbs'
-endfunction "}}}
-
-augroup LoadVBSSnippet
-    autocmd!
-    autocmd FileType vb,aspvbs call s:LoadVBSSnippet()
-augroup END
 
 
 
