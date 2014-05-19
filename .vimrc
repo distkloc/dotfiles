@@ -31,13 +31,13 @@ else
 end
 
 if has('vim_starting')
-    let &rtp .= expand(',$MYVIM/bundle/neobundle.vim/')
+    let &rtp .= ',' . $MYVIM . '/bundle/neobundle.vim/'
 end
 
 "--------------------------------
 "neobundle.vim
 "--------------------------------
-call neobundle#begin(expand('$MYVIM/bundle'))
+call neobundle#begin(expand($MYVIM . '/bundle'))
 
 NeoBundleFetch "Shougo/neobundle.vim"
 
