@@ -22,6 +22,16 @@ else
 endif
 
 
+if s:is_windows
+    let s:vimdir = '~/vimfiles/'
+else
+    let s:vimdir = '~/.vim/'
+end
+
+if has('vim_starting')
+    let &rtp .= ',' . s:vimdir . 'bundle/neobundle.vim/'
+end
+
 "--------------------------------
 "neobundle.vim設定
 "--------------------------------
@@ -368,9 +378,9 @@ imap <C-j> <esc>
 "行番号表示
 set number
 
-set backupdir=~/.vim/backup
-set directory=~/.vim/swap 
-set undodir=~/.vim/undo
+let &backupdir = expand(s:vimdir . 'backup')
+let &directory = expand(s:vimdir . 'swap')
+let &undodir = expand(s:vimdir . 'undo')
 
 "C言語スタイルのインデント
 set cindent
