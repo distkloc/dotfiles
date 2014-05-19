@@ -3,4 +3,4 @@ if exists("b:did_local_ftplugin")
 endif
 let b:did_local_ftplugin = 1
 
-NeoSnippetSource ~/.vim/bundle/snippet_vb/snippet/vb.snip
+execute "NeoSnippetSource " . $USER_VIM . "bundle/snippet_vb/snippet/vb.snip"
