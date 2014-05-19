@@ -25,19 +25,19 @@ endif
 
 
 if s:is_windows
-    let $USER_VIM = '~/vimfiles/'
+    let $MYVIM = '~/vimfiles'
 else
-    let $USER_VIM = '~/.vim/'
+    let $MYVIM = '~/.vim'
 end
 
 if has('vim_starting')
-    let &rtp .= ',' . $USER_VIM . 'bundle/neobundle.vim/'
+    let &rtp .= expand(',$MYVIM/bundle/neobundle.vim/')
 end
 
 "--------------------------------
 "neobundle.vim
 "--------------------------------
-call neobundle#begin(expand($USER_VIM . 'bundle'))
+call neobundle#begin(expand('$MYVIM/bundle'))
 
 NeoBundleFetch "Shougo/neobundle.vim"
 
@@ -390,9 +390,9 @@ imap <C-j> <esc>
 "行番号表示
 set number
 
-let &backupdir = expand($USER_VIM . 'backup')
-let &directory = expand($USER_VIM . 'swap')
-let &undodir = expand($USER_VIM . 'undo')
+let &backupdir = expand($MYVIM . '/backup')
+let &directory = expand($MYVIM . "/swap")
+let &undodir= expand($MYVIM . '/undo')
 
 "C言語スタイルのインデント
 set cindent
