@@ -35,12 +35,9 @@ if has('vim_starting')
 end
 
 "--------------------------------
-"neobundle.vim設定
+"neobundle.vim
 "--------------------------------
-if has('vim_starting')
-    set rtp+=~/.vim/bundle/neobundle.vim/ 
-endif
-call neobundle#rc(expand('~/.vim/bundle'))
+call neobundle#begin(expand(s:vimdir . 'bundle'))
 
 NeoBundleFetch "Shougo/neobundle.vim"
 
@@ -225,6 +222,8 @@ call s:LazyLoadColorSheme('w0ng/vim-hybrid')
 call s:LazyLoadColorSheme('vim-scripts/louver.vim')
 call s:LazyLoadColorSheme('junegunn/seoul256.vim')
 
+
+call neobundle#end()
 
 filetype plugin indent on
 
