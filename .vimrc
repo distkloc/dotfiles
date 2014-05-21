@@ -217,6 +217,12 @@ NeoBundleLazy 'osyo-manga/unite-quickfix', {
     \    }
     \ }
 
+NeoBundleLazy 'Shougo/unite-help', {
+    \   'autoload' : {
+    \       'unite_sources' : ['help']
+    \    }
+    \ }
+
 NeoBundleLazy 'ujihisa/unite-colorscheme', {
     \    'autoload' : {
     \       'unite_sources' : ['colorscheme'],
@@ -596,8 +602,8 @@ nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files buffer fi
 nnoremap <silent> [unite]q :<C-u>Unite quickfix<CR>
 " unite-bookmark
 nnoremap <silent> [unite]k :<C-u>Unite bookmark<CR>
-" " unite-help
-" nnoremap <silent> [unite]h :<c-u>unite help<cr>
+" unite-help
+nnoremap <silent> [unite]h :<C-u>Unite help<CR>
 " unite-codic
 nnoremap <silent> [unite]c :<C-u>Unite codic<CR>
 " unite-colorscheme
