@@ -43,7 +43,6 @@ NeoBundleFetch "Shougo/neobundle.vim"
 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-surround'
 
 NeoBundleLazy 'mattn/wwwrenderer-vim'
@@ -150,6 +149,12 @@ NeoBundleLazy 'basyura/TweetVim', {
 NeoBundleLazy 'Lokaltog/vim-easymotion' , {
     \ 'autoload' : {
     \   'mappings' : ['<Plug>(easymotion-']
+    \   }
+    \ }
+
+NeoBundleLazy 'tyru/caw.vim', {
+    \ 'autoload' : {
+    \   'mappings' : ['<Plug>(caw:']
     \   }
     \ }
 
@@ -495,9 +500,6 @@ if !s:is_windows
 	colorscheme hybrid
 endif
 
-"" NERD_comments
-let NERDSpaceDelims = 1
-
 "" smartinput
 call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)', '<BS>', '<BS>')
 call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-h)', '<BS>', '<C-h>')
@@ -799,3 +801,6 @@ xmap g/ <Plug>(easymotion-sn)
 omap g/ <Plug>(easymotion-tn)
 
 
+"" caw.vim
+nmap <Leader>c <Plug>(caw:i:toggle)
+vmap <Leader>c <Plug>(caw:i:toggle)
