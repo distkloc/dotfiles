@@ -15,6 +15,10 @@ $Env:Path += ";$Env:GOPATH\bin"
 # msys
 $Env:Path += ";C:\MinGW\msys\1.0\bin"
 
+# nodist
+$Env:Path += ";$HOME\Projects\nodist\bin"
+
+
 # saved history count 
 $MaximumHistoryCount = 7000
 
