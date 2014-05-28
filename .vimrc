@@ -103,6 +103,15 @@ NeoBundleLazy 'thinca/vim-quickrun', {
     \     }
     \ }
 
+NeoBundleLazy "osyo-manga/vim-watchdogs", {
+    \ 'depends' :
+    \   ['osyo-manga/shabadou.vim',
+    \   'thinca/vim-quickrun'],
+    \   'autoload' : {
+    \       'filetypes' : ['ruby', 'javascript', 'coffee', 'sass', 'vim']
+    \   }
+    \ }
+
 NeoBundleLazy 'mattn/emmet-vim', {
     \ 'autoload' : {
     \   'filetypes' : ['html', 'css', 'eruby'],
@@ -669,6 +678,12 @@ let g:quickrun_config = {
 nnoremap <leader>qm :<C-u>QuickRun markdown<CR>
 
 
+"" watchdogs.vim
+let g:watchdogs_check_BufWritePost_enable = 1
+
+nnoremap <leader>wd :<C-u>WatchdogsRun<CR>
+
+
 "" TweetVim
 " Post
 nnoremap <leader>ws :<C-u>TweetVimSay<CR>
@@ -810,3 +825,4 @@ omap g/ <Plug>(easymotion-tn)
 "" caw.vim
 nmap <Leader>c <Plug>(caw:i:toggle)
 vmap <Leader>c <Plug>(caw:i:toggle)
+
