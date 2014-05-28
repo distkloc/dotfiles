@@ -108,7 +108,7 @@ NeoBundleLazy "osyo-manga/vim-watchdogs", {
     \   ['osyo-manga/shabadou.vim',
     \   'thinca/vim-quickrun'],
     \   'autoload' : {
-    \       'filetypes' : ['ruby', 'javascript', 'coffee', 'sass', 'vim']
+    \       'filetypes' : ['ruby', 'javascript', 'coffee', 'scss', 'vim']
     \   }
     \ }
 
