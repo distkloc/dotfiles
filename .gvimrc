@@ -43,8 +43,8 @@ if has('multi_byte_ime') || has('xim')
     "XIMの入力開始キー
     "set imactivatekey=C-space
   endif
-  "IMEの状態をカラー表示
-  highlight CursorIM guifg=NONE guibg=Green
+  " Show IME status by color
+  highlight def link CursorIM Search
   "挿入モード終了時に日本語入力をオフ
   inoremap <ESC> <ESC>:set iminsert=0<CR>
 endif
