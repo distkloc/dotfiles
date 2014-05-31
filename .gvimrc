@@ -61,7 +61,7 @@ endif
 if has('xfontset')
 "  set guifontset=a14,r14,k14
 elseif has('mac')
-    set guifont=Inconsolata_for_Powerline:h14
+    set guifont=Ricty-Regular-Powerline:h14
     set guifontwide=Ricty:h14
 elseif has('win32') || has('win64')
     set guifont=Consolas:h13
