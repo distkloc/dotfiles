@@ -507,6 +507,9 @@ nnoremap <leader>o o<esc>
 nnoremap <leader>O O<esc>
 
 
+NeoBundleSource vim-hybrid
+colorscheme hybrid
+
 " Highlight double-byte space
 augroup highlightIdegraphicSpace
 	autocmd!
@@ -517,11 +520,6 @@ augroup END
 
 "+plugin----------------------------------------------------------
 "plugin設定は全て.vimrcへ
-
-if !s:is_windows
-	NeoBundleSource vim-hybrid
-	colorscheme hybrid
-endif
 
 "" smartinput
 call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)', '<BS>', '<BS>')
