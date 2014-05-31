@@ -31,13 +31,6 @@ set guioptions-=m
 "gVimでテキストベースタブ使用
 set guioptions-=e
 
-"全角スペース強調表示
-augroup highlightIdegraphicSpace
-	autocmd!
-	autocmd ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkCyan guibg=DarkCyan
-	autocmd VimEnter,WinEnter * match IdeographicSpace /　/
-augroup END
-
 "color scheme
 NeoBundleSource vim-hybrid
 colorscheme hybrid

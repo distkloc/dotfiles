@@ -507,6 +507,14 @@ nnoremap <leader>o o<esc>
 nnoremap <leader>O O<esc>
 
 
+" Highlight double-byte space
+augroup highlightIdegraphicSpace
+	autocmd!
+	autocmd VimEnter,ColorScheme * highlight def link IdeographicSpace Visual
+	autocmd VimEnter,WinEnter * match IdeographicSpace /　/
+augroup END
+
+
 "+plugin----------------------------------------------------------
 "plugin設定は全て.vimrcへ
 
