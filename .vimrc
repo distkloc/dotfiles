@@ -662,23 +662,19 @@ nnoremap <silent> <leader>vsc :<C-u>VimShellCurrentDir<CR>
 
 "" quickrun
 let g:quickrun_config = {
-\   '*': {'runmode': 'async:remote:vimproc'},
-\ }
-
-"c#
-let g:quickrun_config = { }
-let g:quickrun_config['cs'] = {
- \ 'command'  : 'csc',
- \ 'runmode'  : 'simple',
- \ 'exec'     : ['%c /nologo %s:gs?/?\\? > /dev/null', '"%S:p:r:gs?/?\\?.exe" %a', ':call delete("%S:p:r.exe")'],
- \ 'tempfile' : '{tempname()}.cs',
- \ }
-
-let g:quickrun_config = {
-\   'markdown': {
-\     'type': 'markdown/gfm',
-\     'outputter': 'browser'
-\   }
+\ '*': {
+\   'runmode': 'async:remote:vimproc'
+\ },
+\ 'cs' : {
+\   'command'  : 'csc',
+\   'runmode'  : 'simple',
+\   'exec'     : ['%c /nologo %s:gs?/?\\? > /dev/null', '"%S:p:r:gs?/?\\?.exe" %a', ':call delete("%S:p:r.exe")'],
+\   'tempfile' : '{tempname()}.cs',
+\   },
+\ 'markdown': {
+\   'type': 'markdown/gfm',
+\   'outputter': 'browser'
+\  },
 \ }
 
 nnoremap <leader>qm :<C-u>QuickRun markdown<CR>
