@@ -634,7 +634,8 @@ function! s:unite_my_settings()
     imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
 
     " Close Unite buffer
-    imap <silent><buffer> <C-q> i_<Plug>(unite_exit)
+    imap <silent><buffer> <ESC> i_<Plug>(unite_exit)
+    imap <silent><buffer> <C-j> i_<Plug>(unite_exit)
 endfunction
 
 " unite-grep
