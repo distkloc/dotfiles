@@ -58,14 +58,18 @@ NeoBundle 'Shougo/neosnippet-snippets', {
     \     ['Shougo/neosnippet.vim']
     \ }
 
-NeoBundle 'Shougo/vimproc', {
-  \ 'build' : {
-  \     'windows' : 'make -f make_mingw64.mak',
-  \     'cygwin' : 'make -f make_cygwin.mak',
-  \     'mac' : 'make -f make_mac.mak',
-  \     'unix' : 'make -f make_unix.mak',
-  \    },
-  \ }
+let vimproc_updcmd = has('win64') ?
+      \ 'make -f make_mingw64.mak' : 'make -f make_mingw32.mak'
+
+execute "NeoBundle 'Shougo/vimproc'," . string({
+      \ 'build' : {
+      \     'windows' : vimproc_updcmd,
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ 'disabled' : !has('kaoriya'),
+      \ })
 
 NeoBundle 'tpope/vim-rails'
 
