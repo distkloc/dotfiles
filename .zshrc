@@ -12,6 +12,7 @@ setopt AUTO_CD
 cdpath=(.. ~ ~/dev)
 
 # z
+_Z_CMD=j
 . `brew --prefix`/etc/profile.d/z.sh
 function precmd () {
    z --add "$(pwd -P)"
