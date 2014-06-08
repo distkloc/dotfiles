@@ -15,7 +15,7 @@ cdpath=(.. ~ ~/dev)
 _Z_CMD=j
 . `brew --prefix`/etc/profile.d/z.sh
 function precmd () {
-   z --add "$(pwd -P)"
+   _z --add "$(pwd -P)"
 }
 
 # vim
