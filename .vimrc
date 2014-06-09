@@ -620,6 +620,17 @@ nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
 nnoremap <silent> [unite]u :<C-u>Unite buffer file_mru<CR>
 " 全部乗せ
 nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+" file_rec at current directory
+nnoremap <silent> [unite]e :<C-u>call UniteFileRecOnCurrentProject()<CR>
+
+function! UniteFileRecOnCurrentProject()
+    if s:is_windows
+        execute "Unite file_rec:!"
+    else
+        execute "Unite file_rec/async:!"
+    end
+endfunction
+
 " unite-quickfix
 nnoremap <silent> [unite]q :<C-u>Unite quickfix<CR>
 " unite-bookmark
