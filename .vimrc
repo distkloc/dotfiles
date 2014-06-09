@@ -591,10 +591,6 @@ endif
 "" unite.vim
 " Start with insert mode
 let g:unite_enable_start_insert = 1
-" 最近使用したファイルの最大保存件数
-let g:neomru#file_mru_limit = 1000
-" 最近使用したディレクトリの最大保存件数
-let g:neomru#directory_mru_limit = 1000
 " 絞り込みテキスト候補の表示更新間隔
 let g:unite_update_time = 1000
 
@@ -667,6 +663,13 @@ endif
 
 " unite yankround
 nnoremap <silent> [unite]y :<C-u>Unite yankround<CR>
+
+"" unite neomru
+" 最近使用したファイルの最大保存件数
+let g:neomru#file_mru_limit = 1000
+" 最近使用したディレクトリの最大保存件数
+let g:neomru#directory_mru_limit = 1000
+
 
 "" VimFiler
 nnoremap <silent> <leader>vf :<C-u>VimFiler<CR>
