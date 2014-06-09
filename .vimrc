@@ -592,11 +592,14 @@ endif
 " Start with insert mode
 let g:unite_enable_start_insert = 1
 " 最近使用したファイルの最大保存件数
-let g:unite_source_file_mru_limit = 20
+let g:neomru#file_mru_limit = 1000
 " 最近使用したディレクトリの最大保存件数
-let g:unite_source_directory_mru_limit = 15
+let g:neomru#directory_mru_limit = 1000
 " 絞り込みテキスト候補の表示更新間隔
 let g:unite_update_time = 1000
+
+call unite#custom#source('file_rec,file_rec/async',
+\ 'max_candidates', 1000)
 
 nnoremap [unite]  <nop>
 xnoremap [unite]  <nop>
