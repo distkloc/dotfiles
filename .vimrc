@@ -616,10 +616,10 @@ nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
 nnoremap <silent> [unite]u :<C-u>Unite buffer file_mru<CR>
 " 全部乗せ
 nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-" file_rec at current directory
-nnoremap <silent> [unite]e :<C-u>call UniteFileRecOnCurrentProject()<CR>
+" file_rec under current project root
+nnoremap <silent> [unite]e :<C-u>call UniteFileRecUnderCurrentProjectRoot()<CR>
 
-function! UniteFileRecOnCurrentProject()
+function! UniteFileRecUnderCurrentProjectRoot()
     if s:is_windows
         execute "Unite file_rec:!"
     else
