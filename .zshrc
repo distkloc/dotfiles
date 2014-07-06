@@ -9,7 +9,7 @@ eval "$(rbenv init -)"
 
 
 setopt AUTO_CD
-cdpath=(.. ~ ~/dev)
+cdpath=(.. ~ ~/src)
 
 # z
 _Z_CMD=j

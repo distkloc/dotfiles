@@ -10,12 +10,6 @@ if ! type "nodebrew" > /dev/null; then
     curl -L git.io/nodebrew | perl - setup
 fi
 
-# go
-go_path=$HOME/go
-if [ ! -d $go_path ]; then
-    mkdir ${go_path}
-fi
-
 # neobundle.vim
 bundle_path=~/dotfiles/.vim/bundle
 if [ ! -d $bundle_path ]; then
@@ -44,3 +38,4 @@ mkdir ~/.vim/undo
 
 # submodule initialization
 git submodule update --init
+
