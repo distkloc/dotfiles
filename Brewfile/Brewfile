@@ -8,6 +8,7 @@ update
 tap homebrew/versions
 tap phinze/homebrew-cask
 tap sanemat/font
+tap peco/peco
 
 # Packages
 install brew-cask || true
@@ -20,10 +21,12 @@ install rbenv || true
 install ruby-build || true
 install readline || true
 install --vim-powerline ricty || true
-install heroku-toolbelt
-install z
-install reattach-to-user-namespace
-
+install heroku-toolbelt || true
+install z || true
+install reattach-to-user-namespace || true
+install the_platinum_searcher || true
+install nodebrew || true
+install peco || true
 
 # .dmg
 cask install google-chrome || true
@@ -40,6 +43,8 @@ cask install java || true
 cask install mplayerx || true
 cask install soundflower || true
 cask install supercollider || true
+cask install mono-mdk || true
+cask install xamarin-studio || true
 cask install processing || upgrade processing || true
 cask install amazon-cloud-player || upgrade amazon-cloud-player || true
 cask install bettertouchtool || upgrade bettertouchtool || true
@@ -48,3 +53,4 @@ cask install google-japanese-ime || upgrade google-japanese-ime || true
 
 # Remove outdated versions from the cellar
 cleanup
+
