@@ -41,7 +41,6 @@ Set-Alias gnoskip Invoke-GitUpdateIndexNoSkipWorktree
 Set-Alias gignored Invoke-GitLsFiles
 Set-Alias gnffcmerge Invoke-GitNoFastForwordNoMerge
 Set-Alias glg Invoke-CoolGitLog
-Set-Alias cdw Invoke-CdWwwroot
 
 $vimpath = "$HOME\programs\vim74-kaoriya-win32"
 New-Alias vim "$vimpath\vim.exe" -Force
@@ -79,7 +78,3 @@ function Invoke-CoolGitLog
 }
 
 
-function Invoke-CdWwwroot
-{
-    cd C:/inetpub/wwwroot/
-}
