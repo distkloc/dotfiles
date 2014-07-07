@@ -9,7 +9,7 @@
 $Env:Path += ";" + (Get-Item "Env:\ProgramFiles(x86)").Value + "\Git\bin"
 
 # GOPATH
-$Env:GOPATH = "$HOME\go"
+$Env:GOPATH = "$HOME"
 $Env:Path += ";$Env:GOPATH\bin"
 
 # msys
