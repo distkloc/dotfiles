@@ -60,18 +60,9 @@ $dothash = @{
 $dothash.Keys | % { Invoke-Mklink $_ $dothash[$_] }
 
 
-
-# Create go directory
-$gopath = "$Env:HOME\go"
-
-if(-not (Test-Path $gopath))
-{
-    New-Item -Path "$gopath" -ItemType Directory
-}
-
-
 # nodist
 if (-not (Get-Command "nodist" -ErrorAction SilentlyContinue))
 {
     cinst nodist -Pre
 }
+

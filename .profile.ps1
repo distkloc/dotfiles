@@ -9,7 +9,7 @@
 $Env:Path += ";" + (Get-Item "Env:\ProgramFiles(x86)").Value + "\Git\bin"
 
 # GOPATH
-$Env:GOPATH = "$HOME\go"
+$Env:GOPATH = "$HOME"
 $Env:Path += ";$Env:GOPATH\bin"
 
 # msys
@@ -41,7 +41,7 @@ Set-Alias gnoskip Invoke-GitUpdateIndexNoSkipWorktree
 Set-Alias gignored Invoke-GitLsFiles
 Set-Alias gnffcmerge Invoke-GitNoFastForwordNoMerge
 Set-Alias glg Invoke-CoolGitLog
-Set-Alias cdw Invoke-CdWwwroot
+Set-Alias pg Invoke-PecoSrc
 
 $vimpath = "$HOME\programs\vim74-kaoriya-win32"
 New-Alias vim "$vimpath\vim.exe" -Force
@@ -79,7 +79,11 @@ function Invoke-CoolGitLog
 }
 
 
-function Invoke-CdWwwroot
+function Invoke-PecoSrc
 {
-    cd C:/inetpub/wwwroot/
+    $selectedDir = $(ghq list -p | peco)
+
+    if($selectedDir -ne $null) {
+        cd $selectedDir
+    }
 }
