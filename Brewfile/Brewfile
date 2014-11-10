@@ -27,6 +27,7 @@ install reattach-to-user-namespace || true
 install the_platinum_searcher || true
 install nodebrew || true
 install peco || true
+install boot2docker || true
 
 # .dmg
 cask install google-chrome || true
