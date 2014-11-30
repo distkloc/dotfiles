@@ -383,9 +383,9 @@ set nowrap
 set expandtab
 
 "tab挿入時の空白数
-set tabstop=4
+set tabstop=2
 "オートインデント時に挿入される空白数
-set shiftwidth=4
+set shiftwidth=2
 
 "ヤンクでクリップボードへ
 set clipboard=unnamed
