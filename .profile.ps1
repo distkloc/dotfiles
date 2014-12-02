@@ -15,10 +15,6 @@ $Env:Path += ";$Env:GOPATH\bin"
 # msys
 $Env:Path += ";C:\MinGW\msys\1.0\bin"
 
-# nodist
-$Env:NODIST_PREFIX = "$Env:ChocolateyInstall\lib\nodist.0.4.6-beta\tools\nodist-master\bin"
-
-
 # saved history count 
 $MaximumHistoryCount = 7000
 
