@@ -181,18 +181,22 @@ NeoBundleLazy 'junegunn/vim-easy-align', {
     \   }
     \ }
 
+NeoBundleLazy 'plasticboy/vim-markdown', {
+  \ 'autoload' : {
+  \   'filetypes' : ['markdown']
+  \    }
+  \ }
+
+NeoBundleLazy 'kannokanno/previm', {
+  \ 'autoload' : {
+  \   'functions' : ['previm#open']
+  \   }
+  \ }
+
 NeoBundleLazy 'tyru/open-browser.vim', {
     \ 'autoload' : {
     \   'functions' : ['openbrowser#load']
     \ }}
-
-NeoBundleLazy 'superbrothers/vim-quickrun-markdown-gfm', {
-    \ 'depends' :
-    \     ['thinca/vim-quickrun'],
-    \ 'autoload' : {
-    \     'on_source' : ['vim-quickrun']
-    \     }
-    \ }
 
 NeoBundleLazy 'PProvost/vim-ps1', {
     \ 'autoload' : {
@@ -518,6 +522,12 @@ augroup highlightIdegraphicSpace
 	autocmd VimEnter,WinEnter * match IdeographicSpace /　/
 augroup END
 
+" Markdown
+augroup MarkdownExtensions
+  autocmd!
+  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
+
 
 "+plugin----------------------------------------------------------
 "plugin設定は全て.vimrcへ
@@ -689,14 +699,9 @@ let g:quickrun_config = {
 \   'runmode'  : 'simple',
 \   'exec'     : ['%c /nologo %s:gs?/?\\? > /dev/null', '"%S:p:r:gs?/?\\?.exe" %a', ':call delete("%S:p:r.exe")'],
 \   'tempfile' : '{tempname()}.cs',
-\   },
-\ 'markdown': {
-\   'type': 'markdown/gfm',
-\   'outputter': 'browser'
-\  },
+\   }
 \ }
 
-nnoremap <leader>qm :<C-u>QuickRun markdown<CR>
 
 
 "" watchdogs.vim
@@ -732,6 +737,9 @@ let g:gitgutter_shellescape_function  = 'vimproc#shellescape'
 nnoremap <silent> <leader>gg :<C-u>GitGutterToggle<CR>
 nnoremap <silent> <leader>gh :<C-u>GitGutterLineHighlightsToggle<CR>
 
+
+"" previm
+nnoremap <silent> <leader>pr :<C-u>PrevimOpen<CR>
 
 
 "" lightline
