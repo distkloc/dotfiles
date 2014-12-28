@@ -162,6 +162,12 @@ NeoBundleLazy 'Lokaltog/vim-easymotion' , {
     \   }
     \ }
 
+NeoBundleLazy 'haya14busa/incsearch.vim', {
+  \ 'autoload' : {
+  \   'mappings' : ['<Plug>(incsearch-']
+  \   }
+  \ }
+
 NeoBundleLazy 'tyru/caw.vim', {
     \ 'autoload' : {
     \   'mappings' : ['<Plug>(caw:']
@@ -834,6 +840,21 @@ let g:EasyMotion_space_jump_first = 1
 nmap g/ <Plug>(easymotion-sn)
 xmap g/ <Plug>(easymotion-sn)
 omap g/ <Plug>(easymotion-tn)
+
+
+"" incsearch.vim
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map s/ <Plug>(incsearch-stay)
+
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
 
 
 "" caw.vim
