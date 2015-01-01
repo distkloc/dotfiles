@@ -21,6 +21,7 @@ function precmd () {
 # vim
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 alias vi=vim
+alias gvim='/Applications/MacVim.app/Contents/MacOS/mvim --remote-tab-silent "$*"'
 
 
 # git
