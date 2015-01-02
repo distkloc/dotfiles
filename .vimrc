@@ -861,3 +861,7 @@ map g# <Plug>(incsearch-nohl-g#)
 nmap <Leader>c <Plug>(caw:i:toggle)
 vmap <Leader>c <Plug>(caw:i:toggle)
 
+
+"" vim-markdown
+let g:vim_markdown_folding_disabled = 1
+
