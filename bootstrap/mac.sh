@@ -5,6 +5,9 @@ if ! type "brew" > /dev/null; then
     ruby -e '$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)'
 fi
 
+# homebrew-bundle
+brew tap Homebrew/bundle
+
 # nodebrew
 if ! type "nodebrew" > /dev/null; then
     curl -L git.io/nodebrew | perl - setup
