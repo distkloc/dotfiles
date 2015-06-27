@@ -20,7 +20,8 @@ bootstrap/mac.sh
 ### Install homebrew formulae and mac apps
 
 ```
-brew bundle Brewfile/Brewfile
+cd Brewfile
+brew bundle Brewfile
 ```
 
 ### Select node.js version with nodebrew
