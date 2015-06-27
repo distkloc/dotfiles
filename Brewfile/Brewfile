@@ -1,57 +1,75 @@
-# Make sure we’re using the latest Homebrew
-update
-
-# Upgrade any already-installed formulae
-# upgrade
-
-# Add Repository
-tap homebrew/versions
-tap phinze/homebrew-cask
-tap sanemat/font
-tap peco/peco
-
-# Packages
-install brew-cask || true
-install git || true
-install hg || true
-install zsh || true
-install go || true
-install tmux || true
-install rbenv || true
-install ruby-build || true
-install readline || true
-install --vim-powerline ricty || true
-install heroku-toolbelt || true
-install z || true
-install reattach-to-user-namespace || true
-install the_platinum_searcher || true
-install nodebrew || true
-install peco || true
-install boot2docker || true
-
-# .dmg
-cask install google-chrome || true
-cask install firefox || true
-cask install virtualbox || true
-cask install vagrant || true
-cask install dropbox || true
-cask install skype || true
-cask install alfred || true
-cask install kobito || true
-cask install iterm2 || true
-cask install appcleaner || true
-cask install java || true
-cask install mplayerx || true
-cask install soundflower || true
-cask install supercollider || true
-cask install mono-mdk || true
-cask install xamarin-studio || true
-cask install processing || upgrade processing || true
-cask install amazon-cloud-player || upgrade amazon-cloud-player || true
-cask install bettertouchtool || upgrade bettertouchtool || true
-cask install google-japanese-ime || upgrade google-japanese-ime || true
-
-
-# Remove outdated versions from the cellar
-cleanup
-
+tap 'caskroom/cask'
+tap 'homebrew/bundle'
+tap 'homebrew/versions'
+tap 'peco/peco'
+tap 'sanemat/font'
+brew 'libyaml'
+brew 'ansible'
+brew 'autoconf'
+brew 'automake'
+brew 'pcre'
+brew 'gettext'
+brew 'git'
+brew 'go'
+brew 'docker'
+brew 'boot2docker'
+brew 'pkg-config'
+brew 'libpng'
+brew 'freetype'
+brew 'fontconfig'
+brew 'pixman'
+brew 'libffi'
+brew 'glib'
+brew 'cairo'
+brew 'zeromq'
+brew 'czmq'
+brew 'fig'
+brew 'gdbm'
+brew 'gobject-introspection'
+brew 'icu4c'
+brew 'harfbuzz'
+brew 'heroku-toolbelt'
+brew 'jpeg'
+brew 'openssl'
+brew 'libevent'
+brew 'libtiff'
+brew 'libtool'
+brew 'mercurial'
+brew 'mysql'
+brew 'nodebrew'
+brew 'ossp-uuid'
+brew 'pango'
+brew 'peco'
+brew 'readline'
+brew 'sqlite'
+brew 'python'
+brew 'rbenv'
+brew 'reattach-to-user-namespace'
+brew 'redis'
+brew 'ruby-build'
+brew 'the_platinum_searcher'
+brew 'tmux'
+brew 'z'
+brew 'zsh'
+brew 'caskroom/cask/brew-cask'
+cask 'alfred'
+cask 'amazon-cloud-player'
+cask 'appcleaner'
+cask 'bettertouchtool'
+cask 'dropbox'
+cask 'firefox'
+cask 'google-chrome'
+cask 'google-japanese-ime'
+cask 'iterm2'
+cask 'java'
+cask 'kobito'
+cask 'mono-mdk'
+cask 'mplayerx'
+cask 'processing'
+cask 'silverlight'
+cask 'skype'
+cask 'soundflower'
+cask 'supercollider'
+cask 'vagrant'
+cask 'virtualbox'
+cask 'xamarin-studio'
