@@ -68,7 +68,7 @@ alias pk="peco-pkill"
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
 # boot2docker shellinit
-if [ "`boot2docker status`" = "running" ]; then
-    $(boot2docker shellinit)
+if [ "`docker-machine status default`" = "Running" ]; then
+  eval "$(docker-machine env default)"
 fi
 
