@@ -11,7 +11,7 @@
 ### Run the setup script
 
 ```sh
-git clone git@github.com:distkloc/dotfiles.git ~/dotfiles
+git clone https://github.com/distkloc/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 bootstrap/mac.sh
 ```
@@ -46,7 +46,7 @@ Set-ExecutionPolicy RemoteSigned
 ### Run the setup script
 
 ```posh
-git clone git@github.com:distkloc/dotfiles.git $HOME\dotfiles
+git clone https://github.com/distkloc/dotfiles.git $HOME\dotfiles
 cd ~/dotfiles
 ./bootstrap/windows.ps1
 ```
