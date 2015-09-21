@@ -7,7 +7,6 @@
 ### Prerequisites
 
 * Git
-* Homebrew
 
 ### Run the setup script
 
@@ -20,8 +19,7 @@ bootstrap/mac.sh
 ### Install homebrew formulae and mac apps
 
 ```sh
-cd Brewfile
-brew bundle Brewfile
+brew bundle --global
 ```
 
 ### Select node.js version with nodebrew
