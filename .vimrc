@@ -424,7 +424,11 @@ set number
 let &backupdir = expand($MYVIM . '/backup')
 let &directory = expand($MYVIM . '/swap')
 let &undodir = expand($MYVIM . '/undo')
-let &viminfo .= ',n' . expand($MYVIM . '/viminfo')
+
+" prevent vim from appending duplicate option when :source is executed
+if has('vim_starting')
+  let &viminfo .= ',n' . expand($MYVIM . '/viminfo')
+end
 
 "C言語スタイルのインデント
 set cindent
