@@ -20,7 +20,7 @@ $vimDir = "$Env:HOME\dotfiles\.vim"
 
 if(-not (Test-Path $vimDir))
 {
-    @("bundle", "backup", "swap", "undo") |
+    @("bundle", "backup", "swap", "undo", "viminfo") |
         % { New-Item -Path "$vimDir\$_" -ItemType Directory }
 
     git clone git://github.com/Shougo/neobundle.vim "$vimDir\bundle\neobundle.vim"

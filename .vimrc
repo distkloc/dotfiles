@@ -422,8 +422,9 @@ imap <C-j> <esc>
 set number
 
 let &backupdir = expand($MYVIM . '/backup')
-let &directory = expand($MYVIM . "/swap")
-let &undodir= expand($MYVIM . '/undo')
+let &directory = expand($MYVIM . '/swap')
+let &undodir = expand($MYVIM . '/undo')
+let &viminfo .= ',n' . expand($MYVIM . '/viminfo')
 
 "C言語スタイルのインデント
 set cindent

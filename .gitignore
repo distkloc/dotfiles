@@ -2,6 +2,7 @@
 /.vim/bundle/
 /.vim/swap/
 /.vim/undo/
+/.vim/viminfo/
 
 # modified directories history
 .netrwhist

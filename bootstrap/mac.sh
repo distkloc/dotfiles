@@ -37,6 +37,7 @@ done
 mkdir ~/.vim/backup
 mkdir ~/.vim/swap
 mkdir ~/.vim/undo
+mkdir ~/.vim/viminfo
 
 
 # submodule initialization
