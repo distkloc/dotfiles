@@ -4,5 +4,6 @@
 /.vim/undo/
 /.vim/viminfo/
 
-# modified directories history
+/.vim/.vimwinpos
+
 .netrwhist

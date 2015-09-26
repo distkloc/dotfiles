@@ -1,6 +1,6 @@
 
 "Window position and size
-let g:save_window_file = expand('~/.vimwinpos')
+let g:save_window_file = expand($MYVIM . '/.vimwinpos')
 augroup SaveWindow
   autocmd!
   autocmd VimLeavePre * call s:save_window()
