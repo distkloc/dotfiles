@@ -1,0 +1,142 @@
+[[plugins]]
+repository = 'Shougo/vimshell'
+mappings = '<Plug>'
+
+[[plugins]]
+repository = 'Shougo/vimfiler'
+depends = 'Shougo/unite.vim'
+explorer = 1
+mappings = '<Plug>'
+
+[[plugins]]
+repository = 'Shougo/neomru.vim'
+unite_sources = ['file_mru', 'directory_mru']
+
+[[plugins]]
+repository = 'thinca/vim-quickrun'
+mappings = '<Plug>'
+
+[[plugins]]
+repository = 'osyo-manga/vim-watchdogs'
+depends = ['osyo-manga/shabadou.vim', 'thinca/vim-quickrun']
+filetypes = ['ruby', 'javascript', 'coffee', 'scss', 'vim']
+
+[[plugins]]
+repository = 'mattn/emmet-vim'
+filetypes = ['html', 'css', 'eruby']
+
+[[plugins]]
+repository = 'sgur/vim-gitgutter'
+depends' = 'Shougo/vimproc.vim'
+commands = 'GitGutterToggle'
+    
+
+[[plugins]]
+repository = 'thinca/vim-ref'
+commands = 'Ref'
+
+[[plugins]]
+repository = 'osyo-manga/vim-over'
+commands = 'OverCommandLine'
+
+[[plugins]]
+repository = 'basyura/TweetVim'
+depends = ['basyura/twibill.vim', 'mattn/webapi-vim', 'tyru/open-browser.vim']
+mappings = '<Plug>'
+unite_sources = 'tweetvim'
+
+[[plugins]]
+repository = 'Lokaltog/vim-easymotion'
+mappings = '<Plug>'
+
+[[plugins]]
+repository = 'haya14busa/incsearch.vim'
+mappings = '<Plug>'
+
+[[plugins]]
+repository = 'tyru/caw.vim'
+mappings = '<Plug>'
+
+[[plugins]]
+repository = 'LeafCage/yankround.vim'
+mappings = '<Plug>'
+unite_sources = 'yankround'
+
+[[plugins]]
+repository = 'junegunn/vim-easy-align'
+mappings = '<Plug>'
+
+[[plugins]]
+repository = 'plasticboy/vim-markdown'
+filetypes = 'markdown'
+
+[[plugins]]
+repository = 'kannokanno/previm'
+functions = 'previm#open'
+
+[[plugins]]
+repository = 'tyru/open-browser.vim'
+mappings = '<Plug>'
+
+[[plugins]]
+repository = 'gist:distkloc/9682844'
+name = 'snippet_vb'
+script_type = 'snippet'
+filetypes = ['vb', 'aspvbs']
+
+
+[[plugins]]
+repository = 'rhysd/unite-codic.vim'
+depends = 'koron/codic-vim'
+unite_sources = 'codic'
+
+[[plugins]]
+repository = 'osyo-manga/unite-quickfix'
+unite_sources = 'quickfix'
+
+[[plugins]]
+repository = 'Shougo/unite-help'
+unite_sources = 'help'
+
+# syntax
+[[plugins]]
+repository = 'PProvost/vim-ps1'
+filename_patterns = '\.ps1$'
+
+[[plugins]]
+repository = 'groenewege/vim-less'
+filename_patterns = '\.less$'
+
+[[plugins]]
+repository = 'cespare/vim-toml'
+filename_patterns = '\.toml$'
+
+# colorscheme
+[[plugins]]
+repository = 'ujihisa/unite-colorscheme'
+unite_sources = 'colorscheme'
+
+[[plugins]]
+repository = 'w0ng/vim-hybrid'
+unite_source = 'colorscheme'
+
+[[plugin]]
+repository = 'cocopon/iceberg.vim'
+unite_source = 'colorscheme'
+
+[[plugin]]
+repository = 'vim-scripts/moria'
+unite_source = 'colorscheme'
+
+[[plugin]]
+repository = 'w0ng/vim-hybrid'
+unite_source = 'colorscheme'
+
+[[plugin]]
+repository = 'vim-scripts/louver.vim'
+unite_source = 'colorscheme'
+
+[[plugin]]
+repository = 'junegunn/seoul256.vim'
+unite_source = 'colorscheme'
+
