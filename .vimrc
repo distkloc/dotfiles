@@ -27,6 +27,8 @@ else
     let $MYVIM = '~/.vim'
 end
 
+let s:myvimrtp = expand($MYVIM)
+
 if has('vim_starting')
     let &rtp .= ',' . $MYVIM . '/bundle/neobundle.vim/'
 end
@@ -34,14 +36,14 @@ end
 "--------------------------------
 "neobundle.vim
 "--------------------------------
-call neobundle#begin(expand($MYVIM . '/bundle'))
+call neobundle#begin(s:myvimrtp . '/bundle')
 
 
 if neobundle#load_cache()
   NeoBundleFetch "Shougo/neobundle.vim"
 
-  call neobundle#load_toml(expand($MYVIM . '/neobundle.toml'))
-  call neobundle#load_toml(expand($MYVIM . '/neobundlelazy.toml'), { 'lazy' : 1 })
+  call neobundle#load_toml(s:myvimrtp . '/neobundle.toml')
+  call neobundle#load_toml(s:myvimrtp . '/neobundlelazy.toml', { 'lazy' : 1 })
   
   " Re-cache neobundle
   NeoBundleSaveCache
@@ -207,13 +209,13 @@ imap <C-j> <esc>
 "行番号表示
 set number
 
-let &backupdir = expand($MYVIM . '/backup')
-let &directory = expand($MYVIM . '/swap')
-let &undodir = expand($MYVIM . '/undo')
+let &backupdir = s:myvimrtp . '/backup'
+let &directory = s:myvimrtp . '/swap'
+let &undodir = s:myvimrtp . '/undo'
 
 " prevent vim from appending duplicate option when :source is executed
 if has('vim_starting')
-  let &viminfo .= ',n' . expand($MYVIM . '/viminfo/.viminfo')
+  let &viminfo .= ',n' . s:myvimrtp . '/viminfo/.viminfo'
 end
 
 "C言語スタイルのインデント
