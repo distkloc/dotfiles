@@ -31,6 +31,10 @@ depends = 'Shougo/vimproc.vim'
 commands = 'GitGutterToggle'
 
 [[plugins]]
+repository = 'tpope/vim-rails'
+filetypes = ['ruby', 'eruby']
+
+[[plugins]]
 repository = 'thinca/vim-ref'
 commands = 'Ref'
 

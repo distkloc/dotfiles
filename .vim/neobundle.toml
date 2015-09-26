@@ -27,8 +27,5 @@ repository = 'Shougo/vimproc.vim'
   unix = 'make -f make_unix.mak'
 
 [[plugins]]
-repository = 'tpope/vim-rails'
-
-[[plugins]]
 repository = 'kana/vim-smartinput'
 
