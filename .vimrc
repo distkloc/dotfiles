@@ -476,6 +476,11 @@ let g:neomru#directory_mru_limit = 1000
 
 
 "" VimFiler
+let g:vimfiler_as_default_explorer = 1
+
+" Disable netrw.vim
+let g:loaded_netrwPlugin = 1
+
 nnoremap <silent> <leader>vf :<C-u>VimFiler<CR>
 
 "" VimShell
