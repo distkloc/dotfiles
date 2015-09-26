@@ -27,9 +27,8 @@ filetypes = ['html', 'css', 'eruby']
 
 [[plugins]]
 repository = 'sgur/vim-gitgutter'
-depends' = 'Shougo/vimproc.vim'
+depends = 'Shougo/vimproc.vim'
 commands = 'GitGutterToggle'
-    
 
 [[plugins]]
 repository = 'thinca/vim-ref'
@@ -84,7 +83,6 @@ name = 'snippet_vb'
 script_type = 'snippet'
 filetypes = ['vb', 'aspvbs']
 
-
 [[plugins]]
 repository = 'rhysd/unite-codic.vim'
 depends = 'koron/codic-vim'
@@ -98,6 +96,7 @@ unite_sources = 'quickfix'
 repository = 'Shougo/unite-help'
 unite_sources = 'help'
 
+
 # syntax
 [[plugins]]
 repository = 'PProvost/vim-ps1'
@@ -110,6 +109,7 @@ filename_patterns = '\.less$'
 [[plugins]]
 repository = 'cespare/vim-toml'
 filename_patterns = '\.toml$'
+
 
 # colorscheme
 [[plugins]]
