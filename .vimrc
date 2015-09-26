@@ -70,6 +70,8 @@ execute "NeoBundle 'Shougo/vimproc'," . string({
 
 NeoBundle 'tpope/vim-rails'
 
+NeoBundle 'kana/vim-smartinput'
+
 NeoBundleLazy 'Shougo/vimshell', {
     \ 'autoload' : {
     \     'commands' : ['VimShell', 'VimShellSendString', 'VimShellCurrentDir']
@@ -91,12 +93,6 @@ NeoBundleLazy 'Shougo/neomru.vim', {
     \       'unite_sources' : ['file_mru', 'directory_mru']
     \    }
     \ }
-
-NeoBundleLazy 'kana/vim-smartinput', { 
-	\ 'autoload' : {
-	\	'insert' : '1'
-	\	}
-	\}
 
 NeoBundleLazy 'thinca/vim-quickrun', {
     \ 'autoload' : {
