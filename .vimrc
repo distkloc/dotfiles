@@ -423,7 +423,7 @@ let &undodir = expand($MYVIM . '/undo')
 
 " prevent vim from appending duplicate option when :source is executed
 if has('vim_starting')
-  let &viminfo .= ',n' . expand($MYVIM . '/viminfo')
+  let &viminfo .= ',n' . expand($MYVIM . '/viminfo/.viminfo')
 end
 
 "C言語スタイルのインデント
