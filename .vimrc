@@ -311,6 +311,7 @@ nnoremap <leader>o o<esc>
 nnoremap <leader>O O<esc>
 
 
+set background=dark
 NeoBundleSource vim-hybrid
 colorscheme hybrid
 

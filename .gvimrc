@@ -32,9 +32,9 @@ set guioptions-=m
 set guioptions-=e
 
 "color scheme
+set background=dark
 NeoBundleSource vim-hybrid
 colorscheme hybrid
-
 
 if has('multi_byte_ime') || has('xim')
   "起動直後の挿入モードでは日本語入力を有効にしない
