@@ -39,7 +39,7 @@ Set-Alias gnffcmerge Invoke-GitNoFastForwordNoMerge
 Set-Alias glg Invoke-CoolGitLog
 Set-Alias pg Invoke-PecoSrc
 
-$vimpath = "$HOME\programs\vim74-kaoriya-win32"
+$vimpath = "$HOME\programs\vim74-kaoriya-win64"
 New-Alias vim "$vimpath\vim.exe" -Force
 New-Alias gvim "$vimpath\gvim.exe" -Force
 
