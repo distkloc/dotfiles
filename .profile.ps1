@@ -5,15 +5,12 @@
 ########################################
 
 
-# path for git (x86-64)
-$Env:Path += ";" + (Get-Item "Env:\ProgramFiles(x86)").Value + "\Git\bin"
+# path for git/MigGW
+$Env:Path += ";$HOME\AppData\Local\Programs\Git\cmd;$HOME\AppData\Local\Programs\Git\usr\bin"
 
 # GOPATH
 $Env:GOPATH = "$HOME"
 $Env:Path += ";$Env:GOPATH\bin"
-
-# msys
-$Env:Path += ";C:\MinGW\msys\1.0\bin"
 
 # saved history count 
 $MaximumHistoryCount = 7000
