@@ -114,6 +114,9 @@ filename_patterns = '\.less$'
 repository = 'cespare/vim-toml'
 filename_patterns = '\.toml$'
 
+[[plugins]]
+repository = 'slim-template/vim-slim'
+filename_patterns = '\.slim$'
 
 # colorscheme
 [[plugins]]
