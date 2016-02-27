@@ -1,3 +1,6 @@
+if &compatible
+  set nocompatible
+endif
 
 " Detect OS
 let s:is_windows = has('win16') || has('win32') || has('win64')
@@ -30,32 +33,33 @@ end
 let s:myvimrtp = expand($MYVIM)
 
 if has('vim_starting')
-    let &rtp .= ',' . $MYVIM . '/bundle/neobundle.vim/'
+    let &rtp .= ',' . $MYVIM . '/bundle/repos/github.com/Shougo/dein.vim'
 end
 
 "--------------------------------
-"neobundle.vim
+"dein.vim
 "--------------------------------
-call neobundle#begin(s:myvimrtp . '/bundle')
+call dein#begin(s:myvimrtp . '/bundle')
 
 
-if neobundle#load_cache()
-  NeoBundleFetch "Shougo/neobundle.vim"
+let s:toml_path = s:myvimrtp . '/dein.toml'
+let s:toml_lazy_path = s:myvimrtp . '/deinlazy.toml'
 
-  call neobundle#load_toml(s:myvimrtp . '/neobundle.toml')
-  call neobundle#load_toml(s:myvimrtp . '/neobundlelazy.toml', { 'lazy' : 1 })
-  
-  " Re-cache neobundle
-  NeoBundleSaveCache
-endif
+if dein#load_cache([expand('<sfile>'), s:toml_path, s:toml_lazy_path])
+  call dein#load_toml(s:toml_path,      {'lazy': 0})
+  call dein#load_toml(s:toml_lazy_path, {'lazy': 1})
+  call dein#save_cache()
+endif 
 
 
-call neobundle#end()
+call dein#end()
 
 filetype plugin indent on
 
 " Installation check.
- NeoBundleCheck
+if dein#check_install()
+  call dein#install()
+endif
 
 
 "---------------------------------------------------------------------------
@@ -312,7 +316,7 @@ nnoremap <leader>O O<esc>
 
 
 set background=dark
-NeoBundleSource vim-hybrid
+call dein#source('vim-hybrid')
 colorscheme hybrid
 
 " Highlight double-byte space
