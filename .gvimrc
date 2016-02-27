@@ -1,5 +1,6 @@
 
 "Window position and size
+
 let g:save_window_file = expand($MYVIM . '/.vimwinpos')
 augroup SaveWindow
   autocmd!
@@ -33,7 +34,7 @@ set guioptions-=e
 
 "color scheme
 set background=dark
-NeoBundleSource vim-hybrid
+call dein#source('vim-hybrid')
 colorscheme hybrid
 
 if has('multi_byte_ime') || has('xim')

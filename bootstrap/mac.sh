@@ -13,11 +13,11 @@ if ! type "nodebrew" > /dev/null; then
     curl -L git.io/nodebrew | perl - setup
 fi
 
-# neobundle.vim
-bundle_path=~/dotfiles/.vim/bundle
+# dein.vim
+bundle_path=~/dotfiles/.vim/bundle/repos/github.com/Shougo/dein.vim
 if [ ! -d $bundle_path ]; then
     mkdir -p $bundle_path
-    git clone git://github.com/Shougo/neobundle.vim ${bundle_path}/neobundle.vim
+    git clone https://github.com/Shougo/dein.vim ${bundle_path}
 fi
 
 # symlink

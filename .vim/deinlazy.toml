@@ -1,0 +1,155 @@
+[[plugins]]
+repo = 'Shougo/vimshell'
+on_map = '<Plug>'
+
+[[plugins]]
+repo = 'Shougo/vimfiler.vim'
+depends = 'unite.vim'
+on_map = '<Plug>'
+on_path = '.*'
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+depends = ['neosnippet-snippets', 'context_filetype.vim']
+on_i = 1
+on_ft = 'snippet'
+
+[[plugins]]
+repo = 'osyo-manga/vim-watchdogs'
+on_ft = ['ruby', 'javascript', 'coffee', 'scss', 'vim']
+
+# [[plugins]]
+# repo = 'osyo-manga/vim-watchdogs'
+# depends = ['osyo-manga/shabadou.vim', 'thinca/vim-quickrun']
+# on_ft = ['ruby', 'javascript', 'coffee', 'scss', 'vim']
+
+# [[plugins]]
+# repo = 'osyo-manga/shabadou.vim'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+on_map = '<Plug>'
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = ['html', 'css', 'eruby']
+
+[[plugins]]
+repo = 'sgur/vim-gitgutter'
+depends = 'Shougo/vimproc.vim'
+on_cmd = 'GitGutterToggle'
+
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+depends = 'context_filetype.vim'
+disabled = '!has("lua")'
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'tpope/vim-rails'
+on_ft = ['ruby', 'eruby']
+
+[[plugins]]
+repo = 'thinca/vim-ref'
+on_cmd = 'Ref'
+
+[[plugins]]
+repo = 'osyo-manga/vim-over'
+on_cmd = 'OverCommandLine'
+
+[[plugins]]
+repo = 'basyura/TweetVim'
+depends = ['basyura/twibill.vim', 'mattn/webapi-vim', 'tyru/open-browser.vim']
+on_map = '<Plug>'
+
+[[plugins]]
+repo = 'basyura/twibill.vim'
+
+[[plugins]]
+repo = 'mattn/webapi-vim'
+
+[[plugins]]
+repo = 'basyura/twibill.vim'
+
+[[plugins]]
+repo = 'Lokaltog/vim-easymotion'
+on_map = '<Plug>'
+
+[[plugins]]
+repo = 'haya14busa/incsearch.vim'
+on_map = '<Plug>'
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+on_map = '<Plug>'
+
+[[plugins]]
+repo = 'LeafCage/yankround.vim'
+on_map = '<Plug>'
+
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+on_map = '<Plug>'
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft = 'markdown'
+
+[[plugins]]
+repo = 'kannokanno/previm'
+on_func = 'previm#open'
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+on_map = '<Plug>'
+
+# [[plugins]]
+# repo = 'gist:distkloc/9682844'
+# name = 'snippet_vb'
+# script_type = 'snippet'
+# on_ft = ['vb', 'aspvbs']
+
+# [[plugins]]
+# repo = 'rhysd/unite-codic.vim'
+# depends = 'koron/codic-vim'
+# on_source = 'unite.vim'
+#
+# [[plugins]]
+# repo = 'koron/codic-vim'
+
+[[plugins]]
+repo = 'osyo-manga/unite-quickfix'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'Shougo/unite-help'
+on_source = 'unite.vim'
+
+
+# syntax
+[[plugins]]
+repo = 'PProvost/vim-ps1'
+on_path = '.ps1'
+
+[[plugins]]
+repo = 'groenewege/vim-less'
+on_path = '.less'
+
+[[plugins]]
+repo = 'slim-template/vim-slim'
+on_path = '.slim'
+
+# colorscheme
+[[plugins]]
+repo = 'ujihisa/unite-colorscheme'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
+on_source = 'unite-colorscheme'
+
+
+

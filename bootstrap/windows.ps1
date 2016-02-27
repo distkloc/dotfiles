@@ -14,7 +14,7 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 git config --global core.autocrlf true
 
 
-# Create vim directories and install neobundle
+# Create vim directories and install dein.vim
 $vimDir = "$Env:HOME\dotfiles\.vim"
 
 
@@ -23,7 +23,7 @@ if(-not (Test-Path $vimDir))
     @("bundle", "backup", "swap", "undo", "viminfo") |
         % { New-Item -Path "$vimDir\$_" -ItemType Directory }
 
-    git clone git://github.com/Shougo/neobundle.vim "$vimDir\bundle\neobundle.vim"
+    git clone https://github.com/Shougo/dein.vim "$vimDir\bundle\repos\github.com\Shougo\dein.vim"
 }
 
 
