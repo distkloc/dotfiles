@@ -237,8 +237,13 @@ set grepprg=pt
   " autocmd QuickfixCmdPost grep cw
 " augroup END
 
+"Disable arrow key
+noremap  <up>    <nop>
+noremap  <left>  <nop>
+noremap  <right> <nop>
+noremap  <down>  <nop>
 
-"マウス中クリックでペースト機能無効化
+"Disable mouse middle click
 map <MiddleMouse> <Nop>
 imap <MiddleMouse> <Nop>
 map <2-MiddleMouse> <Nop>
