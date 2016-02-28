@@ -6,7 +6,6 @@ on_map = '<Plug>'
 repo = 'Shougo/vimfiler.vim'
 depends = 'unite.vim'
 on_map = '<Plug>'
-on_path = '.*'
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
@@ -16,15 +15,11 @@ on_ft = 'snippet'
 
 [[plugins]]
 repo = 'osyo-manga/vim-watchdogs'
+depends = ['shabadou.vim', 'vim-quickrun']
 on_ft = ['ruby', 'javascript', 'coffee', 'scss', 'vim']
 
-# [[plugins]]
-# repo = 'osyo-manga/vim-watchdogs'
-# depends = ['osyo-manga/shabadou.vim', 'thinca/vim-quickrun']
-# on_ft = ['ruby', 'javascript', 'coffee', 'scss', 'vim']
-
-# [[plugins]]
-# repo = 'osyo-manga/shabadou.vim'
+[[plugins]]
+repo = 'osyo-manga/shabadou.vim'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -36,7 +31,7 @@ on_ft = ['html', 'css', 'eruby']
 
 [[plugins]]
 repo = 'sgur/vim-gitgutter'
-depends = 'Shougo/vimproc.vim'
+depends = 'vimproc.vim'
 on_cmd = 'GitGutterToggle'
 
 [[plugins]]
@@ -62,7 +57,7 @@ on_cmd = 'OverCommandLine'
 
 [[plugins]]
 repo = 'basyura/TweetVim'
-depends = ['basyura/twibill.vim', 'mattn/webapi-vim', 'tyru/open-browser.vim']
+depends = ['twibill.vim', 'webapi-vim', 'open-browser.vim']
 on_map = '<Plug>'
 
 [[plugins]]
@@ -70,9 +65,6 @@ repo = 'basyura/twibill.vim'
 
 [[plugins]]
 repo = 'mattn/webapi-vim'
-
-[[plugins]]
-repo = 'basyura/twibill.vim'
 
 [[plugins]]
 repo = 'Lokaltog/vim-easymotion'
@@ -107,18 +99,19 @@ repo = 'tyru/open-browser.vim'
 on_map = '<Plug>'
 
 # [[plugins]]
-# repo = 'gist:distkloc/9682844'
+# repo = 'https://gist.github.com/9682844.git'
 # name = 'snippet_vb'
-# script_type = 'snippet'
-# on_ft = ['vb', 'aspvbs']
+# on_ft = 'snippet'
+# on_path = ['vb', 'aspvbs']
 
-# [[plugins]]
-# repo = 'rhysd/unite-codic.vim'
-# depends = 'koron/codic-vim'
-# on_source = 'unite.vim'
-#
-# [[plugins]]
-# repo = 'koron/codic-vim'
+[[plugins]]
+repo = 'rhysd/unite-codic.vim'
+depends = 'codic-vim'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'koron/codic-vim'
+on_cmd = 'Codic'
 
 [[plugins]]
 repo = 'osyo-manga/unite-quickfix'
@@ -130,6 +123,10 @@ on_source = 'unite.vim'
 
 
 # syntax
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
 [[plugins]]
 repo = 'PProvost/vim-ps1'
 on_path = '.ps1'
@@ -150,6 +147,4 @@ on_source = 'unite.vim'
 [[plugins]]
 repo = 'w0ng/vim-hybrid'
 on_source = 'unite-colorscheme'
-
-
 

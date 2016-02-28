@@ -29,14 +29,3 @@ repo = 'Shougo/neosnippet-snippets'
 [[plugins]]
 repo = 'kana/vim-smartinput'
 
-[[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
-
-[[plugins]]
-repo = 'koron/codic-vim'
-on_cmd = 'Codic'
-
-[[plugins]]
-repo = 'osyo-manga/shabadou.vim'
-
