@@ -128,6 +128,10 @@ repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
 [[plugins]]
+repo = 'derekwyatt/vim-scala'
+on_ft = 'scala'
+
+[[plugins]]
 repo = 'PProvost/vim-ps1'
 on_path = '.ps1'
 
