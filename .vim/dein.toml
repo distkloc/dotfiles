@@ -29,3 +29,6 @@ repo = 'Shougo/neosnippet-snippets'
 [[plugins]]
 repo = 'kana/vim-smartinput'
 
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
