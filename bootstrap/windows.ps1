@@ -20,12 +20,16 @@ $vimDir = "$Env:HOME\dotfiles\.vim"
 
 if(-not (Test-Path $vimDir))
 {
-    @("bundle", "backup", "swap", "undo", "viminfo") |
+    @("backup", "swap", "undo", "viminfo") |
         % { New-Item -Path "$vimDir\$_" -ItemType Directory }
-
-    git clone https://github.com/Shougo/dein.vim "$vimDir\bundle\repos\github.com\Shougo\dein.vim"
 }
 
+$deinCacheDir = "$vimDir\bundle" 
+if(-not (Test-Path $deinCacheDir))
+{
+    New-Item -Path $deinCacheDir -ItemType Directory
+    git clone https://github.com/Shougo/dein.vim "$deinCacheDir\repos\github.com\Shougo\dein.vim"
+}
 
 # Symlink
 function Invoke-Mklink($base, $dest)
