@@ -143,6 +143,14 @@ on_path = '.less'
 repo = 'slim-template/vim-slim'
 on_path = '.slim'
 
+[[plugins]]
+repo = 'othree/yajs.vim'
+on_path = '.js'
+
+[[plugins]]
+repo = 'mxw/vim-jsx'
+on_path = '.jsx'
+
 # colorscheme
 [[plugins]]
 repo = 'ujihisa/unite-colorscheme'
