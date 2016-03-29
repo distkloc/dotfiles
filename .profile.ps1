@@ -26,6 +26,10 @@ if (Test-Path $HistoryFile) {
  Import-Clixml $HistoryFile | Add-History
 }
 
+#docker-machine
+if ((Invoke-Expression "docker-machine status default") -eq "Running") {
+  docker-machine env default | Invoke-Expression
+}
 
 # Alias
 Set-Alias gs Invoke-GitStatus
