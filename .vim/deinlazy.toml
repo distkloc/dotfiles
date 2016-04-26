@@ -145,7 +145,7 @@ on_path = '.slim'
 
 [[plugins]]
 repo = 'othree/yajs.vim'
-on_path = '.js'
+on_ft = ['javascript', 'javascript.jsx']
 
 [[plugins]]
 repo = 'mxw/vim-jsx'
