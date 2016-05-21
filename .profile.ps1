@@ -32,23 +32,16 @@ if ((Invoke-Expression "docker-machine status default") -eq "Running") {
 }
 
 # Alias
-Set-Alias gs Invoke-GitStatus
 Set-Alias gskip Invoke-GitUpdateIndexSkipWorktree
 Set-Alias gnoskip Invoke-GitUpdateIndexNoSkipWorktree
 Set-Alias gignored Invoke-GitLsFiles
 Set-Alias gnffcmerge Invoke-GitNoFastForwordNoMerge
-Set-Alias glg Invoke-CoolGitLog
 Set-Alias pg Invoke-PecoSrc
 
 $vimpath = "$HOME\programs\vim74-kaoriya-win64"
 New-Alias vim "$vimpath\vim.exe" -Force
 New-Alias gvim "$vimpath\gvim.exe" -Force
 
-
-function Invoke-GitStatus
-{
-    git status
-}
 
 function Invoke-GitUpdateIndexSkipWorktree
 {
@@ -69,12 +62,6 @@ function Invoke-GitNoFastForwordNoMerge ($branch)
 {
 	git merge --no-ff --no-commit $branch
 }
-
-function Invoke-CoolGitLog
-{
-    git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
-}
-
 
 function Invoke-PecoSrc
 {

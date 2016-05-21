@@ -24,10 +24,6 @@ alias vi=vim
 alias gvim='/Applications/MacVim.app/Contents/MacOS/mvim --remote-tab-silent "$*"'
 
 
-# git
-alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit"
-
-
 # peco
 function peco-src () {
     local selected_dir=$(ghq list --full-path | peco --query "$LBUFFER")
