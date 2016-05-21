@@ -10,9 +10,9 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 }
 
 
-# crlf
+# git config
 git config --global core.autocrlf true
-
+git config --global include.path "~/dotfiles/.gitconfig"
 
 # Create vim directories and install dein.vim
 $vimDir = "$Env:HOME\dotfiles\.vim"

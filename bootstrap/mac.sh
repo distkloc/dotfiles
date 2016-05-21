@@ -13,6 +13,9 @@ if ! type "nodebrew" > /dev/null; then
     curl -L git.io/nodebrew | perl - setup
 fi
 
+# git config
+git config --global include.path "~/dotfiles/.gitconfig"
+
 # dein.vim
 bundle_path=~/dotfiles/.vim/bundle/repos/github.com/Shougo/dein.vim
 if [ ! -d $bundle_path ]; then
