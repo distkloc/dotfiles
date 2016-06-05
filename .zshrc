@@ -68,3 +68,6 @@ if [ "`docker-machine status default`" = "Running" ]; then
   eval "$(docker-machine env default)"
 fi
 
+# phpbrew
+[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
+
