@@ -39,20 +39,20 @@ end
 "--------------------------------
 "dein.vim
 "--------------------------------
-call dein#begin(s:myvimrtp . '/bundle')
+if dein#load_state(s:myvimrtp . '/bundle')
+  call dein#begin(s:myvimrtp . '/bundle')
+  
+  let s:toml_path = s:myvimrtp . '/dein.toml'
+  let s:toml_lazy_path = s:myvimrtp . '/deinlazy.toml'
 
-
-let s:toml_path = s:myvimrtp . '/dein.toml'
-let s:toml_lazy_path = s:myvimrtp . '/deinlazy.toml'
-
-if dein#load_cache([expand('<sfile>'), s:toml_path, s:toml_lazy_path])
   call dein#load_toml(s:toml_path,      {'lazy': 0})
   call dein#load_toml(s:toml_lazy_path, {'lazy': 1})
-  call dein#save_cache()
+
+  call dein#end()
+  call dein#save_state()
 endif 
 
 
-call dein#end()
 
 filetype plugin indent on
 
