@@ -34,7 +34,8 @@ nodebrew use stable
 
 ### Prerequisites
 
-* Chocolatey
+* NuGet (by Package Management)
+* Chocolatey (by Package Management)
 * Git
 
 ### Change PowerShell execution policy
@@ -48,13 +49,13 @@ Set-ExecutionPolicy RemoteSigned
 ```posh
 git clone https://github.com/distkloc/dotfiles.git $HOME\dotfiles
 cd ~/dotfiles
-./bootstrap/windows.ps1
+Start-Process powershell -Verb runAs $Home\dotfiles\bootstrap\windows.ps1"
 ```
 
 ### Install chocolatey packages
 
 ```posh
-cinst chocolatey/packages.config
+choco install chocolatey/packages.config
 ```
 
 ### Select node.js version with nodist
