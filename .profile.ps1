@@ -6,7 +6,7 @@
 
 
 # path for git/MigGW
-$Env:Path += ";$HOME\AppData\Local\Programs\Git\cmd;$HOME\AppData\Local\Programs\Git\usr\bin"
+$Env:Path += ";C:\Program Files\Git\cmd;C:\Program Files\Git\usr\bin"
 
 # GOPATH
 $Env:GOPATH = "$HOME"
