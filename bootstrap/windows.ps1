@@ -6,11 +6,18 @@ git config --global include.path "~/dotfiles/.gitconfig"
 $vimDir = "$HOME\dotfiles\.vim"
 
 
-if(-not (Test-Path $vimDir))
-{
-    @("backup", "swap", "undo", "viminfo") |
-        % { New-Item -Path "$vimDir\$_" -ItemType Directory }
-}
+@("backup", "swap", "undo", "viminfo") |
+    % { 
+        $itemDir = "$vimDir\$_"
+        if(Test-Path $itemDir)
+        {
+          Write-Output "$itemDir already exists."
+        }
+        else
+        {
+          New-Item -Path "$itemDir" -ItemType Directory 
+        }
+      }
 
 $deinCacheDir = "$vimDir\bundle" 
 if(-not (Test-Path $deinCacheDir))
