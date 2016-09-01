@@ -27,8 +27,11 @@ if (Test-Path $HistoryFile) {
 }
 
 #docker-machine
-if ((Invoke-Expression "docker-machine status default") -eq "Running") {
-  docker-machine env default | Invoke-Expression
+if (Get-Command "docker-machine" -ErrorAction SilentlyContinue)
+{
+  if ((Invoke-Expression "docker-machine status default") -eq "Running") {
+    docker-machine env default | Invoke-Expression
+  }
 }
 
 # Alias
