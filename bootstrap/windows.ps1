@@ -62,6 +62,6 @@ $dothash.Keys | % { Invoke-Mklink $_ $dothash[$_] }
 # nodist
 if (-not (Get-Command "nodist" -ErrorAction SilentlyContinue))
 {
-    choco install nodist
+    Install-Package -Name nodist
 }
 
