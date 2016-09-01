@@ -3,7 +3,7 @@ git config --global core.autocrlf true
 git config --global include.path "~/dotfiles/.gitconfig"
 
 # Create vim directories and install dein.vim
-$vimDir = "$Env:HOME\dotfiles\.vim"
+$vimDir = "$HOME\dotfiles\.vim"
 
 
 if(-not (Test-Path $vimDir))
@@ -22,7 +22,7 @@ if(-not (Test-Path $deinCacheDir))
 # Symlink
 function Invoke-Mklink($base, $dest)
 {
-    $link = "$Env:HOME\$dest"
+    $link = "$HOME\$dest"
 
     if((Test-Path $link))
     {
@@ -30,7 +30,7 @@ function Invoke-Mklink($base, $dest)
     }
     else
     {
-        $realPath = "$Env:HOME\dotfiles\.$base"
+        $realPath = "$HOME\dotfiles\.$base"
 
         if(Test-Path $realPath -pathType container)
         {
