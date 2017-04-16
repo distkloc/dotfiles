@@ -550,10 +550,6 @@ nnoremap <silent> <leader>gg :<C-u>GitGutterToggle<CR>
 nnoremap <silent> <leader>gh :<C-u>GitGutterLineHighlightsToggle<CR>
 
 
-"" previm
-nnoremap <silent> <leader>pr :<C-u>PrevimOpen<CR>
-
-
 "" lightline
 let g:lightline = {
     \ 'colorscheme': 'jellybeans',
@@ -670,4 +666,7 @@ vmap <Leader>c <Plug>(caw:i:toggle)
 
 "" vim-markdown
 let g:vim_markdown_folding_disabled = 1
+
+"" shiba
+command! Shiba :silent call system('shiba ' . expand('%') . ' &>/dev/null 2>&1 &') | redraw!
 
