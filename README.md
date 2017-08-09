@@ -29,19 +29,29 @@ nodebrew install-binary stable
 nodebrew use stable
 ```
 
-
 ## Windows (with PowerShell)
 
 ### Prerequisites
 
 * NuGet (by Package Management)
-* Chocolatey (by Package Management)
 * Git
 
 ### Change PowerShell execution policy
 
 ```posh
 Set-ExecutionPolicy RemoteSigned
+```
+
+### Install Chocolatey package provider
+
+```posh
+Start-Process powershell -Verb runAs "Install-PackageProvider Chocolatey"
+```
+
+#### See installed PackageProviders
+
+```posh
+Get-PackageSource
 ```
 
 ### Run the setup script
