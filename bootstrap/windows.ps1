@@ -53,7 +53,7 @@ function Invoke-Mklink($base, $dest)
 $dothash = @{ 
     vimrc=".vimrc"
     gvimrc=".gvimrc"
-    vim="vimfiles"
+    vim=".vim"
 }
 
 $dothash.Keys | % { Invoke-Mklink $_ $dothash[$_] }

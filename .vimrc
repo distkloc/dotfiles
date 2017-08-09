@@ -24,12 +24,7 @@ else
 endif
 
 
-if s:is_windows
-    let $MYVIM = '~/vimfiles'
-else
-    let $MYVIM = '~/.vim'
-end
-
+let $MYVIM = '~/.vim'
 let s:myvimrtp = expand($MYVIM)
 
 if has('vim_starting')
