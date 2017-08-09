@@ -49,7 +49,7 @@ Set-ExecutionPolicy RemoteSigned
 ```posh
 git clone https://github.com/distkloc/dotfiles.git $HOME\dotfiles
 cd ~/dotfiles
-Start-Process powershell -Verb runAs $Home\dotfiles\bootstrap\windows.ps1"
+Start-Process powershell -Verb runAs $Home\dotfiles\bootstrap\windows.ps1
 ```
 
 ### Install chocolatey packages
