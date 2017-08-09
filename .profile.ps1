@@ -5,6 +5,9 @@
 ########################################
 
 
+# posh-git
+Import-Module posh-git
+
 # path for git/MigGW
 $Env:Path += ";C:\Program Files\Git\cmd;C:\Program Files\Git\usr\bin"
 
