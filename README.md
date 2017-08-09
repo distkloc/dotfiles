@@ -71,6 +71,6 @@ choco install chocolatey/packages.config
 ### Select node.js version with nodist
 
 ```posh
-nodist + stable
-nodist stable
+nodist + latest
+nodist latest
 ```
