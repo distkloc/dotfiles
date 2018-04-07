@@ -1,6 +1,7 @@
 
 # homebrew
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # nodebrew
 export PATH=$HOME/.nodebrew/current/bin:$PATH
