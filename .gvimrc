@@ -55,8 +55,8 @@ endif
 if has('xfontset')
 "  set guifontset=a14,r14,k14
 elseif has('mac')
-    set guifont=Ricty\ Regular\ for\ Powerline:h17
-    set guifontwide=Ricty:h17
+    set guifont=Ricty\ Discord\ for\ Powerline:h17
+    set guifontwide=Ricty\ Discord\ for\ Powerline:h17
 elseif has('win32') || has('win64')
     set guifont=Ricty\ Diminished\ for\ Powerline:h13
     set guifontwide=Ricty\ Diminished:h13
