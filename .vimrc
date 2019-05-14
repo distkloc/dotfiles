@@ -546,55 +546,28 @@ nnoremap <silent> <leader>gh :<C-u>GitGutterLineHighlightsToggle<CR>
 
 
 "" lightline
-let g:lightline = {
+	let g:lightline = {
     \ 'colorscheme': 'jellybeans',
-    \ 'mode_map': {'c': 'NORMAL'},
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename' ] ],
-    \   'right': [ [ 'lineinfo' ],
-    \            [ 'percent' ],
-    \            [ 'bufnum' ],
-    \            [ 'fileformat', 'fileencoding', 'filetype' ] ] 
-    \ },
-    \ 'component': {
-    \   'readonly': '%{ &readonly ? "\u2b64" : "" }'
-    \ },
-    \ 'component_function': {
-    \   'modified': 'MyModified',
-    \   'filename': 'MyFilename',
-    \   'fileformat': 'MyFileformat',
-    \   'filetype': 'MyFiletype',
-    \   'fileencoding': 'MyFileencoding',
-    \   'mode': 'MyMode'
-    \ },
-    \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
-    \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
-\ }
-
-function! MyModified()
-  return &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! MyFilename()
-  return ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
-       \ ('' != MyModified() ? ' ' . MyModified() : '')
-endfunction
-
-function! MyFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! MyFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
-
-function! MyFileencoding()
-  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
-
-function! MyMode()
-  return winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
+		\ 'component': {
+		\   'lineinfo': ' %3l:%-2v',
+		\ },
+		\ 'component_function': {
+		\   'readonly': 'LightlineReadonly',
+		\   'fugitive': 'LightlineFugitive'
+		\ },
+		\ 'separator': { 'left': '', 'right': '' },
+		\ 'subseparator': { 'left': '', 'right': '' }
+		\ }
+	function! LightlineReadonly()
+		return &readonly ? '' : ''
+	endfunction
+	function! LightlineFugitive()
+		if exists('*fugitive#head')
+			let branch = fugitive#head()
+			return branch !=# '' ? ''.branch : ''
+		endif
+		return ''
+	endfunction
 
 
 
