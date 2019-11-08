@@ -28,5 +28,5 @@ set -g theme_color_scheme dracula
 # vim
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 alias vi=vim
-alias gvim='/Applications/MacVim.app/Contents/MacOS/MacVim --remote-tab-silent "$*"'
+alias gvim='/Applications/MacVim.app/Contents/MacOS/MacVim --remote-tab-silent $argv'
 
