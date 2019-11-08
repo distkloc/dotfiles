@@ -25,7 +25,7 @@ if [ ! -d $bundle_path ]; then
 fi
 
 # symlink
-DOT_FILES=( .vim .vimrc .gvimrc .zshrc .zshenv .tmux.conf .Brewfile .config/fish/config.fish )
+DOT_FILES=( .vim .vimrc .gvimrc .zshrc .zshenv .tmux.conf .Brewfile .config/fish )
 
 for file in ${DOT_FILES[@]}
 do
