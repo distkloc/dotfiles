@@ -83,3 +83,6 @@ bindkey '^\' peco-ssh
 # phpbrew
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
+
+# shell
+exec fish
