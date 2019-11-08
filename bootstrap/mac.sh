@@ -42,7 +42,3 @@ mkdir ~/.vim/swap
 mkdir ~/.vim/undo
 mkdir ~/.vim/viminfo
 
-
-# submodule initialization
-git submodule update --init
-

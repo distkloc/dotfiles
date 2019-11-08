@@ -1,7 +1,5 @@
 # Created by newuser for 5.0.2
 
-source ~/dotfiles/zsh/.antigenrc
-
 setopt nonomatch
 
 # rbenv
