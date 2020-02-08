@@ -25,9 +25,7 @@ if [ ! -d $bundle_path ]; then
 fi
 
 # symlink
-DOT_FILES=( .vim .vimrc .gvimrc .zshrc .zshenv .tmux.conf .Brewfile .config/fish/config.fish .config/fish/fishfile )
-
-mkdir -p ~/.config/fish
+DOT_FILES=( .vim .vimrc .gvimrc .zshrc .zshenv .zpreztorc .tmux.conf .Brewfile )
 
 for file in ${DOT_FILES[@]}
 do
@@ -44,4 +42,15 @@ mkdir ~/.vim/backup
 mkdir ~/.vim/swap
 mkdir ~/.vim/undo
 mkdir ~/.vim/viminfo
+
+
+# prezto
+if [ ! -d ~/.zprezto ]; then
+  git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+
+  setopt EXTENDED_GLOB
+  for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+    ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+  done
+fi
 

@@ -9,6 +9,11 @@ eval "$(rbenv init -)"
 setopt AUTO_CD
 cdpath=(.. ~ ~/src)
 
+# prezto
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
 # z
 _Z_CMD=j
 . `brew --prefix`/etc/profile.d/z.sh
@@ -83,6 +88,3 @@ bindkey '^\' peco-ssh
 # phpbrew
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
-
-# shell
-exec fish

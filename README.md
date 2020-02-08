@@ -13,7 +13,7 @@
 ```sh
 git clone https://github.com/distkloc/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-bootstrap/mac.sh
+bootstrap/mac.zsh
 ```
 
 ### Install homebrew formulae and mac apps
