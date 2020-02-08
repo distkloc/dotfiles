@@ -2,10 +2,6 @@
 
 setopt nonomatch
 
-# rbenv
-eval "$(rbenv init -)"
-
-
 setopt AUTO_CD
 cdpath=(.. ~ ~/src)
 
@@ -81,10 +77,4 @@ function peco-ssh () {
 }
 zle -N peco-ssh
 bindkey '^\' peco-ssh
-
-# added by travis gem
-[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
-
-# phpbrew
-[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
