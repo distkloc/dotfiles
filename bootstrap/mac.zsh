@@ -54,3 +54,8 @@ if [ ! -d ~/.zprezto ]; then
   done
 fi
 
+# anyenv
+anyenv install --init
+anyenv install pyenv
+exec $SHELL -l
+

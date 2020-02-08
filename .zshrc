@@ -10,6 +10,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# anyenv
+eval "$(anyenv init -)"
+
 # z
 _Z_CMD=j
 . `brew --prefix`/etc/profile.d/z.sh
