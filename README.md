@@ -22,11 +22,14 @@ zsh bootstrap/mac.zsh
 brew bundle --global
 ```
 
-### Select node.js version with nodebrew
+### Install node.js
 
 ```sh
-nodebrew install-binary stable
-nodebrew use stable
+nodenv install -l
+nodenv install x.y.z
+nodenv global x.y.z
+exec $SHELL -l
+node -v
 ```
 
 ## Windows (with PowerShell)

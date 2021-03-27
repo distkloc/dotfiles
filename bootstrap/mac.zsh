@@ -8,11 +8,6 @@ fi
 # homebrew-bundle
 brew tap Homebrew/bundle
 
-# nodebrew
-if ! type "nodebrew" > /dev/null; then
-    curl -L git.io/nodebrew | perl - setup
-fi
-
 # git config
 git config --global include.path "~/dotfiles/.gitconfig"
 
@@ -57,5 +52,8 @@ fi
 # anyenv
 anyenv install --init
 anyenv install pyenv
+anyenv install nodenv
+touch $(nodenv root)/default-packages
+
 exec $SHELL -l
 
