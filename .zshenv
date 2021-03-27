@@ -9,3 +9,6 @@ export PATH=$PATH:$GOPATH/bin
 
 # color
 export TERM=xterm-256color
+
+# pip
+export PATH=$PATH:$HOME/.local/bin
