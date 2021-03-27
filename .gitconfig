@@ -1,7 +1,14 @@
 [alias]
-	graph = log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
+	graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	branches = branch -a
 	stashes = stash list
 	precommit = diff --cached --diff-algorithm=minimal -w
 	remotes = remote -v
 	unmerged = diff --name-only --diff-filter=U
+
+[core]
+	editor = vim -c \"set fenc=utf-8\"
+	quotepath = false
+
+[pull]
+	ff = only
