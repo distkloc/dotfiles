@@ -32,6 +32,24 @@ exec $SHELL -l
 node -v
 ```
 
+### Install pyenv and poetry
+
+```sh
+pyenv install -l
+pyenv install x.y.z
+pyenv global x.y.z
+exec $SHELL -l
+python -v
+```
+
+```sh
+pip install --user poetry
+poetry completions zsh > ~/.zprezto/modules/completion/external/src/_poetry
+poetry config virtualenvs.in-project true
+poetry config --list
+```
+
+
 ## Windows (with PowerShell)
 
 ### Prerequisites
