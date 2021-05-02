@@ -23,7 +23,7 @@ function precmd () {
 # vim
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 alias vi=vim
-alias gvim='/Applications/MacVim.app/Contents/MacOS/MacVim --remote-tab-silent "$*"'
+alias gvim='mvim --remote-tab-silent "$*"'
 
 
 # peco
