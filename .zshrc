@@ -1,9 +1,13 @@
 # Created by newuser for 5.0.2
 
+setopt correct
 setopt nonomatch
-
-setopt AUTO_CD
-cdpath=(.. ~ ~/src)
+setopt hist_reduce_blanks
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_find_no_dups
+setopt share_history
 
 # prezto
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
