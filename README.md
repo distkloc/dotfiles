@@ -6,56 +6,46 @@
 
 ### Prerequisites
 
-* Git
+- Git
 
 ### Run the setup script
 
 ```sh
 git clone https://github.com/distkloc/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-zsh bootstrap/mac.zsh
+make all
 ```
 
-### Install homebrew formulae and mac apps
+### Set node.js version
 
 ```sh
-brew bundle --global
-```
-
-### Install node.js
-
-```sh
-nodenv install -l
-nodenv install x.y.z
-nodenv global x.y.z
-exec $SHELL -l
+asdf list nodejs
+asdf global nodejs 16.1.0
 node -v
 ```
 
-### Install pyenv and poetry
+### Set python version
 
 ```sh
-pyenv install -l
-pyenv install x.y.z
-pyenv global x.y.z
-exec $SHELL -l
+asdf list python
+asdf global python 3.9.5
 python -v
 ```
 
-```sh
-pip install --user poetry
-poetry completions zsh > ~/.zprezto/modules/completion/external/src/_poetry
-poetry config virtualenvs.in-project true
-poetry config --list
-```
+### Make Commands
 
+see:
+
+```sh
+make help
+```
 
 ## Windows (with PowerShell)
 
 ### Prerequisites
 
-* NuGet (by Package Management)
-* Git
+- NuGet (by Package Management)
+- Git
 
 ### Change PowerShell execution policy
 
