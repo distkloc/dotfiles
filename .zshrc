@@ -17,15 +17,8 @@ fi
 # anyenv
 eval "$(anyenv init -)"
 
-# z
-_Z_CMD=j
-. `brew --prefix`/etc/profile.d/z.sh
-function precmd () {
-   _z --add "$(pwd -P)"
-}
 
 # vim
-alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 alias vi=vim
 alias gvim='mvim --remote-tab-silent "$*"'
 
