@@ -14,8 +14,18 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# anyenv
-eval "$(anyenv init -)"
+# asdf
+if [[ -s "$HOME/.asdf/asdf.sh" ]]; then
+  . $HOME/.asdf/asdf.sh
+
+  # append completions to fpath
+  fpath=(${ASDF_DIR}/completions $fpath)
+fi
+
+# initialise completions with ZSH's compinit
+autoload -Uz compinit
+compinit
+
 
 
 # vim
