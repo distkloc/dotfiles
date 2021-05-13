@@ -29,7 +29,7 @@ node -v
 ```sh
 asdf list python
 asdf global python 3.9.5
-python -v
+python --version
 ```
 
 ### Make Commands
