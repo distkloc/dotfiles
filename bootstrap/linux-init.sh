@@ -11,7 +11,7 @@ sudo apt install -y \
   dirmngr gpg # asdf-nodejs depends on
 
 chsh -s $(which zsh) # must enter password
-
+exec -l $(which zsh)
 
 # poetry
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python -
