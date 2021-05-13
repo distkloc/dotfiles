@@ -13,3 +13,7 @@ export TERM=xterm-256color
 
 # pip
 export PATH=$PATH:$HOME/.local/bin
+
+# poetry
+export PATH=$HOME/.poetry/bin:$PATH
+
