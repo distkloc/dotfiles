@@ -10,7 +10,7 @@ sudo apt install -y \
   neovim \
   dirmngr gpg # asdf-nodejs depends on
 
-chsh -s $(which zsh)
+chsh -s $(which zsh) # must enter password
 
 
 # poetry
