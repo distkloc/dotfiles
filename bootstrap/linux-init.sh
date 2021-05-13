@@ -14,5 +14,5 @@ chsh -s $(which zsh) # must enter password
 
 
 # poetry
-curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python - --no-modify-path
-poetry config virtualenvs.in-project true
+curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python -
+$HOME/.poetry/bin/poetry config virtualenvs.in-project true
