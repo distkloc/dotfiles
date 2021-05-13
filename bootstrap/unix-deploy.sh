@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # symlink
-for file in .?*
+for file in .??*
 do
   ( [[ "$file" = ".git"* ]] || \
   [ "$file" = ".DS_Store" ] || \
