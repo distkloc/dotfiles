@@ -210,10 +210,6 @@ let &backupdir = s:myvimrtp . '/backup'
 let &directory = s:myvimrtp . '/swap'
 let &undodir = s:myvimrtp . '/undo'
 
-" prevent vim from appending duplicate option when :source is executed
-if has('vim_starting')
-  let &viminfo .= ',n' . s:myvimrtp . '/viminfo/.viminfo'
-end
 
 "C言語スタイルのインデント
 set cindent
