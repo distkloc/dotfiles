@@ -8,7 +8,8 @@ sudo apt install -y \
   jq \
   peco \
   neovim \
-  dirmngr gpg # asdf-nodejs depends on
+  dirmngr gpg \
+  unzip
 
 chsh -s $(which zsh) # must enter password
 exec -l $(which zsh)
