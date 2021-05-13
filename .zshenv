@@ -11,9 +11,5 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 # color
 export TERM=xterm-256color
 
-# pip
+# pip, poetry
 export PATH=$PATH:$HOME/.local/bin
-
-# poetry
-export PATH=$HOME/.poetry/bin:$PATH
-
