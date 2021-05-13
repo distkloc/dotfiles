@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # symlink
 for file in .?*

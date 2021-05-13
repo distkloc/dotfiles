@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # homebrew
 if ! command -v brew &> /dev/null

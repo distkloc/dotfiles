@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # neovim
 if [ -L ~/.config/nvim/init.vim ] ; then
