@@ -13,3 +13,6 @@ export TERM=xterm-256color
 
 # pip, poetry
 export PATH=$PATH:$HOME/.local/bin
+
+# for powerline font
+export LANG=C.UTF-8
