@@ -88,3 +88,12 @@ function peco-ssh () {
 zle -N peco-ssh
 bindkey '^\' peco-ssh
 
+
+case ${OSTYPE} in
+    darwin*)
+        source ~/.mac.zshrc
+        ;;
+    linux*)
+        source ~/.linux.zshrc
+        ;;
+esac
