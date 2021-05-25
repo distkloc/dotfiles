@@ -16,6 +16,3 @@ export PATH=$PATH:$HOME/.local/bin
 
 # poetry
 export PATH="$HOME/.poetry/bin:$PATH"
-
-# for powerline font
-export LANG=C.UTF-8
