@@ -10,4 +10,5 @@ sudo apt install -y \
   neovim \
   dirmngr gpg \
   unzip \
-  libffi-dev
+  libffi-dev \
+  liblzma-dev
