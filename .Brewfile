@@ -1,4 +1,3 @@
-tap "delphinus/sfmono-square"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
@@ -15,4 +14,5 @@ brew "rust"
 brew "the_platinum_searcher"
 brew "tmux"
 brew "macvim"
-brew "delphinus/sfmono-square/sfmono-square"
+cask "font-hackgen" # https://github.com/yuru7/HackGen
+cask "font-hackgen-nerd"
