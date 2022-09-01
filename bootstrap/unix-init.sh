@@ -11,14 +11,15 @@ if [ ! -d $bundle_path ]; then
     git clone https://github.com/Shougo/dein.vim ${bundle_path}
 fi
 
-# prezto
-if [ -x "$(command -v zsh)" ] && [ ! -d ~/.zprezto ]; then
-  git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-fi
 
-if [ -x "$(command -v poetry)" ] && [ -d ~/.zprezto ]; then
-  # Zsh (prezto)
-  poetry completions zsh > ~/.zprezto/modules/completion/external/src/_poetry
+# zinit
+if [ -x "$(command -v zsh)" ]; then
+  ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+
+  if [ ! -d $ZINIT_HOME ]; then
+    mkdir -p "$(dirname $ZINIT_HOME)"
+    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+  fi
 fi
 
 # asdf

@@ -16,6 +16,10 @@ cd ~/dotfiles
 make all
 ```
 
+### Font
+
+[romkatv/powerlevel10k: A Zsh theme](https://github.com/romkatv/powerlevel10k#automatic-font-installation)
+
 ### Set node.js version
 
 ```sh
