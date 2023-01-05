@@ -5,6 +5,7 @@
 	precommit = diff --cached --diff-algorithm=minimal -w
 	remotes = remote -v
 	unmerged = diff --name-only --diff-filter=U
+	delete-merged = !git branch --merged | grep -Ev '\\*|main|master|develop' | xargs git branch -d
 
 [core]
 	editor = vim -c \"set fenc=utf-8\"
