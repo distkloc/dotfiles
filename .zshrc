@@ -105,6 +105,18 @@ zle -N peco-ssh
 bindkey '^\' peco-ssh
 
 
+function peco-kubectx () {
+    local selected_ctx=$(kubectl ctx | peco --query "$LBUFFER")
+    if [ -n "$selected_ctx" ]; then
+        BUFFER="kubectl ctx ${selected_ctx}"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N peco-kubectx
+bindkey '^\\c' peco-kubectx
+
+
 case ${OSTYPE} in
     darwin*)
         source ~/.mac.zshrc
