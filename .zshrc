@@ -106,9 +106,9 @@ bindkey '^\\s' peco-ssh
 
 
 function peco-kubectx () {
-    local selected_ctx=$(kubectl ctx | peco --query "$LBUFFER")
+    local selected_ctx=$(kubectl config get-contexts | awk 'NR>1{print $2}' | peco --query "$LBUFFER")
     if [ -n "$selected_ctx" ]; then
-        BUFFER="kubectl ctx ${selected_ctx}"
+        BUFFER="kubectl config use-context ${selected_ctx}"
         zle accept-line
     fi
     zle clear-screen
