@@ -16,3 +16,6 @@ export PATH=$PATH:$HOME/.local/bin
 
 # poetry
 export PATH="$HOME/.poetry/bin:$PATH"
+
+# krew
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
