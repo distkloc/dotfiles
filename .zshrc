@@ -59,7 +59,7 @@ function peco-src () {
     zle clear-screen
 }
 zle -N peco-src
-bindkey '^]' peco-src
+bindkey '^\\g' peco-src
 
 function peco-select-history() {
   typeset tac
@@ -102,7 +102,7 @@ function peco-ssh () {
   zle clear-screen
 }
 zle -N peco-ssh
-bindkey '^\' peco-ssh
+bindkey '^\\s' peco-ssh
 
 
 function peco-kubectx () {
