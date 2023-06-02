@@ -117,6 +117,18 @@ zle -N peco-kubectx
 bindkey '^\\c' peco-kubectx
 
 
+function peco-saml2aws () {
+    local selected_profile=$(awk -F "[][]" '/\[.*\]/ { print $2 }' ~/.saml2aws | sort | peco --query "$LBUFFER")
+    if [ -n "$selected_profile" ]; then
+        BUFFER="saml2aws login -a ${selected_profile} --disable-keychain"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N peco-saml2aws
+bindkey '^\\2' peco-saml2aws
+
+
 case ${OSTYPE} in
     darwin*)
         source ~/.mac.zshrc
