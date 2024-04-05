@@ -15,7 +15,7 @@ export TERM=xterm-256color
 export PATH=$PATH:$HOME/.local/bin
 
 # poetry
-export PATH="$HOME/.poetry/bin:$PATH"
+export PATH="$HOME/.local/bin/poetry:$PATH"
 
 # krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
