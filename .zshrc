@@ -48,6 +48,10 @@ compinit
 alias vi=vim
 alias gvim='mvim --remote-tab-silent "$*"'
 
+# op
+if [[ -f "$HOME/.env.1password" ]]; then
+  alias opr='op run --env-file="$HOME/.env.1password"'
+fi
 
 # peco
 function peco-src () {
