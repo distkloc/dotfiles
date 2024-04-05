@@ -48,10 +48,6 @@ compinit
 alias vi=vim
 alias gvim='mvim --remote-tab-silent "$*"'
 
-# op
-if [[ -f "$HOME/.env.1password" ]]; then
-  alias opr='op run --env-file="$HOME/.env.1password"'
-fi
 
 # peco
 function peco-src () {
@@ -121,16 +117,22 @@ zle -N peco-kubectx
 bindkey '^\\c' peco-kubectx
 
 
-function peco-saml2aws () {
+# op
+if [[ -f "$HOME/.env.1password" ]]; then
+  alias opr='op run --env-file="$HOME/.env.1password" -- '
+
+  # peco + saml2aws
+  function peco-saml2aws () {
     local selected_profile=$(awk -F "[][]" '/\[.*\]/ { print $2 }' ~/.saml2aws | sort | peco --query "$LBUFFER")
     if [ -n "$selected_profile" ]; then
-        BUFFER="saml2aws login -a ${selected_profile} --disable-keychain"
+        BUFFER="opr saml2aws login -a ${selected_profile} --disable-keychain"
         zle accept-line
     fi
     zle clear-screen
-}
-zle -N peco-saml2aws
-bindkey '^\\2' peco-saml2aws
+  }
+  zle -N peco-saml2aws
+  bindkey '^\\2' peco-saml2aws
+fi
 
 
 case ${OSTYPE} in
