@@ -16,5 +16,3 @@ ln -fnsv ${DOT_PATH%/}/.vimrc ~/.config/nvim/init.vim
 
 # vim directory
 mkdir -p {~/.vim/backup,~/.vim/swap,~/.vim/undo,~/.vim/viminfo}
-
-exec $SHELL -l
