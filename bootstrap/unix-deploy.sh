@@ -11,7 +11,7 @@ do
 done
 
 # neovim
-mkdir -p ~/.config/nvim
+mkdir -p ${DOT_PATH%/}/.config/nvim
 ln -fnsv ${DOT_PATH%/}/.vimrc ~/.config/nvim/init.vim
 
 # vim directory

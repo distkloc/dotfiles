@@ -1,3 +1,5 @@
+.config/nvim/
+
 /.vim/backup/
 /.vim/bundle/
 /.vim/swap/
