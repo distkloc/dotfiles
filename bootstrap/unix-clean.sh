@@ -17,13 +17,6 @@ do
   fi
 done
 
-# prezto
-if [ -x "$(command -v zsh)" ] && \
-  [ -d ~/.zprezto ]; then
-
-  zsh -c ${DOT_PATH%/}/bootstrap/prezto-clean.zsh
-fi
-
 # asdf
 if [ -d ~/.asdf ] ; then
   rm -rf ~/.asdf

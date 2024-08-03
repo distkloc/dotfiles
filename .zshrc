@@ -17,19 +17,6 @@ setopt hist_find_no_dups
 setopt share_history
 
 
-# zinit
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-
-if [[ -s "$ZINIT_HOME" ]]; then
-  source "${ZINIT_HOME}/zinit.zsh"
-fi
-
-# zinit plugins
-zinit ice depth=1; zinit light romkatv/powerlevel10k
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
-
-
 # asdf
 if [[ -s "$HOME/.asdf/asdf.sh" ]]; then
   . $HOME/.asdf/asdf.sh
