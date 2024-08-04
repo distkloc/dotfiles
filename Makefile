@@ -13,22 +13,22 @@ all: init deploy post_deploy ## Run all
 .PHONY: init
 init: ## Install apps and git clone
 	bash bootstrap/$(OS)-init.sh
-	bash bootstrap/unix-init.sh
+	bash bootstrap/nix-init.sh
 
 .PHONY: deploy
 deploy: ## Symlink dotfiles
 	bash bootstrap/$(OS)-deploy.sh
-	bash bootstrap/unix-deploy.sh
+	bash bootstrap/nix-deploy.sh
 
 .PHONY: post_deploy
 post_deploy: ## Process after init and deploy
 	bash bootstrap/$(OS)-post-deploy.sh
-	bash bootstrap/unix-post-deploy.sh
+	bash bootstrap/nix-post-deploy.sh
 
 .PHONY: clean
 clean: ## Remove created directories and symlinks except for apps via package management
 	bash bootstrap/$(OS)-clean.sh
-	bash bootstrap/unix-clean.sh
+	bash bootstrap/nix-clean.sh
 
 .PHONY: help
 help: ## Show help
