@@ -3,6 +3,7 @@
 # neovim
 if [ -L ~/.config/nvim/init.vim ] ; then
   unlink ~/.config/nvim/init.vim
+  rm -rf ~/.config/nvim
 fi
 
 
@@ -14,6 +15,16 @@ do
 
   if [ -L ~/$file ] ; then
     unlink ~/$file
+  fi
+done
+
+for dir in ${DOT_PATH%/}/dotconfig/*/
+do
+  dir=${dir%/}  # Remove trailing slash
+  base_dir=$(basename "$dir")
+
+  if [ -L "$HOME/.config/$base_dir" ] ; then
+    unlink "$HOME/.config/$base_dir"
   fi
 done
 
