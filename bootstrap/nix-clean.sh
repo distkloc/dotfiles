@@ -27,8 +27,3 @@ do
     unlink "$HOME/.config/$base_dir"
   fi
 done
-
-# asdf
-if [ -d ~/.asdf ] ; then
-  rm -rf ~/.asdf
-fi
