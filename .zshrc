@@ -17,22 +17,26 @@ setopt hist_find_no_dups
 setopt share_history
 
 
-# asdf
-if [[ -s "$HOME/.asdf/asdf.sh" ]]; then
-  . $HOME/.asdf/asdf.sh
-
-  # append completions to fpath
-  fpath=(${ASDF_DIR}/completions $fpath)
-fi
-
 # initialise completions with ZSH's compinit
 autoload -Uz compinit
 compinit
 
 
+
 # sheldon
 if command -v sheldon >/dev/null 2>&1; then
   eval "$(sheldon source)"
+fi
+
+# mise
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+  eval "$(mise completion zsh)"
+fi
+
+# kubectl
+if command -v kubectl >/dev/null 2>&1; then
+  source <(kubectl completion zsh)
 fi
 
 

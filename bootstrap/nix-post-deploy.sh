@@ -1,10 +1,9 @@
 #!/bin/bash
 
-asdf plugin-add nodejs
-asdf plugin-add python
+mise use -g usage
+mise use -g node@latest
+mise use -g kubectl@latest
+mise use -g kubectl-convert@latest
 
-asdf install nodejs latest
-asdf install python latest
 
-chsh -s $(which zsh)
 exec -l $(which zsh)

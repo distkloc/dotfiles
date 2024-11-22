@@ -10,11 +10,3 @@ if [ ! -d $bundle_path ]; then
     mkdir -p $bundle_path
     git clone https://github.com/Shougo/dein.vim ${bundle_path}
 fi
-
-# asdf
-if [ ! -d ~/.asdf ]; then
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-  cd ~/.asdf
-  git checkout "$(git describe --abbrev=0 --tags)"
-  cd -
-fi

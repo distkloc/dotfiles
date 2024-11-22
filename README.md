@@ -20,22 +20,6 @@ make all
 
 [romkatv/powerlevel10k: A Zsh theme](https://github.com/romkatv/powerlevel10k#automatic-font-installation)
 
-### Set node.js version
-
-```sh
-asdf list nodejs
-asdf global nodejs 16.1.0
-node -v
-```
-
-### Set python version
-
-```sh
-asdf list python
-asdf global python 3.9.5
-python --version
-```
-
 ### Make Commands
 
 see:
