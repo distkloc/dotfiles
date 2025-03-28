@@ -6,3 +6,8 @@ fi
 
 # for powerline font
 export LANG=C.UTF-8
+
+# mise
+if [[ -x "$HOME/.local/bin/mise" ]]; then
+  eval "$("$HOME/.local/bin/mise" activate zsh)"
+fi
