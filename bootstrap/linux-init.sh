@@ -1,8 +1,8 @@
 #!/bin/bash
 
-sudo apt update
+apt update
 
-sudo apt install -y \
+apt install -y \
   curl \
   zsh \
   jq \
