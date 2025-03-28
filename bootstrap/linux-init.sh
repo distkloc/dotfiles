@@ -8,7 +8,6 @@ sudo apt install -y \
   jq \
   peco \
   neovim \
-  dirmngr gpg \
   unzip \
-  libffi-dev \
-  liblzma-dev
+
+curl https://mise.run | MISE_VERSION=v2025.3.10 sh

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mise use -g node@latest
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # homebrew-bundle
