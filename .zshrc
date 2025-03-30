@@ -15,6 +15,7 @@ setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_find_no_dups
 setopt share_history
+setopt incappendhistory
 
 
 # initialise completions with ZSH's compinit
