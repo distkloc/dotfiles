@@ -6,6 +6,11 @@
 	remotes = remote -v
 	unmerged = diff --name-only --diff-filter=U
 	delete-merged = !git branch --merged | grep -Ev '\\*|main|master|develop' | xargs git branch -d
+  rebase-onto = "!f(){ \
+    test -n \"$1\" -a -n \"$2\" || { echo 'usage: git rebase-onto <newbase> <oldbase>'; exit 2; }; \
+    git fetch -q origin --prune && git rebase --onto \"$1\" \"$2\"; \
+  }; f"
+
 
 [core]
 	editor = vim -c \"set fenc=utf-8\"
