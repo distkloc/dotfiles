@@ -113,6 +113,16 @@ function peco-kubectx () {
 zle -N peco-kubectx
 bindkey '^\\c' peco-kubectx
 
+function peco-gcloud-project () {
+    local selected_project=$(gcloud projects list --format="value(projectId)" | peco --query "$LBUFFER")
+    if [ -n "$selected_project" ]; then
+        BUFFER="gcloud config set project ${selected_project}"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N peco-gcloud-project
+bindkey '^\\p' peco-gcloud-project
 
 # op
 if [[ -f "$HOME/.env.1password" ]]; then
