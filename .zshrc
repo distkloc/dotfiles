@@ -63,6 +63,17 @@ function peco-src () {
 zle -N peco-src
 bindkey '^\\g' peco-src
 
+function peco-vscode-src () {
+    local selected_dir=$(ghq list --full-path | peco --query "$LBUFFER")
+    if [ -n "$selected_dir" ]; then
+        BUFFER="code ${selected_dir}"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N peco-vscode-src
+bindkey '^\\o' peco-vscode-src
+
 function peco-git-wt () {
   local selected_wt=$(git wt | tail -n +2 | peco | awk '{print $(NF-1)}')
   if [ -n "$selected_wt" ]; then
