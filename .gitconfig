@@ -21,3 +21,6 @@
 
 [ghq]
 	root = ~/src
+
+[wt]
+	basedir = ".worktrees"

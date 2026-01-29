@@ -40,6 +40,11 @@ if command -v kubectl >/dev/null 2>&1; then
   source <(kubectl completion zsh)
 fi
 
+# git wt
+if git wt -h >/dev/null 2>&1; then
+  eval "$(git wt --init zsh)"
+fi
+
 
 # vim
 alias vi=vim
@@ -57,6 +62,18 @@ function peco-src () {
 }
 zle -N peco-src
 bindkey '^\\g' peco-src
+
+function peco-git-wt () {
+  local selected_wt=$(git wt | tail -n +2 | peco | awk '{print $(NF-1)}')
+  if [ -n "$selected_wt" ]; then
+    BUFFER="git wt ${selected_wt}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-git-wt
+bindkey '^\\w' peco-git-wt
+
 
 function peco-select-history() {
   typeset tac
