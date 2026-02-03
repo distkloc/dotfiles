@@ -58,8 +58,8 @@ fi
 
 
 # vim
-alias vi=vim
-alias gvim='mvim --remote-tab-silent "$*"'
+alias vim=nvim
+alias vi=nvim
 
 
 # peco

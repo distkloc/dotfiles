@@ -3,9 +3,11 @@
 # symlink
 for file in .??*
 do
-  ( [[ "$file" = ".git"* ]] || \
-  [ "$file" = ".DS_Store" ] || \
-  [[ "$file" = *".ps1" ]] ) && continue
+  case "$file" in
+    .git*|.DS_Store|*.ps1|.*vimrc)
+      continue
+      ;;
+  esac
 
   ln -fnsv ${DOT_PATH%/}/$file ~/$file
 done
@@ -19,10 +21,6 @@ do
   base_dir=$(basename "$dir")
   ln -fnsv "$dir" "$HOME/.config/$base_dir"
 done
-
-# neovim
-mkdir -p ~/.config/nvim
-ln -fnsv ${DOT_PATH%/}/.vimrc ~/.config/nvim/init.vim
 
 # vim directory
 mkdir -p {~/.vim/backup,~/.vim/swap,~/.vim/undo,~/.vim/viminfo}

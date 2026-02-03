@@ -10,7 +10,7 @@ brew "reattach-to-user-namespace"
 brew "rust"
 brew "sheldon"
 brew "tmux"
-brew "macvim"
+brew "neovim"
 cask "1password-cli"
 cask "font-hackgen" # https://github.com/yuru7/HackGen
 cask "font-hackgen-nerd"
