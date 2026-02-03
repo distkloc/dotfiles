@@ -22,7 +22,18 @@ setopt incappendhistory
 autoload -Uz compinit
 compinit
 
+case ${OSTYPE} in
+    darwin*)
+        source ~/.mac.zshrc
+        ;;
+    linux*)
+        source ~/.linux.zshrc
+        ;;
+esac
 
+if [[ -f ~/.local.zshrc ]]; then
+  source ~/.local.zshrc
+fi
 
 # sheldon
 if command -v sheldon >/dev/null 2>&1; then
@@ -167,20 +178,6 @@ if [[ -f "$HOME/.env.1password" ]]; then
   }
   zle -N peco-saml2aws
   bindkey '^\\2' peco-saml2aws
-fi
-
-
-case ${OSTYPE} in
-    darwin*)
-        source ~/.mac.zshrc
-        ;;
-    linux*)
-        source ~/.linux.zshrc
-        ;;
-esac
-
-if [[ -f ~/.local.zshrc ]]; then
-  source ~/.local.zshrc
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
