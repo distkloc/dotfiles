@@ -4,7 +4,7 @@
 for file in .??*
 do
   case "$file" in
-    .git*|.DS_Store|*.ps1|.*vimrc)
+    .git*|.DS_Store|*.ps1|.*vimrc|.claude)
       continue
       ;;
   esac
@@ -12,14 +12,21 @@ do
   ln -fnsv ${DOT_PATH%/}/$file ~/$file
 done
 
-mkdir -p ~/.config
+# Symlink dot* directories (dot prefix -> . prefix)
+for src_prefix in ${DOT_PATH%/}/dot*/; do
+  [[ -e "$src_prefix" ]] || continue
+  src_prefix=${src_prefix%/}
+  base_name=$(basename "$src_prefix")
+  dest_prefix="${base_name/dot/.}"  # dot -> .
 
-# Symlink directories from dotconfig to ~/.config
-for dir in ${DOT_PATH%/}/dotconfig/*/
-do
-  dir=${dir%/}  # Remove trailing slash
-  base_dir=$(basename "$dir")
-  ln -fnsv "$dir" "$HOME/.config/$base_dir"
+  mkdir -p "$HOME/$dest_prefix"
+
+  # Symlink items under dot* directory
+  for item in "$src_prefix"/*; do
+    [[ -e "$item" ]] || continue
+    item_name=$(basename "$item")
+    ln -fnsv "$item" "$HOME/$dest_prefix/$item_name"
+  done
 done
 
 # vim directory

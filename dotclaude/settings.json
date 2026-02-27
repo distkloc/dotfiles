@@ -1,0 +1,16 @@
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(test *)"
+    ],
+    "deny": []
+  },
+  "enabledPlugins": {
+    "terraform-code-generation@hashicorp": true,
+    "terraform-module-generation@hashicorp": true,
+    "example-skills@anthropic-agent-skills": true
+  }
+}
