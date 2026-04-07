@@ -56,11 +56,16 @@ if git wt -h >/dev/null 2>&1; then
   eval "$(git wt --init zsh)"
 fi
 
+# zsh-autosuggestions
+ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history)
 
 # vim
 alias vim=nvim
 alias vi=nvim
 
+
+bindkey -d # reset bindkey
+bindkey -e # use emacs style
 
 # peco
 function peco-src () {
@@ -86,9 +91,15 @@ zle -N peco-vscode-src
 bindkey '^\\o' peco-vscode-src
 
 function peco-git-wt () {
-  local selected_wt=$(git wt | tail -n +2 | peco | awk '{print $(NF-1)}')
-  if [ -n "$selected_wt" ]; then
-    BUFFER="git wt ${selected_wt}"
+  local worktrees=$(git wt 2>/dev/null | tail -n +2)
+  if [ -z "$worktrees" ]; then
+    zle clear-screen
+    return
+  fi
+
+  local selected=$(echo "$worktrees" | peco | awk '{print $(NF-1)}')
+  if [ -n "$selected" ]; then
+    BUFFER="git wt ${selected}"
     zle accept-line
   fi
   zle clear-screen
@@ -96,6 +107,31 @@ function peco-git-wt () {
 zle -N peco-git-wt
 bindkey '^\\w' peco-git-wt
 
+function tmux-claude-session () {
+  local parts=(${(s:/:)PWD})
+  local session_name="claude-${parts[-2]}--${parts[-1]}"
+  if (( ${#session_name} > 36 )); then
+    local hash=$(print -n -- "$session_name" | shasum | awk '{print $1}')
+    local max_prefix=$((36 - 1 - 8))
+    session_name="${session_name:0:${max_prefix}}-${hash:0:8}"
+  fi
+  BUFFER="tmux new-session -A -s ${session_name}"
+  zle accept-line
+
+}
+zle -N tmux-claude-session
+bindkey '^\\a' tmux-claude-session
+
+function peco-tmux-session () {
+  local selected=$(tmux ls -F '#{session_name}' 2>/dev/null | peco --query "$LBUFFER")
+  if [ -n "$selected" ]; then
+    BUFFER="tmux attach -t ${selected}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-tmux-session
+bindkey '^\\t' peco-tmux-session
 
 function peco-select-history() {
   typeset tac
