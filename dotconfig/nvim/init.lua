@@ -27,20 +27,30 @@ opt.smartindent = true
 
 opt.number = true
 opt.cursorline = true
-opt.wrap = false
+opt.wrap = true
 
 opt.nrformats = "bin,hex"
 opt.swapfile = false
 
 opt.history = 1000
 opt.fixendofline = true
+opt.autoread = true
 
-vim.cmd [[
-  highlight Normal guibg=none
-  highlight NonText guibg=none
-  highlight Normal ctermbg=none
-  highlight NonText ctermbg=none
-]]
+local checktime_group = vim.api.nvim_create_augroup('AutoCheckTime', { clear = true })
+
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
+	group = checktime_group,
+	command = 'checktime',
+})
+
+vim.cmd.colorscheme('vim')
+
+-- vim.cmd [[
+--   highlight Normal guibg=none
+--   highlight NonText guibg=none
+--   highlight Normal ctermbg=none
+--   highlight NonText ctermbg=none
+-- ]]
 
 
 vim.keymap.set('n', '<Esc><Esc>', ':nohlsearch<CR>', { silent = true })
