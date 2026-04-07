@@ -4,9 +4,8 @@
 git config --global include.path "${DOT_PATH%/}/.gitconfig"
 
 
-# dein.vim
-bundle_path=${DOT_PATH%/}/.vim/bundle/repos/github.com/Shougo/dein.vim
-if [ ! -d $bundle_path ]; then
-    mkdir -p $bundle_path
-    git clone https://github.com/Shougo/dein.vim ${bundle_path}
+# tmux plugin manager (tpm)
+tpm_path=~/.tmux/plugins/tpm
+if [ ! -d "$tpm_path" ]; then
+    git clone https://github.com/tmux-plugins/tpm "$tpm_path"
 fi
