@@ -23,4 +23,4 @@
 	root = ~/src
 
 [wt]
-	basedir = ".worktrees"
+	basedir = ".wt"
