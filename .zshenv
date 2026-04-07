@@ -15,3 +15,5 @@ export PATH=$PATH:$HOME/.local/bin
 
 # krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+export PATH=$PATH:$HOME/.rd/bin
