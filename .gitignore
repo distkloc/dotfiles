@@ -7,3 +7,5 @@
 /.vim/.vimwinpos
 
 .netrwhist
+
+.local.zshrc
