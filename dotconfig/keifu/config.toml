@@ -1,0 +1,6 @@
+[refresh]
+# Interval in seconds for local refresh (default: 10, minimum: 1)
+refresh_interval = 30
+
+# Enable auto-fetch from origin (default: true)
+auto_fetch = false
