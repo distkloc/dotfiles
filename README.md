@@ -27,3 +27,17 @@ mise bootstrap --dry-run   # preview changes
 mise bootstrap --yes       # apply
 mise dotfiles status       # show drift of the dotfile links
 ```
+
+### macOS defaults
+
+`mise.macos.toml` declares macOS preferences in `[bootstrap.macos.*]`. mise writes them but does not restart the apps that read them, so some changes only show up after a restart ([Restart affected apps](https://mise.jdx.dev/bootstrap/macos-defaults.html#app-restarts)):
+
+```sh
+killall Dock Finder SystemUIServer
+```
+
+Keyboard shortcuts (`com.apple.symbolichotkeys`) are read at login. Log out and back in, or reload them in place:
+
+```sh
+/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+```
