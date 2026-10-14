@@ -1,75 +1,29 @@
 # My dotfiles
 
+The whole setup is declared for [`mise bootstrap`](https://mise.jdx.dev/bootstrap.html).
+
 ## Installation
 
-## OSX
+The repo lives in the ghq layout: `~/src/github.com/distkloc/dotfiles`.
 
-### Prerequisites
-
-- Git
-
-### Run the setup script
+### macOS / Linux
 
 ```sh
-git clone https://github.com/distkloc/dotfiles.git ~/dotfiles
-cd ~/dotfiles
-make all
+curl -fsSL https://raw.githubusercontent.com/distkloc/dotfiles/main/bootstrap/install.sh | bash
 ```
 
-### Font
+This installs Homebrew (macOS) or curl and git (Linux), installs mise, clones the repo, and runs `mise bootstrap --yes`.
 
-[romkatv/powerlevel10k: A Zsh theme](https://github.com/romkatv/powerlevel10k#automatic-font-installation)
+### Windows (PowerShell)
 
-### Make Commands
+```posh
+irm https://raw.githubusercontent.com/distkloc/dotfiles/main/bootstrap/install.ps1 | iex
+```
 
-see:
+## Usage
 
 ```sh
-make help
-```
-
-## Windows (with PowerShell)
-
-### Prerequisites
-
-- NuGet (by Package Management)
-- Git
-
-### Change PowerShell execution policy
-
-```posh
-Set-ExecutionPolicy RemoteSigned
-```
-
-### Install Chocolatey package provider
-
-```posh
-Start-Process powershell -Verb runAs "Install-PackageProvider Chocolatey"
-```
-
-#### See installed PackageProviders
-
-```posh
-Get-PackageSource
-```
-
-### Run the setup script
-
-```posh
-git clone https://github.com/distkloc/dotfiles.git $HOME\dotfiles
-cd ~/dotfiles
-Start-Process powershell -Verb runAs $Home\dotfiles\bootstrap\windows.ps1
-```
-
-### Install chocolatey packages
-
-```posh
-choco install chocolatey/packages.config
-```
-
-### Select node.js version with nodist
-
-```posh
-nodist + latest
-nodist latest
+mise bootstrap --dry-run   # preview changes
+mise bootstrap --yes       # apply
+mise dotfiles status       # show drift of the dotfile links
 ```

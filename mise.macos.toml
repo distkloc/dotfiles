@@ -1,0 +1,20 @@
+# macOS. mise itself is installed by bootstrap/install.sh (brew install mise).
+
+[bootstrap.packages]
+"brew:awscli" = "latest"
+"brew:gh" = "latest"
+"brew:ghq" = "latest"
+"brew:git" = "latest"
+"brew:go" = "latest"
+"brew:jq" = "latest"
+"brew:lazygit" = "latest"
+"brew:neovim" = "latest"
+"brew:peco" = "latest"
+"brew:sheldon" = "latest"
+"brew:tmux" = "latest"
+"brew:yazi" = "latest"
+"brew:trasta298/tap/keifu" = "latest"
+"brew-cask:1password-cli" = "latest"
+"brew-cask:ghostty" = "latest"
+"brew-cask:font-hackgen" = "latest" # https://github.com/yuru7/HackGen
+"brew-cask:font-hackgen-nerd" = "latest"

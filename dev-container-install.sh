@@ -5,4 +5,4 @@ mkdir -p $HISTORY_DIR
 
 echo "export HISTFILE=$HISTORY_DIR/zsh" >> ~/.local.zshrc
 
-make all
+bash "$(dirname "$0")/bootstrap/install.sh"

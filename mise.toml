@@ -1,0 +1,14 @@
+# Setup for every platform. Run `mise bootstrap` to apply.
+# Platform-specific parts live in mise.{unix,macos,linux}.toml (loaded via auto_env in .miserc.toml).
+
+[tasks.bootstrap]
+description = "Imperative steps that cannot be declared"
+depends = ["bootstrap:*"]
+
+[tasks."bootstrap:git"]
+description = "Load the repo's .gitconfig from the global git config"
+run = 'git config --global include.path "{{config_root}}/.gitconfig"'
+run_windows = [
+  "git config --global core.autocrlf true",
+  'git config --global include.path "{{config_root}}/.gitconfig"',
+]

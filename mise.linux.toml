@@ -1,0 +1,11 @@
+# Linux (apt). curl and git are installed by bootstrap/install.sh before mise exists.
+
+[bootstrap.packages]
+"apt:jq" = "latest"
+"apt:neovim" = "latest"
+"apt:peco" = "latest"
+"apt:unzip" = "latest"
+"apt:zsh" = "latest"
+
+[bootstrap.user]
+login_shell = "/usr/bin/zsh"
