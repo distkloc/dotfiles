@@ -1,0 +1,10 @@
+[tools]
+usage = "latest" # used by `mise completion zsh`
+node = "latest"
+terraform = "latest"
+kubectl = "latest"
+kubectl-convert = "latest"
+uv = "latest"
+python = "latest"
+gcloud = "latest"
+sheldon = { version = "latest", os = ["linux"] } # brew on macOS

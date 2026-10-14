@@ -1,0 +1,36 @@
+# macOS and Linux
+
+[dotfiles]
+"~/.zshrc" = { source = ".zshrc" }
+"~/.zshenv" = { source = ".zshenv" }
+"~/.mac.zshrc" = { source = ".mac.zshrc" }
+"~/.linux.zshrc" = { source = ".linux.zshrc" }
+"~/.p10k.zsh" = { source = ".p10k.zsh" }
+"~/.tmux.conf" = { source = ".tmux.conf" }
+# Link each directory as a whole so files the apps write land in the repo
+"~/.config/ghostty" = { source = "dotconfig/ghostty" }
+"~/.config/keifu" = { source = "dotconfig/keifu" }
+"~/.config/lazygit" = { source = "dotconfig/lazygit" }
+"~/.config/mise" = { source = "dotconfig/mise" }
+"~/.config/nvim" = { source = "dotconfig/nvim" }
+"~/.config/sheldon" = { source = "dotconfig/sheldon" }
+"~/.config/yazi" = { source = "dotconfig/yazi" }
+"~/.claude/CLAUDE.md" = { source = "dotclaude/CLAUDE.md" }
+"~/.claude/settings.json" = { source = "dotclaude/settings.json" }
+"~/.claude/skills" = { source = "dotclaude/skills" }
+
+# nvim backupdir (dotconfig/nvim/init.lua)
+[bootstrap.directories."~/.vim/backup"]
+
+[bootstrap.repos]
+"~/.tmux/plugins/tpm" = { url = "https://github.com/tmux-plugins/tpm" }
+
+[tasks."bootstrap:claude"]
+description = "Install Claude Code (native installer)"
+env = { PATH = "{{env.HOME}}/.local/bin:{{env.PATH}}" }
+run = "command -v claude >/dev/null || curl -fsSL https://claude.ai/install.sh | bash"
+
+[tasks."bootstrap:codex"]
+description = "Install Codex (native installer)"
+env = { PATH = "{{env.HOME}}/.local/bin:{{env.PATH}}" }
+run = "command -v codex >/dev/null || curl -fsSL https://chatgpt.com/codex/install.sh | CODEX_NON_INTERACTIVE=1 sh"

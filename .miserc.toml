@@ -1,0 +1,2 @@
+# Load mise.unix.toml / mise.macos.toml / mise.linux.toml for the current platform
+auto_env = true
