@@ -15,6 +15,7 @@
 "brew:yazi" = "latest"
 "brew:trasta298/tap/keifu" = "latest"
 "brew-cask:1password-cli" = "latest"
+"brew-cask:appcleaner" = "latest"
 "brew-cask:ghostty" = "latest"
 "brew-cask:font-hackgen" = "latest" # https://github.com/yuru7/HackGen
 "brew-cask:font-hackgen-nerd" = "latest"
@@ -43,6 +44,7 @@ showAppExposeGestureEnabled = true
 [bootstrap.macos.defaults.NSGlobalDomain]
 AppleActionOnDoubleClick = "None" # Double-click a title bar: do nothing
 AppleInterfaceStyle = "Dark"
+AppleIconAppearanceTheme = "ClearAutomatic" # Icon & widget style: Clear, automatic
 AppleShowAllExtensions = true
 KeyRepeat = 2.0
 InitialKeyRepeat = 15.0
