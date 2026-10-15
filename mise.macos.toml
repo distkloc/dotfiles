@@ -43,6 +43,7 @@ showAppExposeGestureEnabled = true
 [bootstrap.macos.defaults.NSGlobalDomain]
 AppleActionOnDoubleClick = "None" # Double-click a title bar: do nothing
 AppleInterfaceStyle = "Dark"
+AppleIconAppearanceTheme = "ClearAutomatic" # Icon & widget style: Clear, automatic
 AppleShowAllExtensions = true
 KeyRepeat = 2.0
 InitialKeyRepeat = 15.0
